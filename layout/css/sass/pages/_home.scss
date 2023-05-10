@@ -1,5 +1,230 @@
-.header{
-    height: 100vh;
-    overflow: hidden;
-    position: relative;
+.homepage{
+    .header{
+        height: 100vh;
+        overflow: hidden;
+        position: relative;
+        .main-content{
+            .small{
+                width: 75%;
+                color: #c8c8c8;
+                font-size: 18px;
+                margin: auto;
+                margin-top: 16px;
+                margin-bottom: 21px;
+                line-height: 38px;
+            }
+        }
+        .aurora-content{
+            h1{
+                overflow: hidden !important;
+                position: relative;
+                background-repeat: repeat;
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: white;
+                background: url(../imgs/light.jpg);
+                background-repeat: repeat;
+                background-size: auto;
+                background-clip: border-box;
+                background-repeat: no-repeat;
+                background-size: cover;
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                font-size: 70px;
+                text-transform: uppercase;
+                text-align: center;
+                padding-bottom: 10px;
+            }
+        }
+        
+    @keyframes vertical {
+        0% {
+          opacity: 0;
+        }
+        4% {
+          opacity: 0;
+          -webkit-transform: rotateX(-180deg);
+          transform: rotateX(-180deg);
+        }
+        10% {
+          opacity: 1;
+          -webkit-transform: translateY(0px);
+          transform: translateY(0px);
+        }
+        38% {
+          opacity: 1;
+          -webkit-transform: translateY(0px);
+          transform: translateY(0px);
+        }
+        45% {
+          opacity: 0;
+          -webkit-transform: translateY(-90px);
+          transform: translateY(-90px);
+        }
+        80% {
+          opacity: 0;
+        }
+        100% {
+          opacity: 0;
+        }
+      }
+      
+      .verticalflip {
+        font-size: 24px;
+        font-weight: bold !important;
+        margin-bottom: 20px;
+      }
+      
+      .verticalflip span {
+        animation: vertical 7.5s linear infinite 0s;
+        -ms-animation: vertical 7.5s linear infinite 0s;
+        -webkit-animation: vertical 7.5s linear infinite 0s;
+        color: $mainColor;
+        position: absolute;
+        opacity: 0;
+        padding: 3px;
+        border-radius: 10px;
+        font-weight: bold !important;
+        padding-right: 7px;
+      }
+      
+      .verticalflip span:nth-child(2) {
+        -ms-animation-delay: 2.5s;
+        -webkit-animation-delay: 2.5s;
+        animation-delay: 2.5s;
+      }
+      
+      .verticalflip span:nth-child(3) {
+        -ms-animation-delay: 5s;
+        -webkit-animation-delay: 5s;
+        animation-delay: 5s;
+      }
+
+      .bottom-header{
+        padding: 19px 0;
+        .services{
+            .service{
+                display: flex;
+                align-items: center;
+                .icon{
+                    font-size: 23px;
+                }
+                .content{
+                    .title{
+                        font-size: 11px;
+                        color: #a6a6a6;
+                    }
+                    .desc{font-size: 14px;}
+                }
+            }
+        }
+        .flip {
+            display: inline-block;
+            position: relative;
+            width: 190px;
+            height: 50px;
+            position: relative;
+            top: 10px;
+            perspective: 500;
+            transition: all 0.3s ease-in-out;
+            text-transform: uppercase;
+            margin-bottom: 30px;
+            @media(max-width:484px){
+                width: 220px;
+                margin-bottom: 50px;
+            }
+            .step {
+                font-weight: 600;
+                display: block;
+                width: auto;
+                transition: all 0.3s ease-in-out;
+                opacity: 0;
+                transform-origin: 0% 0%;
+                transform: rotateX(90deg);
+                position: absolute;
+                top: -20px;
+                right: 0;
+                font-size: 30px;
+                font-weight: bold;
+                &.set{
+                    top: 0;
+                    opacity: 1;
+                    transform-origin: 0% 0%;
+                    transform: rotateX(0deg);
+                }
+                &.down{
+                    top: 40px;
+                    opacity: 0;
+                    transform-origin: 0% 0%;
+                    transform: rotateX(-90deg);
+                }
+              }
+          }
+      }
+      .more-p{
+        font-size: 12px;
+        color: #FFF;
+        margin-bottom: 8px !important;
+      }
+      .animation-container{
+        display:flex;
+        height:29px;
+        justify-content:center;
+        overflow:hidden;
+        .chevron-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            animation:infinVertScroll 2s infinite ease-out;
+            -webkit-mask-image:linear-gradient(180deg, transparent 0, #000 25%, #000 75%, transparent);
+            mask-image:linear-gradient(180deg, transparent 0, #000 25%, #000 75%, transparent);
+            .icon{
+                opacity:.33;
+                font-size: 11px;
+                color: #FFF;
+                margin-top: -3px;
+            }
+            .icon:nth-child(2),
+            .icon:nth-child(3) {
+                animation-duration:2s;
+                animation-iteration-count:infinite;
+            }
+            .icon:nth-child(2) {
+                animation-name:chevFadeIn
+            }
+            .icon:nth-child(3) {
+                animation-name:chevFadeOut;
+                opacity:1
+            }
+        }
+        @keyframes infinVertScroll {
+            0% {
+             transform:translateY(-25%)
+            }
+            33%,
+            100% {
+             transform:translateY(0%)
+            }
+           }
+           @keyframes chevFadeIn {
+            0% {
+             opacity:.33
+            }
+            33%,
+            100% {
+             opacity:1
+            }
+           }
+           @keyframes chevFadeOut {
+            0% {
+             opacity:1
+            }
+            33%,
+            100% {
+             opacity:.33
+            }
+           }
+           
+      }
+    }
+    
 }
