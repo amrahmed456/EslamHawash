@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" dir="rtl" lang="ar">
+<html dir="rtl" lang="ar">
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
@@ -43,135 +43,621 @@
                             
                         </a>
                     </div>
+                    <button class="hamburger mobile-navigation-opener hamburger--spin me-3" type="button">
+                        <span class="hamburger-box">
+                          <span class="hamburger-inner"></span>
+                        </span>
+                    </button>
+                      
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="mobile-sidebar" id="mobile-sidebar">
+        <div class="d-flex flex-column justify-content-between h-100">
+            <div class="main-navigations">
+                <a href="" class="d-flex align-items-center w-100">
+                    <i class="fa-solid fa-house-chimney ms-3"></i>
+                    الرئيسية
+                </a>
+                <a href="" class="d-flex align-items-center w-100">
+                    <i class="fa-brands fa-buffer ms-3"></i>
+                    خدماتنا
+                </a>
+                <a href="" class="d-flex align-items-center w-100">
+                    <i class="fa-solid fa-briefcase ms-3"></i>
+                    أعمالنا
+                </a>
+                <a href="" class="d-flex align-items-center w-100">
+                    <i class="fa-solid fa-circle-exclamation ms-3"></i>
+                    من نحن
+                </a>
+                <a href="" class="d-flex align-items-center w-100">
+                    <i class="fa-regular fa-comments ms-3"></i>
+                    تواصل معنا 
+                </a>
+                
+            </div>
+
+            <div>
+                
+                <div class="d-flex justify-content-center mb-5">
+                    <a href=""><i class="fa-solid fa-globe ms-1"></i> EN</a>
+                </div>
+                
+                <div class="socials d-flex justify-content-center">
+                    <a href="" target="_blank" class="social-icon">
+                        <i class="fa-brands fa-facebook-f"></i>
+                    </a>
+                    <a href="" target="_blank" class="social-icon">
+                        <i class="fa-brands fa-twitter"></i>
+                    </a>
+                    <a href="" target="_blank" class="social-icon">
+                        <i class="fa-brands fa-instagram"></i>
+                    </a>
+                    <a href="" target="_blank" class="social-icon">
+                        <i class="fa-brands fa-whatsapp"></i>
+                    </a>
+                    <a href="" target="_blank" class="social-icon">
+                        <i class="fa-brands fa-behance"></i>
+                    </a>
                 </div>
             </div>
         </div>
     </div>
 
     <div class="homepage">
-        <div class="header">
-            <video preload="metadata" playsinline="" loop="" muted="" class="hero_video fit-img" autoplay="">
-                <source src="layout/videos/header.webm" type="video/webm">
-            </video>
-            <div class="overlay d-flex justify-content-between align-items-between flex-column">
-                <div></div>
-                <div class="container">
-                    <div class="text-center main-content">
-                        <div class="verticalflip ms-5">
-                                نسعي لتحقيق 
-                                <span>الكمال</span>
-                                <span>الإحترافية</span>
-                                <span>الدقة</span>
+                <!-- Slider main container -->
+        <div class="swiper">
+           
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <div class="header">
+                        <video preload="metadata" playsinline="" loop="" muted="" class="hero_video fit-img" autoplay="">
+                            <source src="layout/videos/header.webm" type="video/webm">
+                        </video>
+                        <div class="overlay d-flex justify-content-between align-items-between flex-column">
+                            <div></div>
+                            <div class="container">
+                                <div class="text-center main-content">
+                                    <div class="verticalflip ms-5">
+                                            نسعي لتحقيق 
+                                            <span>الكمال</span>
+                                            <span>الإحترافية</span>
+                                            <span>الدقة</span>
+                                        </div>
+                                    <div class="aurora-content">
+                                        <h1 class="fw-bold">
+                                            فريق التصميم العظيم
+                                        </h1>
+                                    </div>
+                                    
+                                    <p class="small">
+                                        هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة ما سيلهي القارئ عن التركيز على الشكل الخارجي للنص أو شكل توضع الفقرات في الصفحة التي يقرأها.
+                                    </p>
+                                    <div class="d-flex align-items-center justify-content-center">
+                                        <a href="" class="btn btn-primary d-flex align-items-center ms-4 btn-bg">
+                                            <p class="mb-0 ms-2">إبدأ مشروعك</p>
+                                            <i class="fa-solid fa-arrow-left"></i>
+                                        </a>
+                                        <a href="" class="btn btn-outline-white d-flex align-items-center btn-bg go-to-swipper"  data-child="3">
+                                            <p class="mb-0 ms-2">شاهد أعمالنا</p>
+                                            <i class="fa-solid fa-arrow-down"></i>
+                                        </a>
+                                    </div>
+                                </div>
                             </div>
-                        <div class="aurora-content">
-                            <h1 class="fw-bold">
-                                فريق التصميم العظيم
-                            </h1>
+                            
+                            <div class="bottom-header">
+                                <div class="container">
+                                    <div class="d-flex justify-content-between align-items-center header-bottom-divs">
+                                        <div class="services flip" id="flipper">
+                                            <div class="step step0 set">
+                                                <div class="service">
+                                                    <i class="fa-solid fa-couch ms-3 icon"></i>
+                                                    <div class="content">
+                                                        <p class="title mb-0">خدماتنا</p>
+                                                        <p class="desc mb-0">التصميم الداخلي</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                    
+                                            <div class="step step1">
+                                                <div class="service">
+                                                    <i class="fa-solid fa-pen-ruler ms-3 icon"></i>
+                                                    <div class="content">
+                                                        <p class="title mb-0">خدماتنا</p>
+                                                        <p class="desc mb-0">التصميم المعماري</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="step step2">
+                                                <div class="service">
+                                                    <i class="fa-solid fa-palette ms-3 icon"></i>
+                                                    <div class="content">
+                                                        <p class="title mb-0">خدماتنا</p>
+                                                        <p class="desc mb-0">تشطيب الواجهات</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="step step3">
+                                                <div class="service">
+                                                    <i class="fa-solid fa-bezier-curve ms-3 icon"></i>
+                                                    <div class="content">
+                                                        <p class="title mb-0">خدماتنا</p>
+                                                        <p class="desc mb-0">اللوحات التنفيذية</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                           
+                                        </div>
+                                        <div class="d-none d-md-block">
+                                            <a href="" class="go-to-swipper" data-child="2">
+                                                <p class="text-center mb-0 more-p">إكتشف المزيد</p>
+                                                <span class="animation-container">
+                                                    <span class="chevron-container">
+                                                      
+                                                        <i class="fa-solid fa-chevron-down icon"></i>
+                                                        <i class="fa-solid fa-chevron-down icon"></i>
+                                                        <i class="fa-solid fa-chevron-down icon"></i>
+                                                        <i class="fa-solid fa-chevron-down icon"></i>
+                                            
+                                                    </span>
+                                                  </span>
+                                            </a>
+                                        </div>
+                                        <div class="socials d-flex">
+                                            <a href="" target="_blank" class="social-icon">
+                                                <i class="fa-brands fa-facebook-f"></i>
+                                            </a>
+                                            <a href="" target="_blank" class="social-icon">
+                                                <i class="fa-brands fa-twitter"></i>
+                                            </a>
+                                            <a href="" target="_blank" class="social-icon">
+                                                <i class="fa-brands fa-instagram"></i>
+                                            </a>
+                                            <a href="" target="_blank" class="social-icon">
+                                                <i class="fa-brands fa-whatsapp"></i>
+                                            </a>
+                                            <a href="" target="_blank" class="social-icon">
+                                                <i class="fa-brands fa-behance"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                         
-                        <p class="small">
-                            هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة ما سيلهي القارئ عن التركيز على الشكل الخارجي للنص أو شكل توضع الفقرات في الصفحة التي يقرأها.
-                        </p>
-                        <div class="d-flex align-items-center justify-content-center">
-                            <a href="" class="btn btn-primary d-flex align-items-center ms-4 btn-bg">
-                                <p class="mb-0 ms-2">إبدأ مشروعك</p>
-                                <i class="fa-solid fa-arrow-left"></i>
-                            </a>
-                            <a href="" class="btn btn-outline-white d-flex align-items-center btn-bg">
-                                <p class="mb-0 ms-2">شاهد أعمالنا</p>
-                                <i class="fa-solid fa-arrow-down"></i>
-                            </a>
-                        </div>
                     </div>
                 </div>
-                
-                <div class="bottom-header">
-                    <div class="container">
-                        <div class="d-flex justify-content-between align-items-center">
-                            <div class="services flip" id="flipper">
-                                <div class="step step0 set">
-                                    <div class="service">
-                                        <i class="fa-solid fa-couch ms-3 icon"></i>
-                                        <div class="content">
-                                            <p class="title mb-0">خدماتنا</p>
-                                            <p class="desc mb-0">التصميم الداخلي</p>
-                                        </div>
-                                    </div>
-                                </div>
+                <div class="swiper-slide">
+                    <div class="features-section d-flex align-items-center">
+                        
+                        <div class="waves-cont">
+                            <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                            viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+                            <defs>
+                            <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+                            </defs>
+                            <g class="parallax">
+                            <use xlink:href="#gentle-wave" x="48" y="0" fill="rgba(63,142,252,0.7)" />
+                            <use xlink:href="#gentle-wave" x="48" y="3" fill="rgba(135,191,255,0.5)" />
+                            <use xlink:href="#gentle-wave" x="48" y="5" fill="rgba(173,215,246,0.3)" />
+                            <use xlink:href="#gentle-wave" x="48" y="7" fill="rgba(59,40,204,0.5)" />
+                            </g>
+                            </svg>
+                        </div>
 
-                                <div class="step step1">
-                                    <div class="service">
-                                        <i class="fa-solid fa-pen-ruler ms-3 icon"></i>
-                                        <div class="content">
-                                            <p class="title mb-0">خدماتنا</p>
-                                            <p class="desc mb-0">التصميم المعماري</p>
+                        <div class="container h-100">
+                            <div class="row">
+                                <div class="col-12 col-md-6 mb-4 mt-4">
+                                    <p class="section-sub fw-bold">
+                                        خدمات مخصصة
+                                    </p>
+                                    <h2 class="fw-bold mb-3">
+                                        نقدم أفضل الخدمات المعمارية والهندسية
+                                    </h2>
+                                    <p class="lead">
+                                        هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة ما سيلهي القارئ عن التركيز على الشكل الخارجي للنص أو شكل توضع الفقرات في الصفحة التي يقرأها.
+                                    </p>
+                                    <div class="row features mt-5 d-none d-lg-flex">
+                                        <div class="col-6 col-md-4 mb-4 p-1 feat-col">
+                                            <div class="feature">
+                                                <p class="title fw-bold">
+                                                    99<span class="special">%</span>
+                                                </p>
+                                                <p class="sub fw-bold">
+                                                    عملاء راضون
+                                                </p>
+                                                <p class="small">
+                                                    لى الشكل الخارجي للنص أو شكل توضع الفقرات في الصفحة التي يقرأه
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="col-6 col-md-4 mb-4 p-1 feat-col">
+                                            <div class="feature">
+                                                <p class="title fw-bold">
+                                                    250<span class="special"> + </span>
+                                                </p>
+                                                <p class="sub fw-bold">
+                                                    مشروع ناجح
+                                                </p>
+                                                <p class="small">
+                                                    لى الشكل الخارجي للنص أو شكل توضع الفقرات في الصفحة التي يقرأه
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="col-6 col-md-4 mb-4 p-1 feat-col">
+                                            <div class="feature">
+                                                <p class="title fw-bold">
+                                                    3<span class="special">+</span>
+                                                </p>
+                                                <p class="sub fw-bold">
+                                                    دول مختلفة
+                                                </p>
+                                                <p class="small">
+                                                    لى الشكل الخارجي للنص أو شكل توضع الفقرات في الصفحة التي يقرأه
+                                                </p>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="step step2">
-                                    <div class="service">
-                                        <i class="fa-solid fa-palette ms-3 icon"></i>
-                                        <div class="content">
-                                            <p class="title mb-0">خدماتنا</p>
-                                            <p class="desc mb-0">تشطيب الواجهات</p>
+                                <div class="col-12 col-md-6 mb-4 slider-animated">
+                                    <div class="row">
+                                        <div class="col-6 p-2">
+                                            <div class="slider-to-right eng-ar-infinit-slider">
+                                                <div class="slide">
+                                                    <img src="layout/imgs/a1.jpg" alt="" />
+                                                </div>
+                                                <div class="slide">
+                                                    <img src="layout/imgs/a2.jpg" alt="" />
+                                                </div>
+                                                <div class="slide">
+                                                    <img src="layout/imgs/a3.jpg" alt="" />
+                                                </div>
+                                                <div class="slide">
+                                                    <img src="layout/imgs/a4.jpg" alt="" />
+                                                </div>
+                                                <div class="slide">
+                                                    <img src="layout/imgs/a5.jpg" alt="" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-6 p-2">
+                                            <div class="slider-bottom eng-ar-infinit-slider">
+                                                <div class="slide">
+                                                    <img src="layout/imgs/a6.jpg" alt="" />
+                                                </div>
+                                                <div class="slide">
+                                                    <img src="layout/imgs/a7.jpg" alt="" />
+                                                </div>
+                                                <div class="slide">
+                                                    <img src="layout/imgs/a1.jpg" alt="" />
+                                                </div>
+                                                <div class="slide">
+                                                    <img src="layout/imgs/a3.jpg" alt="" />
+                                                </div>
+                                                <div class="slide">
+                                                    <img src="layout/imgs/a2.jpg" alt="" />
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
+                                    
                                 </div>
-                                <div class="step step3">
-                                    <div class="service">
-                                        <i class="fa-solid fa-bezier-curve ms-3 icon"></i>
-                                        <div class="content">
-                                            <p class="title mb-0">خدماتنا</p>
-                                            <p class="desc mb-0">اللوحات التنفيذية</p>
-                                        </div>
-                                    </div>
-                                </div>
-                               
                             </div>
-                            <div>
-                                <a href="">
-                                    <p class="text-center mb-0 more-p">إكتشف المزيد</p>
-                                    <span class="animation-container">
-                                        <span class="chevron-container">
-                                          
-                                            <i class="fa-solid fa-chevron-down icon"></i>
-                                            <i class="fa-solid fa-chevron-down icon"></i>
-                                            <i class="fa-solid fa-chevron-down icon"></i>
-                                            <i class="fa-solid fa-chevron-down icon"></i>
-                                
-                                        </span>
-                                      </span>
-                                </a>
+                        </div>
+                        
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="portfolio-section">
+
+                        <div class="flickity-slider h-100" data-flickty>
+                            
+                            <div class="carousel-cell h-100 w-100">
+                                <div class="overlay" style="background-image:url(layout/imgs/a2.jpg);">
+                                </div>
+                                <div class="overlay">
+                                    <div class="container">
+                                        <div class="content mb-5 pb-5">
+                                            <p class="title fw-bold fs-1 mb-4">
+                                                تصميم غرفة دوبل
+                                            </p>
+                                            <div class="d-flex flex-wrap">
+                                                <a href="" class="category mb-2 rounded ms-3">
+                                                    التصميم الداخلي
+                                                </a>
+                                                <div class="love-count rounded mb-2 d-flex align-items-center">
+                                                    <i class="fa-regular fa-heart ms-2"></i>
+                                                    14
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="view-project mt-5">
+                                                <div class="icon">
+                                                    <i class="fa-solid fa-turn-up"></i>
+                                                </div>
+                                                <a href="" class="d-block me-4">
+                                                    <span class="dup-hover-effect">
+                                                        عرض المشروع
+                                                    </span>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                </div>
                             </div>
-                            <div class="socials d-flex">
-                                <a href="" target="_blank" class="social-icon">
-                                    <i class="fa-brands fa-facebook-f"></i>
-                                </a>
-                                <a href="" target="_blank" class="social-icon">
-                                    <i class="fa-brands fa-twitter"></i>
-                                </a>
-                                <a href="" target="_blank" class="social-icon">
-                                    <i class="fa-brands fa-instagram"></i>
-                                </a>
-                                <a href="" target="_blank" class="social-icon">
-                                    <i class="fa-brands fa-whatsapp"></i>
-                                </a>
-                                <a href="" target="_blank" class="social-icon">
-                                    <i class="fa-brands fa-behance"></i>
-                                </a>
+
+                            <div class="carousel-cell h-100 w-100">
+                                <div class="overlay" style="background-image:url(layout/imgs/a7.jpg);">
+                                </div>
+                                <div class="overlay">
+                                    <div class="container">
+                                        <div class="content mb-5 pb-5">
+                                            <p class="title fw-bold fs-1 mb-4">
+                                                تصميم غرفة دوبل
+                                            </p>
+                                            <div class="d-flex flex-wrap">
+                                                <a href="" class="category mb-2 rounded ms-3">
+                                                    التصميم الداخلي
+                                                </a>
+                                                <div class="love-count rounded mb-2 d-flex align-items-center">
+                                                    <i class="fa-regular fa-heart ms-2"></i>
+                                                    14
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="view-project mt-5">
+                                                <div class="icon">
+                                                    <i class="fa-solid fa-turn-up"></i>
+                                                </div>
+                                                <a href="" class="d-block me-4">
+                                                    <span class="dup-hover-effect">
+                                                        عرض المشروع
+                                                    </span>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+
+                            <div class="carousel-cell h-100 w-100">
+                                <div class="overlay" style="background-image:url(layout/imgs/a6.jpg);">
+                                </div>
+                                <div class="overlay">
+                                    <div class="container">
+                                        <div class="content mb-5 pb-5">
+                                            <p class="title fw-bold fs-1 mb-4">
+                                                تصميم غرفة دوبل
+                                            </p>
+                                            <div class="d-flex flex-wrap">
+                                                <a href="" class="category mb-2 rounded ms-3">
+                                                    التصميم الداخلي
+                                                </a>
+                                                <div class="love-count rounded mb-2 d-flex align-items-center">
+                                                    <i class="fa-regular fa-heart ms-2"></i>
+                                                    14
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="view-project mt-5">
+                                                <div class="icon">
+                                                    <i class="fa-solid fa-turn-up"></i>
+                                                </div>
+                                                <a href="" class="d-block me-4">
+                                                    <span class="dup-hover-effect">
+                                                        عرض المشروع
+                                                    </span>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+
+                            <div class="carousel-cell h-100 w-100">
+                                <div class="overlay" style="background-image:url(layout/imgs/a5.jpg);">
+                                </div>
+                                <div class="overlay">
+                                    <div class="container">
+                                        <div class="content mb-5 pb-5">
+                                            <p class="title fw-bold fs-1 mb-4">
+                                                تصميم غرفة دوبل
+                                            </p>
+                                            <div class="d-flex flex-wrap">
+                                                <a href="" class="category mb-2 rounded ms-3">
+                                                    التصميم الداخلي
+                                                </a>
+                                                <div class="love-count rounded mb-2 d-flex align-items-center">
+                                                    <i class="fa-regular fa-heart ms-2"></i>
+                                                    14
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="view-project mt-5">
+                                                <div class="icon">
+                                                    <i class="fa-solid fa-turn-up"></i>
+                                                </div>
+                                                <a href="" class="d-block me-4">
+                                                    <span class="dup-hover-effect">
+                                                        عرض المشروع
+                                                    </span>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+
+                            <div class="carousel-cell h-100 w-100">
+                                <div class="overlay" style="background-image:url(layout/imgs/a4.jpg);">
+                                </div>
+                                <div class="overlay">
+                                    <div class="container">
+                                        <div class="content mb-5 pb-5">
+                                            <p class="title fw-bold fs-1 mb-4">
+                                                تصميم غرفة دوبل
+                                            </p>
+                                            <div class="d-flex flex-wrap">
+                                                <a href="" class="category mb-2 rounded ms-3">
+                                                    التصميم الداخلي
+                                                </a>
+                                                <div class="love-count rounded mb-2 d-flex align-items-center">
+                                                    <i class="fa-regular fa-heart ms-2"></i>
+                                                    14
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="view-project mt-5">
+                                                <div class="icon">
+                                                    <i class="fa-solid fa-turn-up"></i>
+                                                </div>
+                                                <a href="" class="d-block me-4">
+                                                    <span class="dup-hover-effect">
+                                                        عرض المشروع
+                                                    </span>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+
+                            <div class="carousel-cell h-100 w-100">
+                                <div class="overlay" style="background-image:url(layout/imgs/a3.jpg);">
+                                </div>
+                                <div class="overlay">
+                                    <div class="container">
+                                        <div class="content mb-5 pb-5">
+                                            <p class="title fw-bold fs-1 mb-4">
+                                                تصميم غرفة دوبل
+                                            </p>
+                                            <div class="d-flex flex-wrap">
+                                                <a href="" class="category mb-2 rounded ms-3">
+                                                    التصميم الداخلي
+                                                </a>
+                                                <div class="love-count rounded mb-2 d-flex align-items-center">
+                                                    <i class="fa-regular fa-heart ms-2"></i>
+                                                    14
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="view-project mt-5">
+                                                <div class="icon">
+                                                    <i class="fa-solid fa-turn-up"></i>
+                                                </div>
+                                                <a href="" class="d-block me-4">
+                                                    <span class="dup-hover-effect">
+                                                        عرض المشروع
+                                                    </span>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                            
+                        </div>
+                        <div class="flickt-nav-cont">
+                            <div class="container">
+                                <div class="flickty-nav-slider">
+                                    <div class="carousel-cell">
+                                        <div class="project-thumbnail">
+                                            <img src="layout/imgs/a2.jpg" class="fit-img">
+                                            <div class="overlay p-4 d-flex align-items-end">
+                                                
+                                                <div class="title">
+                                                    تصميم غرفة دوبل
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="carousel-cell">
+                                        <div class="project-thumbnail">
+                                            <img src="layout/imgs/a7.jpg" class="fit-img">
+                                            <div class="overlay p-4 d-flex align-items-end">
+                                                <p class="title">
+                                                    تصميم غرفة دوبل
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="carousel-cell">
+                                        <div class="project-thumbnail">
+                                            <img src="layout/imgs/a6.jpg" class="fit-img">
+                                            <div class="overlay p-4 d-flex align-items-end">
+                                                <p class="title">
+                                                    تصميم غرفة دوبل
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="carousel-cell">
+                                        <div class="project-thumbnail">
+                                            <img src="layout/imgs/a5.jpg" class="fit-img">
+                                            <div class="overlay p-4 d-flex align-items-end">
+                                                <p class="title">
+                                                    تصميم غرفة دوبل
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="carousel-cell">
+                                        <div class="project-thumbnail">
+                                            <img src="layout/imgs/a4.jpg" class="fit-img">
+                                            <div class="overlay p-4 d-flex align-items-end">
+                                                <p class="title">
+                                                    تصميم غرفة دوبل
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="carousel-cell">
+                                        <div class="project-thumbnail">
+                                            <img src="layout/imgs/a3.jpg" class="fit-img">
+                                            <div class="overlay p-4 d-flex align-items-end">
+                                                <p class="title">
+                                                    تصميم غرفة دوبل
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="carousel-cell">
+                                        <a href="" class="project-thumbnail view-more d-flex text-center align-items-center">
+                                            عرض المزيد <i class="fa-solid fa-chevron-left me-2 icon"></i>
+                                        </a>
+                                    </div>
+                                    
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            
+            <!-- If we need pagination -->
+            <div class="swiper-pagination"></div>
         </div>
+  
+       
     </div>
     
 
     <script src="layout/js/jquery-3.6.0.min.js"></script>
     <script src="layout/js/bootstrap.min.js"></script>
     <script src="layout/js/all.min.js"></script>
+    <script src="layout/js/swipper.min.js"></script>
+    <script src="layout/js/infiniteslidev2.min.js"></script>
+    <script src="layout/js/flickt.min.js"></script>
     <script src="layout/js/main.js"></script>
 </body>
 </html>
