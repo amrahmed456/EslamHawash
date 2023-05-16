@@ -23,7 +23,9 @@ class Users{
                 $date       = date('y-m-d');
                 if($user->insertUser($name, $email, $phone, $password,$occupation,$date)){
                     $user = $user->get_user(0 , $email);
-                    $this->set_users_session($user);
+                    $d = new TeamModel();
+                    $user_permissions = $d->get_user_permissions($user['id']);
+                    $this->set_users_session($user , $user_permissions);
                     header("Location: $ref");
                 }
 
@@ -45,8 +47,9 @@ class Users{
         }else{
             // check password
             if(password_verify($password , $user['password']) && $user['status'] != 2){ // 2 = blocked user
-                
-                $this->set_users_session($user);
+                $d = new TeamModel();
+                $user_permissions = $d->get_user_permissions($user['id']);
+                $this->set_users_session($user , $user_permissions);
                 header("Location: index.php");
             }else{
                 set_form_response(2 , 'Password is incorrect!, Try Again');
@@ -58,12 +61,13 @@ class Users{
 
     }
 
-    public function set_users_session($user){
+    public function set_users_session($user , $permissions = []){
         $arr = [
-            "name" => $user['name'],
+            "name" => $user['name_en'],
             "email" => $user['email'],
             "status" => $user['status'],
-            "user_id"   => $user['id']
+            "user_id"   => $user['id'],
+            "permissions"   => $permissions
         ];
         $_SESSION['user'] = $arr;
     }

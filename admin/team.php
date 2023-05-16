@@ -19,7 +19,7 @@
         }
     }
     $team = new TeamModel;
-    $team = $team->get_team();
+    $team = $team->get_team('','','' , $_SESSION['user']['user_id']);
 
 ?>
 <div class="content d-flex flex-column flex-column-fluid" id="kt_content">

@@ -24,23 +24,33 @@ class Team{
             $instagram  = filter_var($_POST['instagram'], FILTER_SANITIZE_STRING);
             $whatsapp  = filter_var($_POST['whatsapp'], FILTER_SANITIZE_STRING);
             $email      = filter_var($_POST['email'], FILTER_SANITIZE_STRING);
-            $orer       = filter_var($_POST['order'], FILTER_SANITIZE_STRING);
+            $orer           = filter_var($_POST['order'], FILTER_SANITIZE_STRING);
+            $password       = isset($_POST['password']) ? $_POST['password'] : false;
+            $password       = (!$password) ? false:filter_var(trim($password) , FILTER_SANITIZE_STRING);
+            $password       = ( $password === '' ) ? '123456789' : $password;
+            $password       = (!$password) ? false : password_hash($password , PASSWORD_DEFAULT);
+            $permissions    = (isset($_POST['permissions'])) ? $_POST['permissions'] : '';
             $pin        = ( isset($_POST['pin'])  ) ? '1' : '0';
 
             $db = new TeamModel;
             if( $action == 'insert' ){
-                if( $db->insert_new_member($name_en,$name_ar,$pos_en,$pos_ar,$facebook,$instagram,$email,$whatsapp,$orer,$pin,$img_src) ){
+                $user = new UsersModel;
+                if($user->checkUserExist($email)){
+                    set_form_response(2, 'This user with this email is already registered');
+                    return;
+                }
+
+                if( $db->insert_new_member($name_en,$name_ar,$pos_en,$pos_ar,$facebook,$instagram,$email,$whatsapp,$orer,$pin,$img_src,$permissions,$password) ){
                     set_form_response(1,'Member Added Succesfully');
                     return;
                 }
             }else if( $action == 'edit' ){
                 $id       = filter_var($_POST['id'], FILTER_SANITIZE_STRING);
-                if( $db->edit_member($name_en,$name_ar,$pos_en,$pos_ar,$facebook,$instagram,$email,$whatsapp,$orer,$pin,$img_src,$id) ){
+                if( $db->edit_member($name_en,$name_ar,$pos_en,$pos_ar,$facebook,$instagram,$email,$whatsapp,$orer,$pin,$img_src,$id,$permissions) ){
                     set_form_response(1,'Member updated Succesfully');
                     return;
                 }
             }
-            
 
         }
         

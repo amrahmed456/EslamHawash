@@ -12,16 +12,16 @@ class UsersModel extends Database{
     }
 
 
-    public function insertUser($name, $email, $phone, $password,$occupation,$date){
+    public function insertUser($name, $email, $password){
         $query = "
             INSERT INTO
             $this->tabel
-            (name,email,phone,password,job_title,date)
+            (name_en,email,password)
             VALUES
-            (?,?,?,?,?,?)
+            (?,?,?,?,)
         ";
         $stmt = $this->db->prepare($query);
-        if( $stmt->execute([$name, $email, $phone, $password,$occupation,$date]) ){
+        if( $stmt->execute([$name, $email, $password]) ){
             return true;
         }
         return false;
@@ -68,7 +68,7 @@ class UsersModel extends Database{
             $password = ', password = "'. $password . '"';
         }
         $query = "
-            UPDATE $this->tabel SET name = ? ". $password ." WHERE id = ?
+            UPDATE $this->tabel SET name_en = ? ". $password ." WHERE id = ?
         ";
       
         $_SESSION['user']['name'] = $name;
@@ -96,6 +96,16 @@ class UsersModel extends Database{
             return true;
         }
 
+        return false;
+    }
+
+    public function checkUserExist($email){
+        $query = "SELECT id FROM $this->tabel WHERE email = ? LIMIT 1";
+        $stmt = $this->db->prepare($query);
+        $stmt->execute([$email]);
+        if($stmt->rowCount() > 0){
+            return true;
+        }
         return false;
     }
 

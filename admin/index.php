@@ -7,7 +7,7 @@
 	$team 		= new TeamModel;
 	$comments	= new CommentsModel;
 
-	print_r($comments->get_comment());
+	//print_r($comments->get_comment());
 
 	$total_porject =  $projects->total_projects();
 

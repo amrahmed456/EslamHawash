@@ -49,12 +49,18 @@
      
         if($form_action == 'delete_image' || $form_action == 'delete_img_db'){
             if($form_action == 'delete_img_db'){
-
+                $is_panorama = strpos($_POST['imgSrc'], 'panorama');
+                $is_panorama = ($is_panorama >= 1) ? true : false;
                 $img =  explode("/" , $_POST['imgSrc']);
                 $port_slug = $img[0];
-                $img = $img[1];
+                if($is_panorama){
+                    $img = $img[2];
+                }else{
+                    $img = $img[1];
+                }
                 $cat = new Categories;
-                if( $cat->delete_porject_img($port_slug,$img) ){
+                
+                if( $cat->delete_porject_img($port_slug,$img , $is_panorama) ){
                     delete_img();
                 }
 
@@ -172,13 +178,14 @@
         if( $form_action == 'upload_img' && isset($_POST['key']) && isset($_POST['img_name']) ){
             // key is folder name
             $img_name = $_POST['img_name'];
+            $is_panorama = isset($_POST['is_panorma']) ? true : false;
             $folder_key = $_POST['key'];
-            if($img_name != 'english' && $img_name != 'arabic' && $img_name != 'panorama' && $img_name != 'personalimg'){
+            if($img_name != 'english' && $img_name != 'arabic' && $img_name != 'personalimg'){
                 $img_name = uniqid('' , true);
             }
 
             $img = new Images;
-            $img->upload_image($folder_key , $img_name,75);
+            $img->upload_image($folder_key , $img_name,75,'file',$is_panorama);
             echo $img_name . '.webp';
         }
         

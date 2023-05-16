@@ -6,7 +6,7 @@ class Categories{
 
         $name_en = filter_var($_POST['name_en'],FILTER_SANITIZE_STRING);
         $name_ar = filter_var($_POST['name_ar'],FILTER_SANITIZE_STRING);
-        $parent_id = filter_var($_POST['parent_id'],FILTER_SANITIZE_NUMBER_INT);
+        $parent_id = filter_var($_POST['parent_id'],FILTER_SANITIZE_STRING);
         $slug = time();
 
         $cat = new CategoriesModel;
@@ -15,7 +15,7 @@ class Categories{
             return;
         }
 
-        if($cat->insert_category($name_en,$name_ar,$slug,1)){
+        if($cat->insert_category($name_en,$name_ar,$slug,$parent_id)){
             set_form_response(1,'Category created succesfully');
             return true;
         }
@@ -62,36 +62,40 @@ class Categories{
         $title_ar       = filter_var($_POST['title_ar'], FILTER_SANITIZE_STRING);
         $desc_en        = filter_var($_POST['desc_en'], FILTER_SANITIZE_STRING);
         $desc_ar        = filter_var($_POST['desc_ar'], FILTER_SANITIZE_STRING);
+        $videos         = [];
         $status         = ( isset($_POST['to_status']) ) ? '1' : '0';
         $img = new Images();
         $photos = $img->get_images($port_slug);
-        $panorma = '';
-        $k = array_search('panorama.webp' , $photos);
-        if($k === false){
+        $panormas = $img->get_images($port_slug . '/panorama');
 
-        }else{
-            $panorma = 'panorama.webp';
-            unset($photos[$k]);
+        if(isset($_POST['videos'])){
+            foreach($_POST['videos'] as $video){
+                if($video != ''){
+                    $videos[] = $video;
+                }
+            }
         }
         
-        
+        $videos = implode(',' , $videos);
+
         if( count($photos) == 0 ){
             set_form_response(2 , 'You must upload at least 1 Image to the project');
             return false;
         }
         $photos = implode(',' , $photos);
+        $panormas = implode(',' , $panormas);
 
         $port = new CategoriesModel;
         if( $method == 'insert' ){
             $date = date('Y-m-d');
-            if( $port->insert_portfolio($port_slug,$category_slug,$title_en,$title_ar,$desc_en,$desc_ar,$status,$photos,$panorma,$date) ){
+            if( $port->insert_portfolio($port_slug,$category_slug,$title_en,$title_ar,$desc_en,$desc_ar,$status,$photos,$panormas,$date,$videos) ){
                 set_form_response(1 , 'Portfolio Has been added succesfully :)');
                 return true;
             }
             set_form_response(2);
             return false;
         }else if( $method == 'update'){
-            if( $port->update_portfolio($port_slug,$category_slug,$title_en,$title_ar,$desc_en,$desc_ar,$status,$photos,$panorma) ){
+            if( $port->update_portfolio($port_slug,$category_slug,$title_en,$title_ar,$desc_en,$desc_ar,$status,$photos,$panormas,$videos) ){
                 set_form_response(1 , 'Portfolio Has been Updated succesfully :)');
                 return true;
             }
@@ -102,25 +106,36 @@ class Categories{
     }
 
 
-    public function delete_porject_img($port_slug,$img){
+    public function delete_porject_img($port_slug,$img , $is_panorama = false){
 
         $cats = new CategoriesModel;
         $cat = $cats->get_category_product('' , $port_slug);
         if( count($cat) > 0 ){
-            $photos = $cat[0]['photos'];
-            $photos = explode(',' , $photos);
-            $k = array_search($img,$photos);
-            if( $k === false ){
-                return false;
+            if($is_panorama){
+                $photos = $cat[0]['panorama'];
+                $result = self::searchImages($photos, $img);
             }else{
-                unset($photos[$k]);
-                $photos = implode(',' , $photos);
-                return $cats->update_photos($port_slug,$photos);
+                $photos = $cat[0]['photos'];
+                $result = self::searchImages($photos, $img);
             }
+            if($result !== false){
+                return $cats->update_photos($port_slug,$result,$is_panorama);
+            }
+           
         }
-
         return false;
+    }
 
+    public function searchImages($photos, $img){
+        $photos = explode(',' , $photos);
+        $k = array_search($img,$photos);
+        if( $k === false ){
+            return false;
+        }else{
+            unset($photos[$k]);
+            $photos = implode(',' , $photos);
+            return $photos;
+        }
     }
 
     public function delete_project(){

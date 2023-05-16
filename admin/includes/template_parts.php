@@ -39,6 +39,9 @@ function get_no_data_found($btn = '' , $link = false){
 function get_edit_categores( $slug ){
     $camp = new CategoriesModel;
     $camp = $camp->get_category_product($slug , '' , true , 'all-cats');
+    $cats = new CategoriesModel;
+    $cats = $cats->get_category_product('' , '' , true , 'all-cats');
+
     ?>
 
 <div class="content d-flex flex-column flex-column-fluid" id="kt_content">
@@ -82,6 +85,26 @@ function get_edit_categores( $slug ){
                         <input required="" class="form-control form-control-solid" placeholder="Enter Categry title in arabic" value="<?php echo $camp['name_ar']; ?>" name="name_ar">
                         <!--end::Input-->
                     </div>
+
+                    <select name="parent_id" aria-label="Select Parent" data-placeholder="Select Parent category ..." class="form-select form-select-solid form-select-lg fw-bold">
+                        <option value="0">Select Parent category...</option>
+                        <?php
+                            if(count($cats) > 0){
+                                echo 'Parent: '.$camp['parent_id'];
+                                $selected = 'false';
+                                foreach($cats as $cat){
+                                    if($cat['parent_id'] == 0 && $cat['category_id'] != $camp['category_id']){
+                                        if($selected == 'false' && $cat['category_id'] == $camp['parent_id']){
+                                            $selected = 'selected';
+                                            
+                                        }
+                                        echo "<option $selected value='".$cat['category_id']."'>".$cat['name_en']."</option>";
+                                        $selected = ($selected == 'selected') ? '' : 'false';
+                                    }
+                                }
+                            }
+                        ?>
+                    </select>
                    
                 </div><!--end::Billing form-->
                
@@ -135,7 +158,9 @@ function get_project_form_template($data = []){
         'description_en' => '',
         'description_ar' => '',
         'cat_id' => '',
-        'photos' => ''
+        'photos' => '',
+        'panorama'  => '',
+        'videos'    => ''
     ];
 
     $data = ( count($data) > 0 ) ? $data : $default_data;
@@ -153,6 +178,13 @@ function get_project_form_template($data = []){
 <input type="text" name="form_action" value="<?php echo $data['action']; ?>" hidden />
 <input type="text" name="port_slug" value="<?php echo $data['port_slug']; ?>" hidden />
 
+    <!--begin::Input group-->
+    <div class="fv-row">
+        <!--begin::Dropzone-->
+        <!--begin::Label-->
+        <label class="col-form-label text-lg-right">Project Images</label>
+
+        
     <?php
         if( $data['photos'] != '' ){
             ?>
@@ -189,13 +221,80 @@ function get_project_form_template($data = []){
             <?php
         }
     ?>
+        <!--end::Label-->
+        <div class="dropzone" id="kt_dropzonejs_example_1">
+            <!--begin::Message-->
+            <div class="dz-message needsclick">
+                <!--begin::Icon-->
+                <i class="bi bi-file-earmark-arrow-up text-primary fs-3x"></i>
+                <!--end::Icon-->
+
+                <!--begin::Info-->
+                <div class="ms-4">
+                    <h3 class="fs-5 fw-bolder text-gray-900 mb-1">Drop files here or click to upload.</h3>
+                    <span class="fs-7 fw-bold text-gray-400">Upload up to 20 files</span>
+                </div>
+                <!--end::Info-->
+            </div>
+        </div>
+        <!--end::Dropzone-->
+    </div>
+    <!--end::Input group-->
+</form>
+<!--end::Form-->
+
+
+
+<!--begin::Form-->
+<form class="form" action="form_handler.php" method="post">
+<input type="text" name="form_action" value="<?php echo $data['action']; ?>" hidden />
+<input type="text" name="port_slug" value="<?php echo $data['port_slug']; ?>" hidden />
+
+    
     <!--begin::Input group-->
     <div class="fv-row">
         <!--begin::Dropzone-->
         <!--begin::Label-->
-        <label class="col-form-label text-lg-right">Project Images</label>
+        <label class="col-form-label text-lg-right">Project Panoramas</label>
+
+        <?php
+        if( $data['panorama'] != '' ){
+            ?>
+    <div class="row g-6 g-xl-9 mb-6 mb-xl-9 mt-0">
+        <!--begin::Col-->
+        <?php
+            $panoramas = explode("," , $data['panorama']);
+            foreach($panoramas as $panorama){
+                $photo_src = '../' . DB_SETTINGS['uploads'] . $data['port_slug'] . '/panorama/' . $panorama;
+?>
+<div class="col-md-6 col-lg-4 col-xl-3 mt-0">
+            <!--begin::Card-->
+            <div class="card h-100">
+                <!--begin::Card body-->
+                <div class="card-body d-flex justify-content-center text-center flex-column p-8 dropzone">
+                    <div class="dz-preview" data-key="panorama/<?php  echo $panorama; ?>" style="margin:0 !important;min-height:0px !important;">
+                        <a class="dz-remove" href="javascript:undefined;" data-dz-remove="">Remove file</a>
+                    </div>
+                    
+                    <!--begin::Name-->
+                    <img src="<?php echo $photo_src; ?>" />
+                    <!--end::Description-->
+                </div>
+                <!--end::Card body-->
+            </div>
+            <!--end::Card-->
+        </div>
+<?php
+            }
+        ?>
+        
+    </div>
+        <!--end::Col-->
+            <?php
+        }
+    ?>
         <!--end::Label-->
-        <div class="dropzone" id="kt_dropzonejs_example_1">
+        <div class="dropzone" id="kt_dropzonejs_example_2">
             <!--begin::Message-->
             <div class="dz-message needsclick">
                 <!--begin::Icon-->
@@ -222,65 +321,26 @@ function get_project_form_template($data = []){
 <input type="text" name="port_slug" value="<?php echo $data['port_slug']; ?>" hidden />
 
 <div class="form-group row mt-5">
+    <div class="d-flex flex-column mb-7 fv-row mt-4">
         <!--begin::Label-->
-        <label class="col-lg-2 col-form-label text-lg-right">360 Degree Panorama</label>
+        <label class="fs-6 fw-bold mb-2">Videos Links</label>
         <!--end::Label-->
+        <div id="videos-inputs">
 
-        <!--begin::Col-->
-        <div class="col-lg-10">
-            <!--begin::Dropzone-->
-            <div class="dropzone dropzone-queue mb-2 upload_dropzone_images" id="another_random_id" data-max="1" data-key="<?php echo $data['port_slug']; ?>" data-img="panorama">
-                <!--begin::Controls-->
-                <div class="dropzone-panel mb-lg-0 mb-2">
-                    <a class="dropzone-select btn btn-sm btn-primary me-2">Attach file</a>
-                    <a class="dropzone-upload btn btn-sm btn-light-primary me-2">Upload All</a>
-                    <a class="dropzone-remove-all btn btn-sm btn-light-primary">Remove All</a>
-                </div>
-                <!--end::Controls-->
-
-                <!--begin::Items-->
-                <div class="dropzone-items wm-200px">
-                    <div class="dropzone-item" style="display:none">
-                        <!--begin::File-->
-                        <div class="dropzone-file">
-                            <div class="dropzone-filename" title="some_image_file_name.jpg">
-                                <span data-dz-name></span>
-                                <strong>(<span data-dz-size></span>)</strong>
-                            </div>
-
-                            <div class="dropzone-error" data-dz-errormessage></div>
-                        </div>
-                        <!--end::File-->
-
-                        <!--begin::Progress-->
-                        <div class="dropzone-progress">
-                            <div class="progress">
-                                <div
-                                    class="progress-bar bg-primary"
-                                    role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" data-dz-uploadprogress>
-                                </div>
-                            </div>
-                        </div>
-                        <!--end::Progress-->
-
-                        <!--begin::Toolbar-->
-                        <div class="dropzone-toolbar">
-                            <span class="dropzone-start"><i class="bi bi-play-fill fs-3"></i></span>
-                            <span class="dropzone-cancel" data-dz-remove style="display: none;"><i class="bi bi-x fs-3"></i></span>
-                            <span class="dropzone-delete" data-dz-remove><i class="bi bi-x fs-1"></i></span>
-                        </div>
-                        <!--end::Toolbar-->
-                    </div>
-                </div>
-                <!--end::Items-->
-            </div>
-            <!--end::Dropzone-->
-
-            <!--begin::Hint-->
-            <span class="form-text text-muted">Max file size is 8MB and max number of files is 1.</span>
-            <!--end::Hint-->
+            <?php
+                if($data['videos'] != ''){
+                    $videos = explode(',' , $data['videos']);
+                    foreach($videos as $video){
+                        echo '<input value="'. $video .'" type="url" class="form-control form-control-solid mt-3" placeholder="Enter video link" value="" name="videos[]">';
+                    }
+                }else{
+                    echo '<input type="url" class="form-control form-control-solid mt-3" placeholder="Enter video link" value="" name="videos[]">';
+                }
+            ?>
         </div>
-        <!--end::Col-->
+        <button type="button" class="btn btn-sm btn-secondary mt-3" id="add-new-video-link">Add New Link</button>
+    </div>
+
 
         <div class="d-flex flex-column mb-7 fv-row mt-4">
             <!--begin::Label-->
@@ -291,8 +351,11 @@ function get_project_form_template($data = []){
                 <option></option>
                 <?php
                     foreach($cats as $cat){
-                        $act = ( $data['cat_id'] == $cat['cat_slug'] ) ? 'selected' : '';
-                        echo "<option value='".$cat['cat_slug'] ."' ". $act .">". $cat['name_en'] ."</option>";
+                        if($cat['parent_id'] != 0){
+                            $act = ( $data['cat_id'] == $cat['cat_slug'] ) ? 'selected' : '';
+                            echo "<option value='".$cat['cat_slug'] ."' ". $act .">". $cat['name_en'] ."</option>";
+                        }
+                        
                     }
                 ?>
             </select>
@@ -374,8 +437,8 @@ function get_project_form_template($data = []){
 
 
 function get_edit_team($data = []){
-
-
+        $perm = new TeamModel();
+        $all_permissions = $perm->get_all_permissions();
         $default_data = [
             'key' => time(),
             'pin' => '0',
@@ -389,11 +452,17 @@ function get_edit_team($data = []){
             'whatsapp' => '',
             'instagram' => '',
             'email' => '',
-            'id'    => '0'
+            'id'    => '0',
+            'permissions'   => []
         ];
 
-
         $data = ( count($data) > 0 ) ? $data[0] : $default_data;
+
+        if($data['id'] != 0){
+            // get user permissions
+            $user_permissions = $perm->get_user_permissions($data['id']);
+            $data['permissions'] = $user_permissions;
+        }
 
         if( !isset($data['action']) ){
             $data['action'] = 'edit_member';
@@ -402,6 +471,7 @@ function get_edit_team($data = []){
         if( !isset($data['key']) ){
             $data['key'] = explode('/' , $data['photo'])[0];
         };
+
 
     ?>
 <form style="background:#FFF" method="POST" action="<?php echo $_SERVER['PHP_SELF']; ?>" id="kt_modal_new_address_form">
@@ -527,6 +597,53 @@ function get_edit_team($data = []){
 </div>
 <div class="d-flex flex-column mb-7 fv-row mt-4">
 <!--begin::Label-->
+<label class="fs-6 fw-bold mb-2">Email</label>
+<!--end::Label-->
+<!--begin::Input-->
+<input  class="form-control form-control-solid" required value="<?php echo $data['email']; ?>" placeholder="Email Address" name="email">
+<!--end::Input-->
+</div>
+<?php
+    if($_SERVER['REQUEST_METHOD'] == "GET" && !isset($_GET['edit'])){
+?>
+<div class="d-flex flex-column mb-7 fv-row mt-4">
+<!--begin::Label-->
+<label class="fs-6 fw-bold mb-2">Password</label>
+<!--end::Label-->
+<!--begin::Input-->
+<input  class="form-control form-control-solid" type="password" placeholder="Password" name="password">
+<!--end::Input-->
+</div>
+<?php
+    }
+?>
+
+
+<div class="d-flex flex-column mb-7 fv-row mt-4">
+<!--begin::Label-->
+<label class="fs-6 fw-bold mb-2">Permissions</label>
+<!--end::Label-->
+<!--begin::Input-->
+<select class="form-select form-select-solid" data-control="select2" data-placeholder="Select permissions" data-allow-clear="true" multiple="multiple" name="permissions[]">
+   <?php
+        foreach($all_permissions as $db_permission){
+            $selected = '';
+            foreach($data['permissions'] as $permission){
+                if($permission['per_id'] == $db_permission['id'] && $selected == ''){
+                    $selected = 'selected';
+                }
+            }
+            echo "<option $selected value='". $db_permission['id'] ."'>". $db_permission['title'] ."</option>";
+            $selected = '';
+        }
+   ?>
+</select>
+<!--end::Input-->
+</div>
+
+
+<div class="d-flex flex-column mb-7 fv-row mt-4">
+<!--begin::Label-->
 <label class="fs-6 fw-bold mb-2">Position ( arabic )</label>
 <!--end::Label-->
 <!--begin::Input-->
@@ -549,14 +666,7 @@ function get_edit_team($data = []){
 <input  class="form-control form-control-solid" value="<?php echo $data['instagram']; ?>" placeholder="instagram link" name="instagram">
 <!--end::Input-->
 </div>
-<div class="d-flex flex-column mb-7 fv-row mt-4">
-<!--begin::Label-->
-<label class="fs-6 fw-bold mb-2">Email</label>
-<!--end::Label-->
-<!--begin::Input-->
-<input  class="form-control form-control-solid" value="<?php echo $data['email']; ?>" placeholder="Email Address" name="email">
-<!--end::Input-->
-</div>
+
 <div class="d-flex flex-column mb-7 fv-row mt-4">
 <!--begin::Label-->
 <label class="fs-6 fw-bold mb-2">Whatsapp</label>

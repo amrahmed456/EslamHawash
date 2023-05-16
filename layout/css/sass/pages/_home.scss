@@ -392,6 +392,20 @@
             background-size: cover;
             background-position: 50%;
           }
+          &.is-selected{
+            .overlay:first-child{
+              animation: zoomInOut 15s ease-in-out infinite
+            }
+          }
+          @keyframes zoomInOut {
+            0%,100%{
+              background-size: 100%;
+            }
+            50%{
+              background-size: 120%;
+            }
+
+          }
         }
         .overlay{
           padding-top: 90px;

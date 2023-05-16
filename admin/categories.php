@@ -142,71 +142,71 @@
 <!--begin::Modal - Customers - Add-->
 <div class="modal fade" id="kt_modal_new_address" tabindex="-1" style="display: none;" aria-hidden="true">
 									<!--begin::Modal dialog-->
-									<div class="modal-dialog modal-dialog-centered mw-650px">
-										<!--begin::Modal content-->
-										<div class="modal-content">
-                                            <!--begin::Form-->
-                                            
-                                            <form method="POST" action="<?php echo $_SERVER['PHP_SELF']; ?>" id="kt_modal_new_address_form">
+                <div class="modal-dialog modal-dialog-centered mw-650px">
+                    <!--begin::Modal content-->
+                    <div class="modal-content">
+                        <!--begin::Form-->
+                        
+                        <form method="POST" action="<?php echo $_SERVER['PHP_SELF']; ?>" id="kt_modal_new_address_form">
 
-                                            <input type="text" name="form_action" value="insert_category" hidden />
-                                            
-												<!--begin::Modal header-->
-												<div class="modal-header" id="kt_modal_new_address_header">
-													<!--begin::Modal title-->
-													<h2 class="fw-bolder">Add new category</h2>
-													<!--end::Modal title-->
-													<!--begin::Close-->
-													<div class="btn btn-sm btn-icon btn-active-color-primary" data-bs-dismiss="modal">
-														<!--begin::Svg Icon | path: icons/duotune/arrows/arr061.svg-->
-														<span class="svg-icon svg-icon-1">
-															<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-																<rect opacity="0.5" x="6" y="17.3137" width="16" height="2" rx="1" transform="rotate(-45 6 17.3137)" fill="black"></rect>
-																<rect x="7.41422" y="6" width="16" height="2" rx="1" transform="rotate(45 7.41422 6)" fill="black"></rect>
-															</svg>
-														</span>
-														<!--end::Svg Icon-->
-													</div>
-													<!--end::Close-->
-												</div>
-												<!--end::Modal header-->
-												<!--begin::Modal body-->
-												<div class="modal-body py-10 px-lg-17">
-													<!--begin::Scroll-->
-                                                    <div class="scroll-y me-n7 pe-7" id="kt_modal_new_address_scroll" data-kt-scroll="true" data-kt-scroll-activate="{default: false, lg: true}" data-kt-scroll-max-height="auto" data-kt-scroll-dependencies="#kt_modal_new_address_header" data-kt-scroll-wrappers="#kt_modal_new_address_scroll" data-kt-scroll-offset="300px" style="max-height: 268px;">
-                                                    
-                                                    <div class="form-group row">
-      
-     
-        <!--end::Col-->
-                <!--begin::Input group-->
-                <div id="kt_modal_new_address_billing_info" class="collapse show">
-                    <!--begin::Input group-->
-                    
-                    <!--end::Input group-->
-                    <!--begin::Input group-->
-                    <div class="d-flex flex-column mb-7 fv-row mt-4">
-                        <!--begin::Label-->
-                        <label class="fs-6 fw-bold mb-2">Title ( English )</label>
-                        <!--end::Label-->
-                        <!--begin::Input-->
-                        <input required class="form-control form-control-solid" placeholder="Category name in english" name="name_en">
-                        <!--end::Input-->
-                    </div>
-                   
-                    
-                    <!--end::Input group-->
-                </div><!--end::Billing form-->
-                
-                <div id="kt_modal_new_address_billing_info mt-4" class="collapse show">
-                    <!--begin::Input group-->
-                    
-                    <!--end::Input group-->
-                    <!--begin::Input group-->
-                    <div class="d-flex flex-column mb-7 fv-row">
-                        <!--begin::Label-->
-                        <label class="fs-6 fw-bold mb-2">Title ( Arabic )</label>
-                        <!--end::Label-->
+                        <input type="text" name="form_action" value="insert_category" hidden />
+                        
+                            <!--begin::Modal header-->
+                            <div class="modal-header" id="kt_modal_new_address_header">
+                                <!--begin::Modal title-->
+                                <h2 class="fw-bolder">Add new category</h2>
+                                <!--end::Modal title-->
+                                <!--begin::Close-->
+                                <div class="btn btn-sm btn-icon btn-active-color-primary" data-bs-dismiss="modal">
+                                    <!--begin::Svg Icon | path: icons/duotune/arrows/arr061.svg-->
+                                    <span class="svg-icon svg-icon-1">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                            <rect opacity="0.5" x="6" y="17.3137" width="16" height="2" rx="1" transform="rotate(-45 6 17.3137)" fill="black"></rect>
+                                            <rect x="7.41422" y="6" width="16" height="2" rx="1" transform="rotate(45 7.41422 6)" fill="black"></rect>
+                                        </svg>
+                                    </span>
+                                    <!--end::Svg Icon-->
+                                </div>
+                                <!--end::Close-->
+                            </div>
+                            <!--end::Modal header-->
+                            <!--begin::Modal body-->
+                            <div class="modal-body py-10 px-lg-17">
+                                <!--begin::Scroll-->
+                                <div class="scroll-y me-n7 pe-7" id="kt_modal_new_address_scroll" data-kt-scroll="true" data-kt-scroll-activate="{default: false, lg: true}" data-kt-scroll-max-height="auto" data-kt-scroll-dependencies="#kt_modal_new_address_header" data-kt-scroll-wrappers="#kt_modal_new_address_scroll" data-kt-scroll-offset="300px" style="max-height: 268px;">
+                                
+                                <div class="form-group row">
+
+
+<!--end::Col-->
+<!--begin::Input group-->
+<div id="kt_modal_new_address_billing_info" class="collapse show">
+<!--begin::Input group-->
+
+<!--end::Input group-->
+<!--begin::Input group-->
+<div class="d-flex flex-column mb-7 fv-row mt-4">
+    <!--begin::Label-->
+    <label class="fs-6 fw-bold mb-2">Title ( English )</label>
+    <!--end::Label-->
+    <!--begin::Input-->
+    <input required class="form-control form-control-solid" placeholder="Category name in english" name="name_en">
+    <!--end::Input-->
+</div>
+
+
+<!--end::Input group-->
+</div><!--end::Billing form-->
+
+<div id="kt_modal_new_address_billing_info mt-4" class="collapse show">
+<!--begin::Input group-->
+
+<!--end::Input group-->
+<!--begin::Input group-->
+<div class="d-flex flex-column mb-7 fv-row">
+    <!--begin::Label-->
+    <label class="fs-6 fw-bold mb-2">Title ( Arabic )</label>
+    <!--end::Label-->
                         <!--begin::Input-->
                         <input required class="form-control form-control-solid" placeholder="Category name in arabic" name="name_ar">
                         <!--end::Input-->
@@ -230,7 +230,9 @@
                                 <?php
                                     if(count($cats) > 0){
                                         foreach($cats as $cat){
-                                            echo "<option value='".$cat['id']."'>".$cat['name_en']."</option>";
+                                            if($cat['parent_id'] == 0){
+                                                echo "<option value='".$cat['category_id']."'>".$cat['name_en']."</option>";
+                                            }
                                         }
                                     }
                                 ?>

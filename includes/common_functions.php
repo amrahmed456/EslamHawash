@@ -139,4 +139,19 @@ function update_like_session($slug,$up){
     }
 }
 
+
+function gate_allows($permission_name , $suspend = false)
+{
+    if($_SESSION['user']['user_id'] == 1){
+        return true;
+    }
+    $user_permissions = $_SESSION['user']['permissions'];
+    foreach($user_permissions as $permission){
+        if($permission['per_name'] == $permission_name){
+            return true;
+        }
+    }
+    return false;
+}
+
 ?>

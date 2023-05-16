@@ -37,14 +37,10 @@
         <!--begin::Card header-->
         
         <div class="card-header border-0 pt-6">
-            <!--begin::Card title-->
-            
-            <!--begin::Card title-->
-            <!--begin::Card toolbar-->
+
             <div class="card-toolbar">
-                <!--begin::Toolbar--><div class="d-flex justify-content-end" data-kt-customer-table-toolbar="base">
-                    <!--begin::Filter-->	
-                    <!--begin::Add customer-->
+               <div class="d-flex justify-content-end" data-kt-customer-table-toolbar="base">
+
                     <a href="projects.php?do=add" type="button" class="btn btn-primary">New Project</a>
                     
                     

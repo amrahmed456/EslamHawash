@@ -72,7 +72,7 @@ class CategoriesModel extends Database{
         $and = $cat_slug . $p_slug . $except;
 
         $query = "
-            SELECT c.id as cat_id,c.name_en,c.name_ar,c.slug as cat_slug,r.name_en as parent_name_en, r.name_ar as parent_name_ar,r.id as parent_id,r.slug as parent_slug,p.* $count
+            SELECT c.id as cat_id,c.id as category_id,c.name_en,c.name_ar,c.slug as cat_slug,r.name_en as parent_name_en, r.name_ar as parent_name_ar,r.id as parent_id,r.slug as parent_slug,p.* $count
             FROM $this->tabel c
             $get JOIN $this->port p ON c.slug = p.cat_id
             LEFT JOIN $this->tabel r ON c.parent_id = r.id
@@ -88,15 +88,15 @@ class CategoriesModel extends Database{
    }
     
 
-   public function update_category($en,$ar,$id){
-    $query = " UPDATE $this->tabel SET name_en = ?, name_ar = ? WHERE slug = ?";
+   public function update_category($en,$ar,$id,$parent_id = 0){
+    $query = " UPDATE $this->tabel SET name_en = ?, name_ar = ?, parent_id = ? WHERE slug = ?";
     $stmt = $this->db->prepare($query);
-    return $stmt->execute([$en,$ar,$id]);
+    return $stmt->execute([$en,$ar, $parent_id,$id]);
 
 }
 
 
-    public function insert_portfolio($port_slug,$category_slug,$title_en,$title_ar,$desc_en,$desc_ar,$status,$photos,$panorma,$date){
+    public function insert_portfolio($port_slug,$category_slug,$title_en,$title_ar,$desc_en,$desc_ar,$status,$photos,$panorma,$date,$videos){
         // search for slug
         $query = "
             SELECT id FROM $this->port WHERE port_slug = ?
@@ -104,28 +104,29 @@ class CategoriesModel extends Database{
         $stmt = $this->db->prepare($query);
         $stmt->execute([$port_slug]);
         if( $stmt->rowCount() > 0 ){
-            $this->update_portfolio($port_slug,$category_slug,$title_en,$title_ar,$desc_en,$desc_ar,$status,$photos,$panorma);
+            $this->update_portfolio($port_slug,$category_slug,$title_en,$title_ar,$desc_en,$desc_ar,$status,$photos,$panorma,$videos);
             return;
         }
         $query = "
-            INSERT INTO $this->port ( port_slug,cat_id,title_en,title_ar,description_en,description_ar,status,photos,panorama,date ) VALUES ( ?,?,?,?,?,?,?,?,?,? )
+            INSERT INTO $this->port ( port_slug,cat_id,title_en,title_ar,description_en,description_ar,status,photos,panorama,date,videos ) VALUES ( ?,?,?,?,?,?,?,?,?,?,? )
         ";
 
         $stmt = $this->db->prepare($query);
-        return $stmt->execute([$port_slug,$category_slug,$title_en,$title_ar,$desc_en,$desc_ar,$status,$photos,$panorma,$date]);
+        return $stmt->execute([$port_slug,$category_slug,$title_en,$title_ar,$desc_en,$desc_ar,$status,$photos,$panorma,$date,$videos]);
     }
-    public function update_portfolio($port_slug,$category_slug,$title_en,$title_ar,$desc_en,$desc_ar,$status,$photos,$panorma){
+    public function update_portfolio($port_slug,$category_slug,$title_en,$title_ar,$desc_en,$desc_ar,$status,$photos,$panorma,$videos){
         $query = "
-            UPDATE $this->port SET cat_id = ?, title_en = ?, title_ar = ?, description_en = ?, description_ar = ?, status = ?, photos = ?, panorama = ? WHERE port_slug = ?
+            UPDATE $this->port SET cat_id = ?, title_en = ?, title_ar = ?, description_en = ?, description_ar = ?, status = ?, photos = ?, panorama = ?, videos = ? WHERE port_slug = ?
         ";
         $stmt = $this->db->prepare($query);
-        return $stmt->execute([$category_slug,$title_en,$title_ar,$desc_en,$desc_ar,$status,$photos,$panorma,$port_slug]);
+        return $stmt->execute([$category_slug,$title_en,$title_ar,$desc_en,$desc_ar,$status,$photos,$panorma,$videos,$port_slug]);
     }
 
 
-    public function update_photos($port_slug,$photos){
+    public function update_photos($port_slug,$photos,$is_panorama = false){
+        $set = ( $is_panorama ) ? 'panorama' : 'photos';
         $query = "
-            UPDATE $this->port SET photos = ? WHERE port_slug = ?
+            UPDATE $this->port SET $set = ? WHERE port_slug = ?
         ";
         $stmt = $this->db->prepare($query);
         return $stmt->execute([$photos,$port_slug]);

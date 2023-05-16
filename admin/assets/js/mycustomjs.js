@@ -129,10 +129,34 @@ if( $("#kt_dropzonejs_example_1").length > 0 ){
         acceptedFiles:'image/jpeg,image/png',
         params:{"form_action":"upload_img","key":folder_key,"img_name":"multi_upload_imgs"},
         success: function(file, response){
-            console.log(response);
+            //console.log(response);
             //Here you can get your response.
             let img_name = response;
             $("#kt_dropzonejs_example_1 .dz-preview:last-child").attr("data-key" , img_name);
+        }
+        
+    });
+
+}
+
+if( $("#kt_dropzonejs_example_2").length > 0 ){
+
+    var folder_key = $("input[name='port_slug']").val() + '/panorama/';
+    // multi download dropzone
+    var multidropzone = new Dropzone("#kt_dropzonejs_example_2", {
+        url: "form_handler.php", // Set the url for your upload script location
+        paramName: "file", // The name that will be used to transfer the file
+        maxFiles: 20,
+        maxFilesize: 8, // MB
+        addRemoveLinks: true,
+        parallelUploads: 1,
+        acceptedFiles:'image/jpeg,image/png',
+        params:{"form_action":"upload_img","key":folder_key,"img_name":"multi_upload_imgs", "is_panorma": "true"},
+        success: function(file, response){
+            //console.log(response);
+            //Here you can get your response.
+            let img_name = 'panorama/' + response;
+            $("#kt_dropzonejs_example_2 .dz-preview:last-child").attr("data-key" , img_name);
         }
         
     });
@@ -145,12 +169,15 @@ function remove_from_folder(obj,db = false){
     let folder_key = $("input[name='port_slug']").val();
     let img = folder_key + "/" + img_name;
     let action = ( db == false ) ? 'delete_image' : 'delete_img_db';
-
+    
     $.ajax({
         url: 'form_handler.php',
         method:"POST",
         dataType:"text",
-        data:{"form_action": action,"imgSrc":img}
+        data:{"form_action": action,"imgSrc":img},
+        success:function(txt){
+            console.log(txt);
+        }
     })
 }
 
@@ -210,3 +237,10 @@ function toggle_message_status( old_status,id ){
     btn.html(t);
 
 }
+
+
+$("#add-new-video-link").on("click" , function(){
+    $("#videos-inputs").append(`
+        <input class="form-control form-control-solid mt-3" type="url" placeholder="Enter video link" value="" name="videos[]">
+    `);
+});
