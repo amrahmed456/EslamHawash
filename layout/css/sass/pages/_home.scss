@@ -46,6 +46,10 @@
                   font-size: 50px;
                   line-height: 85px;
                 }
+                @media (max-width:400px) {
+                  font-size: 43px;
+                  line-height: 69px;
+                }
             }
         }
         
@@ -389,8 +393,9 @@
           background-size: cover;
           background-position: center;
           .overlay{
-            background-size: cover;
             background-position: 50%;
+            background-size: cover;
+            background-repeat: no-repeat !important;
           }
           &.is-selected{
             .overlay:first-child{
@@ -399,10 +404,10 @@
           }
           @keyframes zoomInOut {
             0%,100%{
-              background-size: 100%;
+              background-size: 100% !important;
             }
             50%{
-              background-size: 120%;
+              background-size: 120% !important;
             }
 
           }

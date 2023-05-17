@@ -64,6 +64,10 @@ a{
 .btn-bg{
     padding: 18px 27px;
     font-size: 15px;
+    @media (max-width:400px) {
+        font-size: 13px;
+        padding: 18px 20px;
+    }
 }
 
 
@@ -108,8 +112,11 @@ a{
     top: 0;
     z-index: 999;
     .logo{
-        width: 120px;
+        width: 95px;
         img{object-fit: contain !important;}
+        @media(max-width:400px){
+            width: 80px;
+        }
     }
     .navigations{
         padding: 0.2rem;
@@ -163,14 +170,14 @@ a{
         backdrop-filter: blur(64.1px);
         height: 58px;
         .hamburger-box{
-            width: 35px;
+            width: 30px;
         }
         .hamburger-inner{
             background-color: #cecece;
             height: 3px;
-            width: 35px;
+            width: 30px;
             &:after,&::before{
-                width:35px;
+                width:30px;
                 height: 3px;
                 background-color:#cecece;
             }

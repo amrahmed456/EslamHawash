@@ -56,7 +56,7 @@ class Images{
 
 		$destination_file = $target_dir . $image_key . '.webp';
 
-		$is_panorama = ($image_key == 'personalimg') ? true : false;
+		$is_panorama = ($image_key == 'personalimg') ? true : $is_panorama;
 		
 		if( $img_type == 'image/jpeg'){
 			$image = imagecreatefromjpeg($tmp_name);

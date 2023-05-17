@@ -597,10 +597,18 @@ function get_edit_team($data = []){
 </div>
 <div class="d-flex flex-column mb-7 fv-row mt-4">
 <!--begin::Label-->
+<label class="fs-6 fw-bold mb-2">Position ( arabic )</label>
+<!--end::Label-->
+<!--begin::Input-->
+<input required class="form-control form-control-solid" value="<?php echo $data['job_ar']; ?>" placeholder="Enter position in arabic" name="pos_ar">
+<!--end::Input-->
+</div>
+<div class="d-flex flex-column mb-7 fv-row mt-4">
+<!--begin::Label-->
 <label class="fs-6 fw-bold mb-2">Email</label>
 <!--end::Label-->
 <!--begin::Input-->
-<input  class="form-control form-control-solid" required value="<?php echo $data['email']; ?>" placeholder="Email Address" name="email">
+<input  class="form-control form-control-solid" type="email" required value="<?php echo $data['email']; ?>" placeholder="Email Address" name="email">
 <!--end::Input-->
 </div>
 <?php
@@ -642,14 +650,7 @@ function get_edit_team($data = []){
 </div>
 
 
-<div class="d-flex flex-column mb-7 fv-row mt-4">
-<!--begin::Label-->
-<label class="fs-6 fw-bold mb-2">Position ( arabic )</label>
-<!--end::Label-->
-<!--begin::Input-->
-<input required class="form-control form-control-solid" value="<?php echo $data['job_ar']; ?>" placeholder="Enter position in arabic" name="pos_ar">
-<!--end::Input-->
-</div>
+
 <div class="d-flex flex-column mb-7 fv-row mt-4">
 <!--begin::Label-->
 <label class="fs-6 fw-bold mb-2">facebook</label>

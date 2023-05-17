@@ -32,7 +32,7 @@ class Categories{
         $en = filter_var(trim(($_POST['name_en'])), FILTER_SANITIZE_STRING);
         $ar = filter_var(trim(($_POST['name_ar'])), FILTER_SANITIZE_STRING);
         $parent_id = filter_var($_POST['parent_id'],FILTER_SANITIZE_NUMBER_INT);
-        echo 'id is: ' . $id;
+
         $camp = new CategoriesModel;
         if( $camp->update_category($en,$ar,$id,$parent_id) ){
             set_form_response(1,'Category Updated succesfully');
