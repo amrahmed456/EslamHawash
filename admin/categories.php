@@ -190,7 +190,7 @@
     <label class="fs-6 fw-bold mb-2">Title ( English )</label>
     <!--end::Label-->
     <!--begin::Input-->
-    <input required class="form-control form-control-solid" placeholder="Category name in english" name="name_en">
+    <input required class="form-control form-control-solid translate-to-arabic" data-output="#category-input-english" placeholder="Category name in english" name="name_en">
     <!--end::Input-->
 </div>
 
@@ -208,13 +208,13 @@
     <label class="fs-6 fw-bold mb-2">Title ( Arabic )</label>
     <!--end::Label-->
                         <!--begin::Input-->
-                        <input required class="form-control form-control-solid" placeholder="Category name in arabic" name="name_ar">
+                        <input id="category-input-english" required class="form-control form-control-solid" placeholder="Category name in arabic" name="name_ar">
                         <!--end::Input-->
                     </div>
                    
-															<!--end::Input group-->
-														</div><!--end::Billing form-->
-                                                        <div id="kt_modal_new_address_billing_info" class="collapse show">
+                            <!--end::Input group-->
+                        </div><!--end::Billing form-->
+                        <div id="kt_modal_new_address_billing_info" class="collapse show">
                     <!--begin::Input group-->
                     
                     <!--end::Input group-->
@@ -230,9 +230,7 @@
                                 <?php
                                     if(count($cats) > 0){
                                         foreach($cats as $cat){
-                                            if($cat['parent_id'] == 0){
-                                                echo "<option value='".$cat['category_id']."'>".$cat['name_en']."</option>";
-                                            }
+                                            echo "<option value='".$cat['category_id']."'>".$cat['name_en']."</option>";
                                         }
                                     }
                                 ?>

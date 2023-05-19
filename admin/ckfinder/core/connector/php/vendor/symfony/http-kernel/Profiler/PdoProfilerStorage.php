@@ -187,7 +187,7 @@ abstract class PdoProfilerStorage implements ProfilerStorageInterface
         }
         $stmt->execute();
 
-        return $stmt->fetchAll(\PDO::FETCH_ASSOC);
+        return $stmt->fetchAll();
     }
 
     protected function close($db)

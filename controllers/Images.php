@@ -32,7 +32,7 @@ class Images{
 
 	}
 
-    public function upload_image($folder_key, $image_key  , $compression = 80 , $file = 'file', $is_panorama){
+    public function upload_image($folder_key, $image_key  , $compression = 80 , $file = 'file', $is_panorama , $logoPosition = 'bottom'){
 		// $file is the name of the input to upload
 
 		
@@ -60,16 +60,42 @@ class Images{
 		
 		if( $img_type == 'image/jpeg'){
 			$image = imagecreatefromjpeg($tmp_name);
-			self::watermark_and_convert_to_webp($image,$destination_file, $compression,$is_panorama);
+			self::watermark_and_convert_to_webp($image,$destination_file, $compression,$is_panorama, $logoPosition);
 		}else if( $img_type == 'image/png'){
 			$image = imagecreatefrompng($tmp_name);
-			self::watermark_and_convert_to_webp($image,$destination_file, $compression,$is_panorama);
+			self::watermark_and_convert_to_webp($image,$destination_file, $compression,$is_panorama, $logoPosition);
 		}
 		return true;
 
     }
 
-	public function watermark_and_convert_to_webp($img, $destination_file, $compression,$is_panorama) {
+	public function getPosition($positon,$imageW , $imageH, $wtW, $wtH){
+		$positions = ['x' => 0, 'y' => 0];
+		if($positon == 'top'){
+			$positions['x'] = ($imageW / 2) - ($wtW / 2);
+			$positions['y'] = 0.1*$imageH - ($wtH / 2);
+		}else if($positon == 'top-left'){
+			$positions['x'] = 0.1*$imageW - ($wtW / 2);
+			$positions['y'] = 0.1*$imageH - ($wtH / 2);
+		}else if($positon == 'top-right'){
+			$positions['x'] = 0.9*$imageW - ($wtW / 2);
+			$positions['y'] = 0.1*$imageH - ($wtH / 2);
+		}else if($positon == 'bottom-left'){
+			$positions['x'] = 0.1*$imageW - ($wtW / 2);
+			$positions['y'] = 0.9*$imageH - ($wtH / 2);
+		}else if($positon == 'bottom-right'){
+			$positions['x'] = 0.9*$imageW - ($wtW / 2);
+			$positions['y'] = 0.9*$imageH - ($wtH / 2);
+		}else{
+			// bottom is default
+			$positions['x'] = ($imageW / 2) - ($wtW / 2);
+			$positions['y'] = 0.9*$imageH - ($wtH / 2);
+		}
+
+		return $positions;
+	}
+
+	public function watermark_and_convert_to_webp($img, $destination_file, $compression,$is_panorama , $logoPosition) {
 		if($is_panorama){
 			imagewebp($img, $destination_file, $compression);
 			return;
@@ -91,8 +117,10 @@ class Images{
 		imagesavealpha($watermarkBottom, true);
 		$wtrmrk_w = imagesx($watermarkBottom);
 		$wtrmrk_h = imagesy($watermarkBottom);
-		$dst_x = ($img_w / 2) - ($wtrmrk_w / 2);
-		$dst_y = 0.9*$img_h - ($wtrmrk_h / 2);
+		
+		$positions = self::getPosition($logoPosition,$img_w,$img_h,$wtrmrk_w,$wtrmrk_h);
+		$dst_x = $positions['x'];
+		$dst_y = $positions['y'];
 		imagecopy($img, $watermarkBottom, $dst_x, $dst_y, 0, 0, $wtrmrk_w, $wtrmrk_h);
 		
 		imagewebp($img, $destination_file, $compression);

@@ -41,7 +41,9 @@
             <div class="card-toolbar">
                <div class="d-flex justify-content-end" data-kt-customer-table-toolbar="base">
 
-                    <a href="projects.php?do=add" type="button" class="btn btn-primary">New Project</a>
+                    <button type="button" class="btn btn-primary create-new-project-modal" data-bs-toggle="modal" data-bs-target="#kt_modal_new_address "data-name="do" data-val="add">
+                        New Project
+                    </button>
                     
                     
                 </div><!--end::Group actions-->
@@ -109,7 +111,7 @@
                                 </div>
 
                                 <div class="menu-item px-3 edit-campaign">
-                                    <a href="projects.php?edit=<?php echo $cat['port_slug']; ?>" class="menu-link px-3">Edit</a>
+                                    <span data-name="edit" data-val="<?php echo $cat['port_slug']; ?>" class="menu-link px-3 create-new-project-modal" data-bs-toggle="modal" data-bs-target="#kt_modal_new_address">Edit</span>
                                 </div>
                                 <div class="delete_project_btn menu-item px-3" data-id="<?php echo $cat['port_slug']; ?>" data-kt-customer-table-filter="delete_row" data-bs-toggle="modal" data-bs-target="#kt_modal_new_card">
                                     <a href="" class="menu-link px-3" data-kt-customer-table-filter="delete_row" data-bs-toggle="modal" data-bs-target="#kt_modal_new_card">Delete</a>
@@ -135,7 +137,7 @@
 <?php
     }else{
 
-        get_no_data_found('Add Project' , 'projects.php?do=add');
+        get_no_data_found('Add Project' , false , '#kt_modal_new_address');
 
     }
 
@@ -208,4 +210,69 @@
 								<!--end::Modals-->
                             </div>
 <!-- end Edit modal -->
+
+
+
+<div class="modal fade" id="kt_modal_new_address" tabindex="-1" style="display: none;" aria-hidden="true">
+						
+                                   
+                <div class="modal-dialog modal-dialog-centered mw-650px">
+                    <!--begin::Modal content-->
+                    <div class="modal-content">
+                        <!--begin::Form-->
+                        
+                        <form method="GET" action="projects.php" id="kt_modal_new_address" class="fv-plugins-bootstrap5 fv-plugins-framework modal-new-form-project">
+
+                        <input type="text" class="action-attr-input" name="" value="" hidden="">
+                        
+                            <!--begin::Modal header-->
+                            <div class="modal-header" id="kt_modal_new_address_header">
+                                <!--begin::Modal title-->
+                                <h2 class="fw-bolder">Select Logo position</h2>
+                                <!--end::Modal title-->
+                                <!--begin::Close-->
+                                
+                                <div class="btn btn-sm btn-icon btn-active-color-primary" data-bs-dismiss="modal">
+                                    <!--begin::Svg Icon | path: icons/duotune/arrows/arr061.svg-->
+                                    <span class="svg-icon svg-icon-1">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                            <rect opacity="0.5" x="6" y="17.3137" width="16" height="2" rx="1" transform="rotate(-45 6 17.3137)" fill="black"></rect>
+                                            <rect x="7.41422" y="6" width="16" height="2" rx="1" transform="rotate(45 7.41422 6)" fill="black"></rect>
+                                        </svg>
+                                    </span>
+                                    <!--end::Svg Icon-->
+                                </div>
+                                <!--end::Close-->
+                            </div>
+                            <!--end::Modal header-->
+        <!--begin::Modal body-->
+        <div class="modal-body py-10 px-lg-17">
+            <!--begin::Scroll-->
+            <div class="col-lg-8 fv-row w-100">
+                <select name="logo-position" aria-label="Logo position" data-placeholder="Logo position" class="form-select form-select-solid form-select-lg fw-bold">
+                   <option value="bottom">bottom</option>
+                   <option value="top">top</option>
+                   <option value="top-left">top left</option>
+                   <option value="top-right">top right</option>
+                   <option value="bottom-left">bottom left</option>
+                   <option value="bottom-right">bottom right</option>
+            </select>
+            <!--end::Input-->
+        </div>
+                </div>
+                <div class="modal-footer flex-center">
+
+                <!--begin::Button-->
+                <button type="submit" class="btn btn-primary">
+                    <span class="indicator-label">Next</span>
+                </button>
+                <!--end::Button-->
+            </div>
+                
+                <div></div></form>
+            </div>
+            </div>
+								
+
+								<!--end::Modals-->
 <?php get_footer(); ?>

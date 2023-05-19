@@ -180,12 +180,13 @@
             $img_name = $_POST['img_name'];
             $is_panorama = isset($_POST['is_panorma']) ? true : false;
             $folder_key = $_POST['key'];
+            $logoPosition = ( isset($_POST['logo-position']) ) ? $_POST['logo-position'] : 'bottom';
             if($img_name != 'english' && $img_name != 'arabic' && $img_name != 'personalimg'){
                 $img_name = uniqid('' , true);
             }
 
             $img = new Images;
-            $img->upload_image($folder_key , $img_name,75,'file',$is_panorama);
+            $img->upload_image($folder_key , $img_name,75,'file',$is_panorama , $logoPosition);
             echo $img_name . '.webp';
         }
         

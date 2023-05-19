@@ -29,7 +29,7 @@ class CategoriesModel extends Database{
         ";
         $stmt = $this->db->prepare($query);
         $stmt->execute();
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $stmt->fetchAll();
 
    }
 
@@ -84,7 +84,7 @@ class CategoriesModel extends Database{
         
         $stmt = $this->db->prepare($query);
         $stmt->execute();
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $stmt->fetchAll();
    }
     
 

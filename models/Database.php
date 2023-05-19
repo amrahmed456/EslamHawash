@@ -23,7 +23,8 @@ class Database{
 
         try{
             $this->conn = new PDO($this->dsn , $this->user_name , $this->password , $this->options);
-            $this->conn->setAttribute(PDO::ATTR_ERRMODE , PDO::ERRMODE_EXCEPTION);
+            $this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            $this->conn->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
         } catch(PDOException $e){
             echo 'Failed to connect to database : ' . $e->getMessage();
         }

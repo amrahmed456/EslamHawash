@@ -40,7 +40,7 @@ class UsersModel extends Database{
         
        
         if($stmt->rowCount() > 0){
-            $data = $stmt->fetch(PDO::FETCH_ASSOC);
+            $data = $stmt->fetch();
             return $data;
         }
         return false;

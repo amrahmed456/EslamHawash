@@ -1,6 +1,7 @@
 <?php
 
-function get_no_data_found($btn = '' , $link = false){
+function get_no_data_found($btn = '' , $link = false , $modalId = false){
+    $modalId = ( !$modalId ) ? '#kt_modal_new_address' : $modalId;
     ?>
 
 <div class="card">
@@ -16,7 +17,7 @@ function get_no_data_found($btn = '' , $link = false){
             <!--end::Description-->
             <!--begin::Action-->
             <?php
-                echo ( $link == false ) ? ' <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#kt_modal_new_address">'. $btn .'</button>' : '<a href="' . $link . '" type="button" class="btn btn-primary">'. $btn .'</a>';
+                echo ( $link == false ) ? ' <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="'. $modalId .'">'. $btn .'</button>' : '<a href="' . $link . '" type="button" class="btn btn-primary">'. $btn .'</a>';
             ?>
            
             
@@ -93,7 +94,7 @@ function get_edit_categores( $slug ){
                                 echo 'Parent: '.$camp['parent_id'];
                                 $selected = 'false';
                                 foreach($cats as $cat){
-                                    if($cat['parent_id'] == 0 && $cat['category_id'] != $camp['category_id']){
+                                    if($cat['parent_id'] != $camp['category_id'] && $cat['category_id'] != $camp['category_id']){
                                         if($selected == 'false' && $cat['category_id'] == $camp['parent_id']){
                                             $selected = 'selected';
                                             
@@ -163,6 +164,7 @@ function get_project_form_template($data = []){
         'videos'    => ''
     ];
 
+    $logo_position = ( isset($_GET['logo-position']) ) ? $_GET['logo-position'] : 'bottom';
     $data = ( count($data) > 0 ) ? $data : $default_data;
 
     if( !isset($data['action']) ){
@@ -173,6 +175,7 @@ function get_project_form_template($data = []){
 
 <div id="kt_content_container" class="container-xxl" >
 
+<p class="d-none" id="logo-position" data-position="<?php echo $logo_position; ?>"></p>
 <!--begin::Form-->
 <form class="form" action="form_handler.php" method="post">
 <input type="text" name="form_action" value="<?php echo $data['action']; ?>" hidden />
@@ -341,7 +344,6 @@ function get_project_form_template($data = []){
         <button type="button" class="btn btn-sm btn-secondary mt-3" id="add-new-video-link">Add New Link</button>
     </div>
 
-
         <div class="d-flex flex-column mb-7 fv-row mt-4">
             <!--begin::Label-->
             <label class="fs-6 fw-bold mb-2">Category</label>
@@ -351,11 +353,9 @@ function get_project_form_template($data = []){
                 <option></option>
                 <?php
                     foreach($cats as $cat){
-                        if($cat['parent_id'] != 0){
-                            $act = ( $data['cat_id'] == $cat['cat_slug'] ) ? 'selected' : '';
-                            echo "<option value='".$cat['cat_slug'] ."' ". $act .">". $cat['name_en'] ."</option>";
-                        }
-                        
+                        $act = ( $data['cat_id'] == $cat['cat_slug'] ) ? 'selected' : '';
+                        echo "<option value='".$cat['cat_slug'] ."' ". $act .">". $cat['name_en'] ."</option>";
+                    
                     }
                 ?>
             </select>
@@ -367,7 +367,7 @@ function get_project_form_template($data = []){
             <label class="fs-6 fw-bold mb-2">Title ( English )</label>
             <!--end::Label-->
             <!--begin::Input-->
-            <input required="" class="form-control form-control-solid" placeholder="Enter title in english" value="<?php echo $data['title_en'] ?>" name="title_en">
+            <input required="" class="form-control form-control-solid translate-to-arabic" data-output="#proje-title-ar" placeholder="Enter title in english" value="<?php echo $data['title_en'] ?>" name="title_en">
             <!--end::Input-->
         </div>
         <div class="d-flex flex-column mb-7 fv-row mt-4">
@@ -375,7 +375,7 @@ function get_project_form_template($data = []){
             <label class="fs-6 fw-bold mb-2">Title ( arabic )</label>
             <!--end::Label-->
             <!--begin::Input-->
-            <input required="" class="form-control form-control-solid" placeholder="Enter title in arabic" value="<?php echo $data['title_ar'] ?>" name="title_ar">
+            <input required="" id="proje-title-ar" class="form-control form-control-solid" placeholder="Enter title in arabic" value="<?php echo $data['title_ar'] ?>" name="title_ar">
             <!--end::Input-->
         </div>
         <div class="d-flex flex-column mb-7 fv-row mt-4">
@@ -383,7 +383,7 @@ function get_project_form_template($data = []){
             <label class="fs-6 fw-bold mb-2">Description ( english )</label>
             <!--end::Label-->
             
-            <textarea id="editorwww" class="form-control"placeholder="Description in english" name="desc_en" required=""><?php echo $data['description_en'] ?></textarea>
+            <textarea id="editorwww" class="form-control translate-to-arabic is-textarea" placeholder="Description in english" name="desc_en" data-output="editorssss" required=""><?php echo $data['description_en'] ?></textarea>
 
         </div>
         <div class="d-flex flex-column mb-7 fv-row mt-4">

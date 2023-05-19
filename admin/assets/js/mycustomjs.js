@@ -118,6 +118,7 @@ $(".delete_message_btn").on("click" , function(){
 if( $("#kt_dropzonejs_example_1").length > 0 ){
 
     var folder_key = $("input[name='port_slug']").val();
+    var logoPosition = $("#logo-position").attr("data-position");
     // multi download dropzone
     var multidropzone = new Dropzone("#kt_dropzonejs_example_1", {
         url: "form_handler.php", // Set the url for your upload script location
@@ -127,12 +128,13 @@ if( $("#kt_dropzonejs_example_1").length > 0 ){
         addRemoveLinks: true,
         parallelUploads: 1,
         acceptedFiles:'image/jpeg,image/png',
-        params:{"form_action":"upload_img","key":folder_key,"img_name":"multi_upload_imgs"},
+        params:{"form_action":"upload_img","key":folder_key,"img_name":"multi_upload_imgs", "logo-position": logoPosition},
         success: function(file, response){
+            console.log(response);
             //console.log(response);
             //Here you can get your response.
             let img_name = response;
-            $("#kt_dropzonejs_example_1 .dz-preview:last-child").attr("data-key" , img_name);
+            $("#kt_dropzonejs_example_1 .dz-preview:last-child").attr("data-key" , img_name).children(".dz-image").children("img").attr("src" , "../uploads/" + folder_key + "/" + img_name);
         }
         
     });
@@ -141,7 +143,7 @@ if( $("#kt_dropzonejs_example_1").length > 0 ){
 
 if( $("#kt_dropzonejs_example_2").length > 0 ){
 
-    var folder_key = $("input[name='port_slug']").val() + '/panorama/';
+    var panorama_folder_key = $("input[name='port_slug']").val() + '/panorama/';
     // multi download dropzone
     var multidropzone = new Dropzone("#kt_dropzonejs_example_2", {
         url: "form_handler.php", // Set the url for your upload script location
@@ -151,7 +153,7 @@ if( $("#kt_dropzonejs_example_2").length > 0 ){
         addRemoveLinks: true,
         parallelUploads: 1,
         acceptedFiles:'image/jpeg,image/png',
-        params:{"form_action":"upload_img","key":folder_key,"img_name":"multi_upload_imgs", "is_panorma": "true"},
+        params:{"form_action":"upload_img","key":panorama_folder_key,"img_name":"multi_upload_imgs", "is_panorma": "true"},
         success: function(file, response){
             //console.log(response);
             //Here you can get your response.
@@ -176,7 +178,7 @@ function remove_from_folder(obj,db = false){
         dataType:"text",
         data:{"form_action": action,"imgSrc":img},
         success:function(txt){
-            console.log(txt);
+            //console.log(txt);
         }
     })
 }
@@ -244,3 +246,39 @@ $("#add-new-video-link").on("click" , function(){
         <input class="form-control form-control-solid mt-3" type="url" placeholder="Enter video link" value="" name="videos[]">
     `);
 });
+
+$(".translate-to-arabic").on("blur" , function(){
+    let outputId = $(this).attr("data-output");
+    var textToTranslate = $(this).val();
+    var targetLanguage = 'ar';
+    var is_textarea = $(this).hasClass('is-textarea');
+    
+    var url = 'https://api.mymemory.translated.net/get?q=' + encodeURIComponent(textToTranslate) + '&langpair=en|' + targetLanguage;
+    if(textToTranslate.length > 1){
+        $.ajax({
+            url: url,
+            type: 'GET',
+            dataType: 'json',
+            success: function(response) {
+              var translatedText = response.responseData.translatedText;
+              if(is_textarea){
+                $(outputId).html(translatedText)
+                $(outputId).val(translatedText)
+              }else{
+                $(outputId).val(translatedText)
+              }
+              
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+              console.log(textStatus, errorThrown);
+              
+            }
+          });
+    }
+    
+});
+
+
+$(".create-new-project-modal").on("click" , function(){
+    $(".action-attr-input").attr("name" , $(this).attr("data-name")).attr("value" , $(this).attr("data-val"));
+})
