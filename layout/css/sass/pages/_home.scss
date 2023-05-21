@@ -1,4 +1,5 @@
 .homepage{
+  overflow-y: hidden !important;
     .header{
         overflow: hidden;
         position: relative;
@@ -396,21 +397,23 @@
             background-position: 50%;
             background-size: cover;
             background-repeat: no-repeat !important;
+            
           }
           &.is-selected{
             .overlay:first-child{
-              animation: zoomInOut 15s ease-in-out infinite
+              animation: zoomInOut 15s ease-in-out infinite;
+              @keyframes zoomInOut {
+                  0%,100%{
+                    background-size: 100% !important;
+                  }
+                  50%{
+                    background-size: 120% !important;
+                  }
+              
+              }
             }
           }
-          @keyframes zoomInOut {
-            0%,100%{
-              background-size: 100% !important;
-            }
-            50%{
-              background-size: 120% !important;
-            }
-
-          }
+          
         }
         .overlay{
           padding-top: 90px;
@@ -520,3 +523,4 @@
       }
     }
 }
+

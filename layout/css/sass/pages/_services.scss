@@ -1,0 +1,60 @@
+.services-page{
+    .header{
+        background: url(../imgs/services.png) no-repeat center center;
+        background-size: cover;
+        .content{
+            width: 60%;
+            margin: auto;
+            .lead{line-height: 40px;}
+            h1{line-height: 45px;}
+            @media(max-width:560px){
+                width: 100%;
+            }
+        }
+        .run-sliders-services{
+            overflow: hidden;
+            .eng-ar-infinit-slider{direction: ltr !important;}
+            .slide{
+                position: relative;
+                overflow: hidden;
+                width: 200px;
+                height: 140px;
+                border-radius: 18px;
+                margin: 7px;
+                img{
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                }
+                .overlay{
+                    padding: 18px;
+                    background: linear-gradient(180deg, transparent 15%, rgba(4,4,4,0.64) 88%, rgba(4,4,4,0.82) 100%);
+                }
+            }
+        }
+    }
+    .servies{
+        .service{
+            background: #171717;
+            padding: 45px 28px;
+            border-radius: 34px;
+            border-style: solid;
+            border-width: 1px;
+            border-color: #292929;
+            border-radius: 32px;
+            box-shadow: 0 2px 12px 0 rgba(31, 46, 84, 0.06);
+            .lead{
+                color: #a2a2a2;
+                line-height: 32px;
+            }
+            .icon{
+                width: 60px;
+                height: 60px;
+                margin-bottom: 26px !important;
+                background: red;
+                border-radius: 14px;
+                font-size: 22px;
+            }
+        }
+    }
+}

@@ -1,0 +1,124 @@
+.project-page{
+    .header{
+        padding: 120px 0px;
+        overflow: hidden;
+        position: relative;
+        background-size: cover !important;
+        animation: zoomInOut 15s ease-in-out infinite;
+        .overlay{
+            padding-top: 110px;
+            min-height: 80vh;
+            height: fit-content;
+            &.ltr{
+                background:linear-gradient(90deg,#181818 10%,hsla(0,0%,9%,.98) 20%,hsla(0,0%,9%,.97) 25%,hsla(0,0%,9%,.95) 35%,hsla(0,0%,9%,.94) 40%,hsla(0,0%,9%,.92) 45%,hsla(0,0%,9%,.9) 50%,hsla(0,0%,9%,.87) 55%,hsla(0,0%,9%,.82) 60%,hsla(0,0%,9%,.75) 65%,hsla(0,0%,9%,.63) 70%,hsla(0,0%,9%,.45) 75%,hsla(0,0%,9%,.27) 80%,hsla(0,0%,9%,.15) 85%,hsla(0,0%,9%,.08) 90%,hsla(0,0%,9%,.03) 95%,hsla(0,0%,9%,0))
+            }
+            &.rtl{
+                background:linear-gradient(270deg,#181818 10%,hsla(0,0%,9%,.98) 20%,hsla(0,0%,9%,.97) 25%,hsla(0,0%,9%,.95) 35%,hsla(0,0%,9%,.94) 40%,hsla(0,0%,9%,.92) 45%,hsla(0,0%,9%,.9) 50%,hsla(0,0%,9%,.87) 55%,hsla(0,0%,9%,.82) 60%,hsla(0,0%,9%,.75) 65%,hsla(0,0%,9%,.63) 70%,hsla(0,0%,9%,.45) 75%,hsla(0,0%,9%,.27) 80%,hsla(0,0%,9%,.15) 85%,hsla(0,0%,9%,.08) 90%,hsla(0,0%,9%,.03) 95%,hsla(0,0%,9%,0))
+            }
+            h1{
+                line-height: 65px;
+            }
+            .project-imgs-cont{
+                height: 450px;
+                overflow: hidden;
+                border-radius: 22px; 
+                border: 1px solid #FFF;
+            }
+        }
+    }
+
+    .section-title{
+        font-size: 19px;
+    }
+
+    .videos-section{
+        .swiper-slide{
+            width: auto !important;
+            img{transition: 0.4s;}
+        }
+        .video-thumb{
+            position: relative;
+            overflow: hidden;
+            border-radius: 18px;
+            width: 353px;
+            height: 195px;
+            transition: 0.4s;
+            @media(max-width:420px){
+                width: 250px;
+                height: 145px;
+            }
+            .playbtn{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 0;
+                position: absolute;
+                bottom: 40px;
+                right: 20px;
+                transition: .3s;
+                .btnz {
+                    width: 50px;
+                    height: 50px;
+                    border-radius: 50%;
+                    outline: none;
+                    background: transparent;
+                    border: 2px solid #FFF;
+                    position: relative;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    cursor: pointer;
+                }
+                
+                .btnz .play {
+                    width: 25px;
+                    height: 25px;
+                    background: #ffffff;
+                    margin-left: 10px;
+                    z-index: 100;
+                    clip-path: polygon(0 0, 80% 48%, 0 100%, 0% 100%);
+                    transition: clip-path 0.5s ease;
+                    transition-delay: 0.4s;
+                }
+                                  
+            }
+            border: 2px solid transparent;
+            img{transition: 0.4s;}
+            &:hover{
+                border-color: $mainColor;
+                img{
+                    transform: scale(1.1);
+                }
+                .playbtn{
+                    transform: scale(0.9);
+                }
+            }
+        }
+    }
+
+    .panorama-container{
+        height: 350px;
+        overflow: hidden;
+        border-radius: 22px;
+        *{
+            color: #000 !important;
+        }
+    }
+    .main-content-container{
+        overflow: hidden !important;
+    }
+
+    .other-projects{
+        background: #1b1b1b;
+        .swiper-wrapper,.swiper-slide{
+            width: fit-content !important;
+        }
+        .product-card-template{
+            width: 420px;
+            display: block;
+            @media(max-width:520px){
+                width: 340px;
+            }
+        }
+    }
+}
