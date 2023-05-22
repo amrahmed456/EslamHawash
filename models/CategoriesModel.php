@@ -50,7 +50,7 @@ class CategoriesModel extends Database{
 
    // all cats will get all categories even not assigned to port
    // all-ports will get all assigned portfolios
-   public function get_category_product( $cat_slug = '', $p_slug = '' , $group = false , $get = 'all-cats' , $limit = '' , $order = '' , $page = '', $except = ''){
+   public function get_category_product( $cat_slug = '', $p_slug = '' , $group = false , $get = 'all-cats' , $limit = '' , $order = '' , $page = '', $except = '' , $status = ''){
 
     
         $offset = ( $page != '' && $limit != '' ) ? ' OFFSET ' . ($page-1)*$limit: '';
@@ -64,12 +64,13 @@ class CategoriesModel extends Database{
         $limit      = ( $limit == '' ) ? '' : ' LIMIT ' . $limit;
         $order      = ( $order == '' ) ? 'ORDER BY p.id DESC' : ' ORDER BY ' . $order;
         $except     = ( $except == '' ) ? '' : ' AND p.port_slug != "' . $except .'"';
+        $status     = ( $status == '' ) ? '' : ' AND p.status = "'. $status .'"';
 
         $group = ( $group == '' ) ? '' : 'GROUP BY c.id';
         $count = ( $group == '' ) ? '' : ',COUNT(p.title_en) as total';
         $get = ( $get == 'all-cats' ) ? 'LEFT' : 'RIGHT';
 
-        $and = $cat_slug . $p_slug . $except;
+        $and = $cat_slug . $p_slug . $except . $status;
 
         $query = "
             SELECT c.id as cat_id,c.id as category_id,c.name_en,c.name_ar,c.slug as cat_slug,r.name_en as parent_name_en, r.name_ar as parent_name_ar,r.id as parent_id,r.slug as parent_slug,p.* $count

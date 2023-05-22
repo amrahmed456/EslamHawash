@@ -1,19 +1,23 @@
 <?php
     require_once 'init.php';
     get_header();
+    $plang = get_lang_file('services');
 ?>
 <div class="services-page">
     <div class="header text-center padd">
         <div class="container pt-5 mt-5">
             <div class="content">
                 <p class="section-sub fw-bold mb-2 wow fadeInUp wow-once" data-wow-duration=".4s" data-wow-delay="0.4s" data-wow-offset="100">
-                    خدماتنا
+                    <?php echo $plang->orservices; ?>
+                    
                 </p>
                 <h1 class="fw-bold fs-2 mb-4 wow fadeInUp wow-once" data-wow-duration=".5s" data-wow-delay="0.6s" data-wow-offset="100">
-                    نقدم جميع خدمات التصميم المعماري والهندسي
+                <?php echo $plang->orsertitle; ?>
+                    
                 </h1>
                 <p class="lead fs-5 wow fadeInUp wow-once" data-wow-duration=".6s" data-wow-delay="0.7s" data-wow-offset="100">
-                    هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة ما سيلهي القارئ عن التركيز على الشكل الخارجي للنص
+                <?php echo $plang->rserlead; ?>
+                    
                 </p>
             </div>
         </div>
@@ -24,31 +28,32 @@
                     <div class="slide">
                         <img src="layout/imgs/a1.jpg" alt="" />
                         <div class="overlay d-flex align-items-end">
-                            تصميمات خلاقة
+                            <?php echo $plang->sl1; ?>
                         </div>
                     </div>
                     <div class="slide">
                         <img src="layout/imgs/a2.jpg" alt="" />
                         <div class="overlay d-flex align-items-end">
-                            تصميمات خلاقة
+                        <?php echo $plang->sl2; ?>
+                            
                         </div>
                     </div>
                     <div class="slide">
                         <img src="layout/imgs/a3.jpg" alt="" />
                         <div class="overlay d-flex align-items-end">
-                            تصميمات خلاقة
+                        <?php echo $plang->sl3; ?>
                         </div>
                     </div>
                     <div class="slide">
                         <img src="layout/imgs/a4.jpg" alt="" />
                         <div class="overlay d-flex align-items-end">
-                            تصميمات خلاقة
+                        <?php echo $plang->sl2; ?>
                         </div>
                     </div>
                     <div class="slide">
                         <img src="layout/imgs/a5.jpg" alt="" />
                         <div class="overlay d-flex align-items-end">
-                            تصميمات خلاقة
+                        <?php echo $plang->sl2; ?>
                         </div>
                     </div>
                 </div>
@@ -57,31 +62,31 @@
                 <div class="slide ">
                     <img src="layout/imgs/a6.jpg" alt="" />
                     <div class="overlay d-flex align-items-end">
-                        تصميمات خلاقة
+                    <?php echo $plang->sl2; ?>
                     </div>
                 </div>
                 <div class="slide">
                     <img src="layout/imgs/a7.jpg" alt="" />
                     <div class="overlay d-flex align-items-end">
-                        تصميمات خلاقة
+                         <?php echo $plang->sl2; ?>
                     </div>
                 </div>
                 <div class="slide">
                     <img src="layout/imgs/a1.jpg" alt="" />
                     <div class="overlay d-flex align-items-end">
-                        تصميمات خلاقة
+                         <?php echo $plang->sl2; ?>
                     </div>
                 </div>
                 <div class="slide">
                     <img src="layout/imgs/a3.jpg" alt="" />
                     <div class="overlay d-flex align-items-end">
-                        تصميمات خلاقة
+                         <?php echo $plang->sl2; ?>
                     </div>
                 </div>
                 <div class="slide">
                     <img src="layout/imgs/a2.jpg" alt="" />
                     <div class="overlay d-flex align-items-end">
-                        تصميمات خلاقة
+                         <?php echo $plang->sl2; ?>
                     </div>
                 </div>
             </div>
@@ -102,10 +107,12 @@
                             <i class="fa-solid fa-wand-magic-sparkles"></i>
                         </div>
                         <p class="fw-bold fs-5">
-                            التشطيبات المعمارية
+                            <?php echo $plang->sr1t; ?>
+                            
                         </p>
                         <p class="lead mb-0 fs-6">
-                            هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة ما سيلهي 
+                            <?php echo $plang->sr1d; ?>
+                             
                         </p>
                     </div>
                 </div>
@@ -115,10 +122,12 @@
                             <i class="fa-solid fa-wand-magic-sparkles"></i>
                         </div>
                         <p class="fw-bold fs-5">
-                            التشطيبات المعمارية
+                            <?php echo $plang->sr2t; ?>
+                            
                         </p>
                         <p class="lead mb-0 fs-6">
-                            هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة ما سيلهي 
+                            <?php echo $plang->sr2d; ?>
+                             
                         </p>
                     </div>
                 </div>
@@ -128,10 +137,12 @@
                             <i class="fa-solid fa-wand-magic-sparkles"></i>
                         </div>
                         <p class="fw-bold fs-5">
-                            التشطيبات المعمارية
+                        <?php echo $plang->sr3t; ?>
+                            
                         </p>
                         <p class="lead mb-0 fs-6">
-                            هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة ما سيلهي 
+                        <?php echo $plang->sr3d; ?>
+                             
                         </p>
                     </div>
                 </div>
@@ -141,10 +152,12 @@
                             <i class="fa-solid fa-wand-magic-sparkles"></i>
                         </div>
                         <p class="fw-bold fs-5">
-                            التشطيبات المعمارية
+                        <?php echo $plang->sr4t; ?>
+                            
                         </p>
                         <p class="lead mb-0 fs-6">
-                            هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة ما سيلهي 
+                        <?php echo $plang->sr4d; ?>
+                             
                         </p>
                     </div>
                 </div>
@@ -154,10 +167,12 @@
                             <i class="fa-solid fa-wand-magic-sparkles"></i>
                         </div>
                         <p class="fw-bold fs-5">
-                            التشطيبات المعمارية
+                        <?php echo $plang->sr5t; ?>
+                            
                         </p>
                         <p class="lead mb-0 fs-6">
-                            هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة ما سيلهي 
+                        <?php echo $plang->sr5d; ?>
+                             
                         </p>
                     </div>
                 </div>
@@ -167,18 +182,21 @@
                             <i class="fa-solid fa-wand-magic-sparkles"></i>
                         </div>
                         <p class="fw-bold fs-5">
-                            التشطيبات المعمارية
+                        <?php echo $plang->sr6t; ?>
+                            
                         </p>
                         <p class="lead mb-0 fs-6">
-                            هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة ما سيلهي 
+                        <?php echo $plang->sr6d; ?>
+                             
                         </p>
                     </div>
                 </div>
             </div>
 
             <div class="d-flex justify-content-center mt-5 wow fadeInUp wow-once" data-wow-duration="0.6s" data-wow-delay="0.4s" data-wow-offset="100">
-                <a href="" class="btn btn-white btn-bg">
-                    إبدأ مشروعك الأن <i class="fa-solid fa-chevron-left me-3"></i>
+                <a href="contact.php" class="btn btn-white btn-bg">
+                    <?php echo $plang->strypro; ?>
+                    <i class="fa-solid fa-chevron-left me-3 rotate-en"></i>
                 </a>
             </div>
         </div>

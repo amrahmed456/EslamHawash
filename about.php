@@ -1,6 +1,7 @@
 <?php
     require_once 'init.php';
     get_header();
+    $plang = get_lang_file('about');
 ?>
 <div class="about-page">
     <div class="header">
@@ -12,20 +13,25 @@
             <div class="container">
                 <div class="content">
                     <p class="section-sub fw-bold mb-2 wow fadeInUp wow-once" data-wow-duration="0.4s" data-wow-delay="0.4s" data-wow-offset="100">
-                        تعرف علينا
+                        <?php echo $plang->nowus; ?>
+                        
                     </p>
                     <h1 class="fw-bold fs-2 mb-3 wow fadeInUp wow-once" data-wow-duration="0.6s" data-wow-delay="0.6s" data-wow-offset="100">
-                        نحن فى مهمة لتغيير معالم التصميم المعماري والحديث فى العالم
+                    <?php echo $plang->abotitle; ?>
+                        
                     </h1>
                     <p class="lead mb-5 wow fadeInUp wow-once" data-wow-duration="0.8s" data-wow-delay="0.8s" data-wow-offset="100">
-                        نقدم العديد من الخدمات الهندسية والفنية فى مجال التصميم والعمارة بما يتناسب مع إحتياجاتك الشخصية فى العديد من المساحات لتحصل على أفضل جودة بأفضل سعر
+                    <?php echo $plang->abtlead; ?>
+                        
                     </p>
                     <div class="d-flex btns wow fadeInUp wow-once" data-wow-duration="0.6s" data-wow-delay="1s" data-wow-offset="100">
                         <a href="" class="btn btn-primary btn-bg btn-white ms-3">
-                            شاهد أعمالنا
+                        <?php echo $plang->wtchport; ?>
+                            
                         </a>
                         <a href="" class="btn btn-primary btn-bg btn-white-outline">
-                            تواصل معنا
+                        <?php echo $plang->cttus; ?>
+                            
                         </a>
                     </div>
                 </div>
@@ -49,10 +55,12 @@
                             </div>
                         </div>
                         <p class="sub fw-bold">
-                            عملاء راضون
+                        <?php echo $plang->f1t; ?>
+                            
                         </p>
                         <p class="lead">
-                            نحقق رضاء العملاء عبر مختلف تلبية جميع رغباتهم
+                        <?php echo $plang->f1d; ?>
+                           
                         </p>
                     </div>
                 </div>
@@ -67,10 +75,10 @@
                             </div>
                         </div>
                         <p class="sub fw-bold">
-                            عملاء راضون
+                        <?php echo $plang->f2t; ?>
                         </p>
                         <p class="lead">
-                            نحقق رضاء العملاء عبر مختلف تلبية جميع رغباتهم
+                        <?php echo $plang->f2d; ?>
                         </p>
                     </div>
                 </div>
@@ -85,10 +93,10 @@
                             </div>
                         </div>
                         <p class="sub fw-bold">
-                            عملاء راضون
+                        <?php echo $plang->f3t; ?>
                         </p>
                         <p class="lead">
-                            نحقق رضاء العملاء عبر مختلف تلبية جميع رغباتهم
+                        <?php echo $plang->f3d; ?>
                         </p>
                     </div>
                 </div>
@@ -100,7 +108,8 @@
     <div class="quick-services padd">
         <div class="container">
             <p class="section-title fw-bold mb-4 fs-3 wow fadeInUp wow-once" data-wow-duration="0.4s" data-wow-delay="0.4s" data-wow-offset="100">
-                خدماتنا
+            <?php echo $plang->orserv; ?>
+                
             </p>
             <div class="services-slider swiper mb-5 pb-5 wow fadeInUp wow-once" data-wow-duration="0.6s" data-wow-delay="0.6s" data-wow-offset="100">
                 <div class="swiper-wrapper">
@@ -110,10 +119,12 @@
                             <div class="overlay d-flex align-items-end">
                                 <div class="content p-5">
                                     <p class="title mb-3 fw-bold fs-4">
-                                        التصميم الداخلي
+                                    <?php echo $plang->s1t; ?>
+                                        
                                     </p>
                                     <p class="lead fs-6">
-                                        تصميم جميع المساحات الداخلية
+                                    <?php echo $plang->s1d; ?>
+                                        
                                     </p>
                                 </div>
                             </div>
@@ -125,10 +136,12 @@
                             <div class="overlay d-flex align-items-end">
                                 <div class="content p-5">
                                     <p class="title mb-3 fw-bold fs-4">
-                                        التصميم الداخلي
+                                    <?php echo $plang->s2t; ?>
+                                        
                                     </p>
                                     <p class="lead fs-6">
-                                        تصميم جميع المساحات الداخلية
+                                    <?php echo $plang->s2d; ?>
+                                        
                                     </p>
                                 </div>
                             </div>
@@ -140,10 +153,12 @@
                             <div class="overlay d-flex align-items-end">
                                 <div class="content p-5">
                                     <p class="title mb-3 fw-bold fs-4">
-                                        التصميم الداخلي
+                                    <?php echo $plang->s3t; ?>
+                                        
                                     </p>
                                     <p class="lead fs-6">
-                                        تصميم جميع المساحات الداخلية
+                                    <?php echo $plang->s3d; ?>
+                                        
                                     </p>
                                 </div>
                             </div>
@@ -155,10 +170,12 @@
                             <div class="overlay d-flex align-items-end">
                                 <div class="content p-5">
                                     <p class="title mb-3 fw-bold fs-4">
-                                        التصميم الداخلي
+                                    <?php echo $plang->s4t; ?>
+                                        
                                     </p>
                                     <p class="lead fs-6">
-                                        تصميم جميع المساحات الداخلية
+                                    <?php echo $plang->s4d; ?>
+                                        
                                     </p>
                                 </div>
                             </div>
@@ -170,10 +187,12 @@
                             <div class="overlay d-flex align-items-end">
                                 <div class="content p-5">
                                     <p class="title mb-3 fw-bold fs-4">
-                                        التصميم الداخلي
+                                    <?php echo $plang->s5t; ?>
+                                        
                                     </p>
                                     <p class="lead fs-6">
-                                        تصميم جميع المساحات الداخلية
+                                    <?php echo $plang->s5d; ?>
+                                        
                                     </p>
                                 </div>
                             </div>
@@ -192,13 +211,16 @@
             <div class="row">
                 <div class="col-12 col-md-6 col-lg-6 mb-4">
                     <p class="section-sub fw-bold mb-2 wow fadeInUp wow-once" data-wow-duration="0.4s" data-wow-delay="0.4s" data-wow-offset="100">
-                        تعرف علينا
+                    <?php echo $plang->gtnus; ?>
+                        
                     </p>
                     <h2 class="fw-bold fs-2 mb-3 wow fadeInUp wow-once" data-wow-duration="0.6s" data-wow-delay="0.6s" data-wow-offset="100">
-                        نهتم بأدق التفاصيل الدقيقة فى أعمالنا
+                    <?php echo $plang->gtustitle; ?>
+                        
                     </h2>
                     <p class="lead mb-5 pb-4 wow fadeInUp wow-once" data-wow-duration="0.8s" data-wow-delay="0.8s" data-wow-offset="100">
-                        هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة ما سيلهي القارئ عن التركيز على الشكل الخارجي للنص
+                    <?php echo $plang->gtuslead; ?>
+                        
                     </p>
 
                     <div class="tics">
@@ -208,10 +230,12 @@
                             </div>
                             <div class="tic-content">
                                 <p class="title mb-1 fw-bold">
-                                    دقة فى التفاصيل واحترافية فى التنفيذ
+                                <?php echo $plang->usfet1t; ?>
+                                    
                                 </p>
                                 <p class="small mb-0">
-                                    هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة ما سيلهي القارئ عن التركيز على الشكل الخارجي للنص
+                                <?php echo $plang->usfet1d; ?>
+                                    
                                 </p>
                             </div>
                         </div>
@@ -221,10 +245,12 @@
                             </div>
                             <div class="tic-content">
                                 <p class="title mb-1 fw-bold">
-                                    دقة فى التفاصيل واحترافية فى التنفيذ
+                                <?php echo $plang->usfet2t; ?>
+                                    
                                 </p>
                                 <p class="small mb-0">
-                                    هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة ما سيلهي القارئ عن التركيز على الشكل الخارجي للنص
+                                <?php echo $plang->usfet2d; ?>
+                                    
                                 </p>
                             </div>
                         </div>
@@ -234,16 +260,19 @@
                             </div>
                             <div class="tic-content">
                                 <p class="title mb-1 fw-bold">
-                                    دقة فى التفاصيل واحترافية فى التنفيذ
+                                <?php echo $plang->usfet3t; ?>
+                                    
                                 </p>
                                 <p class="small mb-0">
-                                    هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة ما سيلهي القارئ عن التركيز على الشكل الخارجي للنص
+                                <?php echo $plang->usfet3d; ?>
+                                    
                                 </p>
                             </div>
                         </div>
 
                         <a href="services.php" class="btn btn-primary btn-bg wow fadeInUp wow-once" data-wow-duration="0.4s" data-wow-delay="0.4s" data-wow-offset="100">
-                            تعرف على خدماتنا <i class="fa-solid fa-chevron-left me-3"></i>
+                        <?php echo $plang->knowourfeat; ?>
+                             <i class="fa-solid fa-chevron-left me-3 rotate-en"></i>
                         </a>
                     </div>
                 </div>

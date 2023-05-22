@@ -1,0 +1,84 @@
+@import 'main.scss';
+
+
+*{
+    direction: ltr !important;
+    text-align: left !important;
+}
+
+.me-3{
+    margin-left: 1rem !important;
+    margin-right: unset !important;
+}
+.ms-3{
+    margin-right: 1rem !important;
+    margin-left: unset !important;
+}
+.me-2{
+    margin-right: unset !important;
+    margin-left: 0.5rem !important;
+}
+.me-2{
+    margin-right: unset !important;
+    margin-left: 0.25rem !important;
+}
+.me-5{
+    margin-left: 3rem !important;
+    margin-right: unset !important;
+}
+.me-4{
+    margin-left: 1.5rem !important;
+    margin-right: unset !important;
+}
+.ms-2{
+    margin-right: 0.5rem !important;
+    margin-left: unset !important;
+}
+.ms-4{
+    margin-right: 1.5rem !important;
+    margin-left: unset !important;
+}
+
+.ms-5
+{
+    margin-right: 3rem !important;
+    margin-left: unset !important;
+}
+
+.pe-5{
+    padding-right: 3rem !important;
+    padding-left: auto !important;
+}
+
+.ps-5{
+    padding-right: auto !important;
+    padding-left: 3rem !important;
+}
+
+.rotate-en{
+    transform: rotate(180deg);
+}
+
+.homepage .portfolio-section .flickity-slider .overlay .content .view-project .icon{
+    transform: rotateX(185deg) rotateY(180deg) rotateZ(-90deg);
+}
+
+.attract-section{
+    background-position: 120% 30px;
+}
+
+.project-page .header .overlay{
+    background:linear-gradient(90deg,#181818 10%,hsla(0,0%,9%,.98) 20%,hsla(0,0%,9%,.97) 25%,hsla(0,0%,9%,.95) 35%,hsla(0,0%,9%,.94) 40%,hsla(0,0%,9%,.92) 45%,hsla(0,0%,9%,.9) 50%,hsla(0,0%,9%,.87) 55%,hsla(0,0%,9%,.82) 60%,hsla(0,0%,9%,.75) 65%,hsla(0,0%,9%,.63) 70%,hsla(0,0%,9%,.45) 75%,hsla(0,0%,9%,.27) 80%,hsla(0,0%,9%,.15) 85%,hsla(0,0%,9%,.08) 90%,hsla(0,0%,9%,.03) 95%,hsla(0,0%,9%,0))
+}
+
+.about-page .header .overlay{
+    background: linear-gradient(90deg, #040404 21%, rgba(4,4,4,0.86) 66%, rgba(4,4,4,0));
+}
+
+.about-page .header .content h1{
+    line-height: 40px !important;
+}
+
+.about-page .header .content .lead{
+    line-height: 26px;
+}

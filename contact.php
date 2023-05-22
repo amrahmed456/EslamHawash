@@ -1,18 +1,22 @@
 <?php
     require_once 'init.php';
     get_header();
+    $plang = get_lang_file('contact');
 ?>
 <div class="contact-page pt-5 mt-5">
     <div class="container">
         <div class="header padd mt-5 text-center">
             <p class="section-sub fw-bold mb-3 wow fadeInUp wow-once" data-wow-duration="0.4s" data-wow-delay="0.4s" data-wow-offset="150">
-                تواصل معنا
+                <?php echo $plang->ctctus; ?>
+                
             </p>
             <h1 class="fw-bold fs-2 mb-4 wow fadeInUp wow-once" data-wow-duration="0.6s" data-wow-delay="0.6s" data-wow-offset="150">
-                لنبدأ مشروعك الأن
+            <?php echo $plang->letsstartproj; ?>
+                
             </h1>
             <p class="lead wow fadeInUp wow-once" data-wow-duration="0.8s" data-wow-delay="0.8s" data-wow-offset="150">
-                سعداء بتقديم جميع خدماتنا لتلبية وتنفيذ مشروعك بأفضل جودة وأقل أسعار تتناسب مع ذوقك ومساحتك بخبراتنا الواسعه وفريقنا المحترف يمكنك الإعتماد علينا لتنفيذ مشروعك
+            <?php echo $plang->cotdesc; ?>
+                
             </p>
         </div>
         <div class="contacts-cont-contact ps-4 pe-4">
@@ -23,15 +27,17 @@
                             <i class="fa-solid fa-envelope"></i>
                         </div>
                         <p class="title fw-bold fs-5">
-                            البريد الإلكتروني
+                        <?php echo $plang->email; ?>
+                            
                         </p>
                         <p class="lead fs-6 mb-4">
-                            راسلنا عبر البريد الإلكتروني وسنقوم بالرد فى أقرب وقت ممكن
+                        <?php echo $plang->emaild; ?>
+                            
                         </p>
 
                         <div class="d-flex justify-content-center align-items-center linker">
                             <p class="mb-1 fw-bold">mr_amr456@yahoo.com</p>
-                            <i class="fa-solid fa-arrow-left me-2 arrow"></i>
+                            <i class="fa-solid fa-arrow-left me-2 arrow rotate-en"></i>
                         </div>
                     </a>
                 </div>
@@ -41,15 +47,17 @@
                             <i class="fa-solid fa-phone"></i>
                         </div>
                         <p class="title fw-bold fs-5">
-                            تحدث معنا الأن
+                        <?php echo $plang->talkus; ?>
+                            
                         </p>
                         <p class="lead fs-6 mb-4">
-                            سعداء بتلقى مكالمتك فى أى وقت ومستعدون للإجابة على أسئلتك
+                        <?php echo $plang->talkusd; ?>
+                            
                         </p>
 
                         <div class="d-flex justify-content-center align-items-center linker">
                             <p class="mb-1 fw-bold">(+20)10-33-677-906</p>
-                            <i class="fa-solid fa-arrow-left me-2 arrow"></i>
+                            <i class="fa-solid fa-arrow-left me-2 arrow rotate-en"></i>
                         </div>
                     </a>
                 </div>
@@ -59,15 +67,19 @@
                             <i class="fa-solid fa-location-dot"></i>
                         </div>
                         <p class="title fw-bold fs-5">
-                            زر مكتبنا
+                        <?php echo $plang->visitus; ?>
+                            
                         </p>
                         <p class="lead fs-6 mb-4">
-                            يمكنك زيارة مكتبنا من السبت إلى الخميس من الساعه 8 صباحاً وحتى 8 مساءاً
+                        <?php echo $plang->visusd; ?>
+                           
                         </p>
 
                         <div class="d-flex justify-content-center align-items-center linker">
-                            <p class="mb-1 fw-bold">عرض الموقع</p>
-                            <i class="fa-solid fa-arrow-left me-2 arrow"></i>
+                            <p class="mb-1 fw-bold">
+                            <?php echo $plang->showdir; ?>
+                           </p>
+                            <i class="fa-solid fa-arrow-left me-2 arrow rotate-en"></i>
                         </div>
                     </a>
                 </div>
@@ -79,10 +91,12 @@
         <div class="container">
             <div class="head text-center mb-6">
                 <p class="section-sub fw-bold mb-3 wow fadeInUp wow-once" data-wow-duration="0.4s" data-wow-delay="0.4s" data-wow-offset="150">
-                    أرسل لنا
+                <?php echo $plang->diretitl; ?>
+                    
                 </p>
                 <h2 class="fw-bold fs-2 mb-4 wow fadeInUp wow-once" data-wow-duration="0.6s" data-wow-delay="0.6s" data-wow-offset="150">
-                    تواصل معنا بشكل مباشر
+                <?php echo $plang->diredesc; ?>
+                   
                 </h2>
             </div>
             <div class="row mt-5 pt-5">

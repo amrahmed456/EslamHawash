@@ -37,7 +37,7 @@ function portfolio_template($project){
                             <i class="fa-solid fa-heart me-2"></i>
                         </div>
                         <div class="arrow-go d-flex justify-content-center align-items-center">
-                            <i class="fa-solid fa-arrow-left"></i>
+                            <i class="fa-solid fa-arrow-left rotate-en"></i>
                         </div>
                     </div>
                 </div>

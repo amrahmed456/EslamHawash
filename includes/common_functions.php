@@ -37,7 +37,7 @@ function get_data_stylish($date){
         'ar' => ['','يناير','فبراير','مارس','إبريل','مايو','يونيو','يوليو','أغسطس','سبتمبر','أكتوبر','نوفمبر','ديسمبر']
     ];
     $date = explode('-' , $date);
-    $month = $dates[$lng][$date[1]];
+    $month = $dates[$lng][ltrim($date[1], '0')];
     $day = $date[2];
     $year =  $date[0];
     $final = $month . ' ' . $day . ', ' . $year;

@@ -59,7 +59,7 @@ $(window).scroll(function(){
 
     const $bigBall = document.querySelector('.cursor__ball--big');
     const $smallBall = document.querySelector('.cursor__ball--small');
-    const $hoverables = $("a");
+    const $hoverables = $("a,button,[role='button'],[type='button']");
 
 // Listeners
 document.body.addEventListener('mousemove', onMouseMove);
@@ -192,7 +192,10 @@ function onMouseHoverOut() {
           effect:'coverflow'
         
         });
-        swiper.changeLanguageDirection('rtl')
+        if(rtl){
+          swiper.changeLanguageDirection('rtl')
+        }
+        
       }
      
       if($(".slider-animated").length > 0){
@@ -274,7 +277,9 @@ function onMouseHoverOut() {
           prevEl: ".swiper-button-prev",
         }
       });
-      swiper.changeLanguageDirection('rtl')
+      if(rtl){
+        swiper.changeLanguageDirection('rtl')
+      }
     }
 
     if($(".imgs-cont-slider").length > 0){
@@ -310,19 +315,27 @@ function onMouseHoverOut() {
         freeMode: true,
         spaceBetween: 10,
       });
-      swiperv.changeLanguageDirection('rtl')
+      if(rtl){
+        swiperv.changeLanguageDirection('rtl')
+      }
     }
     if($(".services-slider").length > 0){
       var swiperv = new Swiper(".services-slider", {
         slidesPerView: "auto",
         freeMode: true,
         spaceBetween: 18,
+        autoplay: {
+          delay: 2500,
+          disableOnInteraction: false,
+        },
         navigation: {
           nextEl: ".swiper-button-next",
           prevEl: ".swiper-button-prev",
         }
       });
-      swiperv.changeLanguageDirection('rtl')
+      if(rtl){
+        swiperv.changeLanguageDirection('rtl')
+      }
     }
     if($(".other-projects-slider").length > 0){
       var swiperv = new Swiper(".other-projects-slider", {
@@ -335,7 +348,9 @@ function onMouseHoverOut() {
           disableOnInteraction: false,
         },
       });
-      swiperv.changeLanguageDirection('rtl')
+      if(rtl){
+        swiperv.changeLanguageDirection('rtl')
+      }
     }
     if($(".project-panoramas-slider").length > 0){
       var swiperv = new Swiper(".project-panoramas-slider", {
@@ -343,7 +358,9 @@ function onMouseHoverOut() {
         freeMode: true,
         spaceBetween: 10,
       });
-      swiperv.changeLanguageDirection('rtl')
+      if(rtl){
+        swiperv.changeLanguageDirection('rtl')
+      }
     }
  
     if($(".calcHeightForParent").length > 0){

@@ -19,7 +19,7 @@
                             <div></div>
                             <div class="container">
                                 <div class="text-center main-content">
-                                    <div class="verticalflip ms-5 wow fadeInUp"data-wow-duration=".4s" data-wow-delay="0.2s" data-wow-offset="100">
+                                    <div class="verticalflip ms-5 pe-5 wow fadeInUp"data-wow-duration=".4s" data-wow-delay="0.2s" data-wow-offset="100">
                                             <?php echo $plang->htoptitle; ?>
                                             
                                             <span>
@@ -43,10 +43,10 @@
                                         
                                     </p>
                                     <div class="d-flex align-items-center justify-content-center wow fadeInUp"data-wow-duration=".4s" data-wow-delay="0.8s" data-wow-offset="100">
-                                        <a href="" class="btn btn-primary d-flex align-items-center hoverable ms-4 btn-bg">
+                                        <a href="contact.php" class="btn btn-primary d-flex align-items-center hoverable ms-4 btn-bg">
                                             <p class="mb-0 ms-2">
                                             <?php echo $plang->strpro; ?></p>
-                                            <i class="fa-solid fa-arrow-left"></i>
+                                            <i class="fa-solid fa-arrow-left rotate-en"></i>
                                         </a>
                                         <a href="" class="btn btn-outline-white d-flex align-items-center btn-bg go-to-swipper"  data-child="3">
                                             <p class="mb-0 ms-2">
@@ -146,7 +146,7 @@
                         <div class="container h-100">
                             <div class="row">
                                 <div class="col-12 col-md-6 mb-4 mt-4">
-                                    <p class="section-sub fw-bold">
+                                    <p class="section-sub fw-bold mb-0">
                                         <?php echo $plang->sssub; ?>
                                         
                                     </p>
@@ -254,27 +254,39 @@
                         
                     </div>
                 </div>
-               <div class="swiper-slide">
-                    <div class="portfolio-section">
+                <!-- 
+                    Get pinned projects
+                -->
+                <?php
+                    $projects = new CategoriesModel;
+                    $projects = $projects->get_category_product('','',false,'all-ports', 50,'p.id DESC', '' , '' , 1);
 
-                        <div class="flickity-slider h-100" data-flickty>
-                            
+                ?>
+    <div class="swiper-slide">
+        <div class="portfolio-section">
+            
+            <div class="flickity-slider h-100" data-flickty>
+                <?php
+                    if( count($projects) > 0 ){
+                        foreach($projects as $project){
+                            $backSrc = 'uploads/' . $project['port_slug'] . '/'.explode(',',$project['photos'])[0];
+                            ?>
                             <div class="carousel-cell h-100 w-100">
-                                <div class="overlay" style="background-image:url(layout/imgs/a2.jpg);">
+                                <div class="overlay" style="background-image:url(<?php echo $backSrc; ?>);">
                                 </div>
                                 <div class="overlay">
                                     <div class="container">
                                         <div class="content mb-5 pb-5">
                                             <p class="title fw-bold fs-1 mb-4">
-                                                تصميم غرفة دوبل
+                                                <?php echo $project['title_' . get_website_lang()] ?>
                                             </p>
                                             <div class="d-flex flex-wrap">
-                                                <a href="" class="category mb-2 rounded ms-3">
-                                                    التصميم الداخلي
+                                                <a href="portfolio.php?category=<?php echo $project['cat_slug']; ?>" class="category mb-2 rounded ms-3">
+                                                    <?php echo $project['name_' . get_website_lang()] ?>
                                                 </a>
                                                 <div class="love-count rounded mb-2 d-flex align-items-center">
                                                     <i class="fa-regular fa-heart ms-2"></i>
-                                                    14
+                                                    <?php echo $project['likes'] ?>
                                                 </div>
                                             </div>
                                             
@@ -282,7 +294,7 @@
                                                 <div class="icon">
                                                     <i class="fa-solid fa-turn-up"></i>
                                                 </div>
-                                                <a href="" class="d-block me-4">
+                                                <a href="project.php?portfolio=<?php echo $project['port_slug'] ?>" class="d-block me-4">
                                                     <span class="dup-hover-effect">
                                                         <?php echo $glang->showproject; ?>
                                                     </span>
@@ -293,36 +305,51 @@
                                     
                                 </div>
                             </div>
+                            <?php
+                        }
+                    }
+                ?>
+                
 
-                           
-                        </div>
-                        <div class="flickt-nav-cont">
-                            <div class="container">
-                                <div class="flickty-nav-slider">
+                
+            </div>
+            <div class="flickt-nav-cont">
+                <div class="container">
+                    <div class="flickty-nav-slider">
+                        <?php
+                         if( count($projects) > 0 ){
+                            foreach($projects as $project){
+                                $backSrc = 'uploads/' . $project['port_slug'] . '/'.explode(',',$project['photos'])[0];
+                                ?>
                                     <div class="carousel-cell">
                                         <div class="project-thumbnail">
-                                            <img src="layout/imgs/a2.jpg" class="fit-img">
+                                            <img src="<?php echo $backSrc; ?>" class="fit-img">
                                             <div class="overlay p-4 d-flex align-items-end">
                                                 
                                                 <div class="title">
-                                                    تصميم غرفة دوبل
+                                                    <?php echo $project['title_' . get_website_lang()] ?>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
+                                <?php
+                            }
+                        }
+                        ?>
+                        
 
-                                    <div class="carousel-cell">
-                                        <a href="" class="project-thumbnail view-more d-flex text-center align-items-center">
-                                        <?php echo $glang->showmore; ?>
-                                             <i class="fa-solid fa-chevron-left me-2 icon"></i>
-                                        </a>
-                                    </div>
-                                    
-                                </div>
-                            </div>
+                        <div class="carousel-cell">
+                            <a href="portfolio.php" class="project-thumbnail view-more d-flex text-center align-items-center">
+                            <?php echo $glang->showmore; ?>
+                                <i class="fa-solid fa-chevron-left me-2 icon rotate-en"></i>
+                            </a>
                         </div>
+                        
                     </div>
                 </div>
+            </div>
+        </div>
+    </div>
 
                 <div class="swiper-slide">
                     <div class="contact-section d-flex align-items-center">
@@ -330,7 +357,7 @@
                             <div class="row">
                                 
                                 <div class="col-12 col-md-6">
-                                    <p class="section-sub fw-bold">
+                                    <p class="section-sub fw-bold mb-0">
                                     <?php echo $glang->contact; ?>
                                     </p>
                                     <h2 class="fw-bold mb-3">
@@ -347,7 +374,7 @@
                                                 <i class="fa-solid fa-envelope"></i>
                                             </div>
                                             <div class="content">
-                                                <p class="sub"> <?php echo $glang->emls; ?></p>
+                                                <p class="sub mb-0"> <?php echo $glang->emls; ?></p>
                                                 <p class="title">
                                                     contact@esmal.com
                                                 </p>
@@ -358,7 +385,7 @@
                                                 <i class="fa-solid fa-phone"></i>
                                             </div>
                                             <div class="content">
-                                                <p class="sub">
+                                                <p class="sub mb-0">
                                                 <?php echo $glang->callsus; ?>
                                                 </p>
                                                 <p class="title">
@@ -371,7 +398,7 @@
                                                 <img src="layout/imgs/gmaps.webp" />
                                             </div>
                                             <div class="content">
-                                                <p class="sub">
+                                                <p class="sub mb-0">
                                                 <?php echo $glang->visitus; ?>
                                                 </p>
                                                 <p class="title">

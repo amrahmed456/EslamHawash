@@ -8,7 +8,7 @@ function get_header( $select = 'home', $include = '' , $url = '' , $title = '' ,
     }
 ?>
 <!DOCTYPE html>
-<html dir="rtl" lang="ar" style='<?php echo $overflow;?>'>
+<html dir="<?php echo (get_website_lang() == 'ar') ? 'rtl' : 'ltr'  ?>" lang="<?php echo get_website_lang(); ?>" style='<?php echo $overflow;?>'>
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
@@ -24,7 +24,9 @@ function get_header( $select = 'home', $include = '' , $url = '' , $title = '' ,
     <link rel="icon" href="layout/imgs/favicon.webp"/>
     <meta name="description" content="<?php echo $glang->description; ?>" />
     <title><?php echo $glang->webtitle; ?></title>
-    <link rel="stylesheet" href="layout/css/main.css">
+    <?php
+        echo ( get_website_lang() == 'ar' ) ? '<link rel="stylesheet" href="layout/css/main.css?v=1">' : '<link rel="stylesheet" href="layout/css/main-en.css?v=1">';
+    ?>
     <style>
         .preloader .layer{
             position: fixed;
