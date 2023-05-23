@@ -82,3 +82,23 @@
 .about-page .header .content .lead{
     line-height: 26px;
 }
+
+.website-intro{
+    .framer{
+        .overlay{
+            background: linear-gradient(to left, rgba(0,0,0,0),rgba(0, 0, 0,1)90%);
+            background-position: 850px 0;
+            background-repeat: no-repeat !important;
+        }
+    }
+}
+
+
+@keyframes runAnimatedIntro {
+    from {
+        background-position: 100% 0;
+    }
+    to {
+        background-position: 850px 0;
+    }
+}

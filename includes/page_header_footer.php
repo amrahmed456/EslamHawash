@@ -23,7 +23,10 @@ function get_header( $select = 'home', $include = '' , $url = '' , $title = '' ,
     <meta name="theme-color" content="#ffd175">
     <link rel="icon" href="layout/imgs/favicon.webp"/>
     <meta name="description" content="<?php echo $glang->description; ?>" />
-    <title><?php echo $glang->webtitle; ?></title>
+    <title><?php echo ( $title == '' ) ? $glang->webtitle : $title . ' - ' . $glang->webtitle; ?></title>
+    <?php
+      displayOpenGraphPt($url,$title,$description,$img);
+    ?>
     <?php
         echo ( get_website_lang() == 'ar' ) ? '<link rel="stylesheet" href="layout/css/main.css?v=1">' : '<link rel="stylesheet" href="layout/css/main-en.css?v=1">';
     ?>
@@ -97,7 +100,8 @@ function get_header( $select = 'home', $include = '' , $url = '' , $title = '' ,
 </head>
 <body>
 
-    <!-- <div class="preloader" id="preloader">
+
+    <div class="preloader" id="preloader">
         <div class="layer1 layer">
             <div class="content">
                 <img src="layout/imgs/logo-w.webp" class="img-logo-pre" />
@@ -130,17 +134,40 @@ function get_header( $select = 'home', $include = '' , $url = '' , $title = '' ,
                     new WOW().init();
                     setTimeout(function(){
                         document.getElementById("preloader").classList.add("hide");
-                        
                     },200);
                 }
-            }
-            
-            
+            } 
         }
     </script>
-    <script src="layout/js/pace.min.js"></script> -->
-
-    <div class="cursor">
+    <script src="layout/js/pace.min.js"></script>
+        
+    <?php
+        if(!isset($_SESSION['user']['viewd_intro'])){
+            $_SESSION['user']['viewd_intro'] = 'true';
+            ?>
+  <div class="website-intro d-flex justify-content-center align-items-end p-5 make-cursor-on-top" id="website-intro">
+            <div class="container">
+                <div class="framer hidden mb-4">
+                    <p class="mb-0 desc">
+                        <?php echo $glang->introt; ?>
+                        
+                    </p>
+                    <div class="overlay"></div>
+                </div>
+                <div class="framer hidden">
+                    <h2 class="fw-bold fs-3 mb-0 desc">
+                        <?php echo $glang->introde; ?>
+                        
+                    </h2>
+                    <div class="overlay"></div>
+                </div>
+            </div>
+        </div>
+            <?php
+        }
+    ?>
+      
+<div class="cursor">
   <div class="cursor__ball cursor__ball--big ">
     <svg height="30" width="30">
       <circle cx="15" cy="15" r="12" stroke-width="0"></circle>
@@ -252,7 +279,8 @@ function get_footer($include = ''){
             echo '<script src="layout/js/modal-video.min.js"></script>
             <script src="layout/js/three.min.js"></script>
             <script src="layout/js/panolens.min.js"></script>
-            <script src="layout/js/lightbox.min.js"></script>';
+            <script src="layout/js/lightbox.min.js"></script>
+            <script src="layout/js/sweetalert.min.js"></script>';
         }
 
         if($include == 'home'){
@@ -262,6 +290,7 @@ function get_footer($include = ''){
         if($include == 'home' || $include == 'contact'){
             echo '<script src="layout/js/sweetalert.min.js"></script>';
         }
+
     ?>
     
     <script src="layout/js/TweenMax.min.js"></script>

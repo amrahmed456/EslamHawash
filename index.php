@@ -259,7 +259,7 @@
                 -->
                 <?php
                     $projects = new CategoriesModel;
-                    $projects = $projects->get_category_product('','',false,'all-ports', 50,'p.id DESC', '' , '' , 1);
+                    $projects = $projects->get_category_product('','',false,'all-ports', 9,'p.views DESC', '' , '' , 1);
 
                 ?>
     <div class="swiper-slide">
@@ -369,18 +369,28 @@
                                         
                                     </p>
                                     <div class="d-none d-md-block">
-                                        <a href="" class="contact-cont d-flex align-items-center mb-3">
+                                        <?php
+                                             if(WEBSITE_SETTINGS['email'] != ''){
+                                                ?>
+                                        <a href="mailto:<?php echo WEBSITE_SETTINGS['email']; ?>" class="contact-cont d-flex align-items-center mb-3">
                                             <div class="icon-cont ms-3">
                                                 <i class="fa-solid fa-envelope"></i>
                                             </div>
                                             <div class="content">
                                                 <p class="sub mb-0"> <?php echo $glang->emls; ?></p>
                                                 <p class="title">
-                                                    contact@esmal.com
+                                                    <?php echo WEBSITE_SETTINGS['email']; ?>
                                                 </p>
                                             </div>
                                         </a>
-                                        <a href="" class="contact-cont d-flex align-items-center mb-3">
+                                                <?php
+                                             }
+                                        ?>
+                                        <?php
+                                             if(WEBSITE_SETTINGS['phone'] != ''){
+                                                ?>
+
+<a href="tel:<?php echo WEBSITE_SETTINGS['phone']; ?>" class="contact-cont d-flex align-items-center mb-3">
                                             <div class="icon-cont ms-3">
                                                 <i class="fa-solid fa-phone"></i>
                                             </div>
@@ -389,10 +399,14 @@
                                                 <?php echo $glang->callsus; ?>
                                                 </p>
                                                 <p class="title">
-                                                    +20-103-66-77-906
+                                                <?php echo WEBSITE_SETTINGS['phone']; ?>
                                                 </p>
                                             </div>
                                         </a>
+                                            <?php
+                                             }
+                                            ?>
+                                       
                                         <a href="" target="_blank" class="contact-cont d-flex align-items-center mb-3">
                                             <div class="icon-cont ms-3">
                                                 <img src="layout/imgs/gmaps.webp" />

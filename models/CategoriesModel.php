@@ -182,4 +182,156 @@ class CategoriesModel extends Database{
         }
     }
 
+    public function getSimilarProjects($project){
+        $result = [];
+        $query = "
+            SELECT id,photos,title_en,title_ar,photos,date,likes,port_slug FROM $this->port 
+            WHERE cat_id = ? AND id != ?
+            AND status = 1
+        ";
+        $stmt = $this->db->prepare($query);
+        $stmt->execute([$project['cat_slug'], $project['id']]);
+        $result = $stmt->fetchAll();
+        if($stmt->rowCount() <= 2 ){
+            // get latest projects
+            // execlude prev ones
+            
+            $execluded = '';
+            $ex = [];
+            foreach($result as $pro){
+                array_push($ex , $pro['id']);
+            }
+            if(count($ex) > 0){
+                $execluded = ' AND id NOT IN ( ';
+                for($i = 0; $i < count($ex);$i++){
+                    $comma = ' , ';
+                    if($i == count($ex)-1){
+                        $comma = '';
+                    }
+                    $execluded .= $ex[$i] . $comma;
+                }
+                $execluded .= ' )';
+            }
+            $query = "
+                SELECT id,photos,title_en,title_ar,photos,date,likes,port_slug FROM $this->port 
+                WHERE status = 1 AND port_slug != ? $execluded
+                ORDER BY id desc LIMIT 4
+            ";
+            $stmt = $this->db->prepare($query);
+            $stmt->execute([$project['port_slug']]);
+            if($stmt->rowCount() > 0){
+                // check for duplicates
+                $result2 = $stmt->fetchAll();
+                
+                $result =  array_merge($result , $result2);
+            }
+        }
+        return $result;
+    }
+
+    public function getAllCats($cat_slug = ''){
+        // gets all categories inside
+        $parents = [];
+        $directChilds = [];
+        $allChildCats = [];
+        $currentCat = [];
+
+        // get parents
+        $query = "
+            SELECT id,name_en,name_ar,slug FROM $this->tabel
+            WHERE parent_id = 0
+        ";
+        $stmt = $this->db->prepare($query);
+        $stmt->execute();
+        $parents = $stmt->fetchAll();
+
+        // get childs
+        if($cat_slug != ''){
+            $query = "
+                SELECT id,name_en,name_ar,slug FROM $this->tabel WHERE slug = ? LIMIT 1
+            ";
+            $stmt = $this->db->prepare($query);
+            $stmt->execute([$cat_slug]);
+            if($stmt->rowCount() > 0){
+                $currentCat = $stmt->fetch();
+                
+                $query = "
+                    SELECT c2.id AS child1id, c2.name_en AS child1name_en,c2.name_ar AS child1name_ar,c2.slug AS child1slug, c3.id AS child2id, c3.name_en AS child2name_en, c3.name_ar AS child2name_ar,c3.slug AS child2slug, c4.id AS child3id, c4.name_en AS child3name_en, c4.name_ar AS child3name_ar,c4.slug AS child3slug FROM $this->tabel c1 LEFT JOIN $this->tabel c2 ON c2.parent_id = c1.id LEFT JOIN $this->tabel c3 ON c3.parent_id = c2.id LEFT JOIN $this->tabel c4 ON c4.parent_id = c3.id WHERE c1.id = ?
+                ";
+                $stmt = $this->db->prepare($query);
+                $stmt->execute([$currentCat['id']]);
+                if($stmt->rowCount() > 0){
+                    // set data
+                    foreach($stmt->fetchAll() as $row){
+                        if($row['child1id'] != null){
+                            $directChilds[] = [
+                                'id' => $row['child1id'],
+                                'name_en' => $row['child1name_en'],
+                                'name_ar' => $row['child1name_ar'],
+                                'slug' => $row['child1slug']
+                            ];
+                        }
+                        if($row['child2id'] != null){
+                            $allChildCats[] = [
+                                'id' => $row['child2id'],
+                                'name_en' => $row['child2name_en'],
+                                'name_ar' => $row['child2name_ar'],
+                                'slug' => $row['child2slug']
+                            ];
+                        }
+                        if($row['child3id'] != null){
+                            $allChildCats[] = [
+                                'id' => $row['child3id'],
+                                'name_en' => $row['child3name_en'],
+                                'name_ar' => $row['child3name_ar'],
+                                'slug' => $row['child3slug']
+                            ];
+                        }
+                    }
+                }
+            }
+            
+        }
+
+        return [
+            'parents' => $parents,
+            'directChilds'  => $directChilds,
+            'allChildCats'  => $allChildCats,
+            'currentCat'  => $currentCat
+        ];
+    }
+
+    public function getProductsAllWithSubChilds($options, $page , $limit){
+        $list_of_categories = [];
+        foreach($options->directChilds as $direct){
+            $list_of_categories[] = $direct->slug;
+        }
+        foreach($options->allChildCats as $childs){
+            $list_of_categories[] = $childs->slug;
+        }
+        if(isset($options->currentCat->slug)){
+            $list_of_categories[] = $options->currentCat->slug;
+        }
+        if(count($list_of_categories) > 0){
+            // get projects in these slugs categories
+            $slugs = ' AND cat_id IN ( ';
+            foreach($list_of_categories as $cat){
+                $slugs .=  $cat . ', ';
+            }
+            $slugs .= '0 )';
+        }else{
+            // get latest projects
+            $slugs = '';
+        }
+        $offset =  'OFFSET ' . ($page-1)*$limit;
+        $query = "
+            SELECT id,title_en,title_ar,port_slug,photos,date,likes
+            FROM $this->port WHERE status = 1 $slugs ORDER BY id desc LIMIT $limit $offset
+        ";
+        
+        $stmt = $this->db->prepare($query);
+        $stmt->execute();
+        return $stmt->fetchAll();
+        
+    }
 }

@@ -117,4 +117,22 @@
             }
         }
     }
+
+    .love{
+        &.loved{
+            color: #000 !important;
+            border-color: $mainColor;
+            background: $mainColor;
+        }
+    }
+}
+
+.modal-header .btn-close{
+    margin:unset !important
+}
+
+.swal2-modal{
+    *{
+        text-align: center !important;
+    }
 }

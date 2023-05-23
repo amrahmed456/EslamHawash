@@ -8,32 +8,36 @@ function portfolio_template($project){
 
     if(!empty($project)){
         $photos = explode("," , $project['photos']);
-        $title = $project['title_' . $lng];
     ?>
         
-        <a href="" class="product-card-template wow fadeInUp wow-once" data-wow-duration=".4s" data-wow-delay="0.4s" data-wow-offset="100">
+        <a href="<?php echo 'project.php?portfolio=' . $project['port_slug']; ?>" class="product-card-template wow fadeInUp wow-once" data-wow-duration=".4s" data-wow-delay="0.4s" data-wow-offset="100">
                 <div class="product-imgs-cont">
                     <div class="imgs-cont-slider swiper h-100 w-100">
                         <div class="swiper-wrapper w-100 h-100">
-                            <div class="swiper-slide w-100 h-100">
-                                <img src="layout/temp/t1.webp" class="fit-img" />
-                            </div>
-                            <div class="swiper-slide w-100 h-100">
-                                <img src="layout/temp/t2.webp" class="fit-img" />
-                            </div>
+                            <?php
+            foreach($photos as $photo){
+                echo '
+                    <div class="swiper-slide w-100 h-100">
+                    <img src="uploads/'.$project['port_slug'].'/'. $photo .'" class="fit-img" />
+                </div>
+                ';
+            }
+                            ?>
+                            
+                            
                         </div>
                     </div>
                 </div>
                 <p class="title mb-0">
-                    تصميم لفراغ استقبال علي طراز النيو كلاسيك 
+                    <?php echo $project['title_'.$lng]; ?>
                 </p>
                 <div class="d-flex align-items-center justify-content-between">
                     <p class="mb-0 date">
-                        Oct 25, 2022
+                        <?php echo get_data_stylish($project['date']); ?>
                     </p>
                     <div class="d-flex align-items-center">
                         <div class="d-flex justify-content-center align-items-center loves-show ms-3">
-                            <p class="mb-0">12</p>
+                            <p class="mb-0"> <?php echo $project['likes']; ?></p>
                             <i class="fa-solid fa-heart me-2"></i>
                         </div>
                         <div class="arrow-go d-flex justify-content-center align-items-center">
@@ -71,10 +75,15 @@ function getAttractSection(){
                     <a href="" class="btn btn-primary btn-white btn-bg ms-3">
                         <?php echo $glang->contact ?>
                     </a>
-                    <a href="" class="btn btn-outline-white btn-bg">
+                    <?php
+                    if(WEBSITE_SETTINGS['phone'] != ''){
+                        echo '<a href="tel:'. WEBSITE_SETTINGS['phone'] .'" class="btn btn-outline-white btn-bg">
                         <i class="fa-solid fa-phone ms-2"></i>
-                        <?php echo $glang->callsus ?>
-                    </a>
+                        '.$glang->callsus.'
+                    </a>';
+                    }
+                    ?>
+                    
                 </div>
             </div>
         </div>
@@ -84,24 +93,48 @@ function getAttractSection(){
 }
 
 function getSoicals($page = ''){
-
     ?>
     <div class="socials d-flex <?php echo ($page == 'contact') ? 'me-3' : ''; echo ($page == 'nav') ? 'justify-content-center' : ''; ?>">
-        <a href="" target="_blank" class="social-icon">
-            <i class="fa-brands fa-facebook-f"></i>
-        </a>
-        <a href="" target="_blank" class="social-icon">
-            <i class="fa-brands fa-twitter"></i>
-        </a>
-        <a href="" target="_blank" class="social-icon">
-            <i class="fa-brands fa-instagram"></i>
-        </a>
-        <a href="" target="_blank" class="social-icon">
-            <i class="fa-brands fa-whatsapp"></i>
-        </a>
-        <a href="" target="_blank" class="social-icon">
-            <i class="fa-brands fa-behance"></i>
-        </a>
+        <?php
+            if(WEBSITE_SETTINGS['facebook'] != ''){
+                echo '<a href="'.WEBSITE_SETTINGS['facebook'].'" target="_blank" class="social-icon">
+                <i class="fa-brands fa-facebook-f"></i>
+            </a>';
+            }
+        ?>
+        <?php
+            if(WEBSITE_SETTINGS['twitter'] != ''){
+                echo '<a href="'.WEBSITE_SETTINGS['twitter'].'" target="_blank" class="social-icon">
+                <i class="fa-brands fa-twitter"></i>
+            </a>';
+            }
+        ?>
+        <?php
+            if(WEBSITE_SETTINGS['whatsapp'] != ''){
+                echo '<a href="'.WEBSITE_SETTINGS['whatsapp'].'"" target="_blank" class="social-icon">
+                <i class="fa-brands fa-whatsapp"></i>
+            </a>';
+            }
+        ?>
+        <?php
+            if(WEBSITE_SETTINGS['behance'] != ''){
+                echo '<a href="'.WEBSITE_SETTINGS['behance'].'" target="_blank" class="social-icon">
+                <i class="fa-brands fa-behance"></i>
+            </a>';
+            }
+        ?>
+        <?php
+            if(WEBSITE_SETTINGS['instagram'] != ''){
+                echo '<a href="'.WEBSITE_SETTINGS['instagram'].'" target="_blank" class="social-icon">
+                <i class="fa-brands fa-instagram"></i>
+            </a>';
+            }
+        ?>
+        
+        
+        
+       
+        
     </div>
     <?php
 }
@@ -113,46 +146,48 @@ function getContactForm($showLables = false){
     $lab3 = ( $showLables ) ? '<label>'. $glang->your_name .'</label>' : '';
     $lab4 = ( $showLables ) ? '<label> '. $glang->mssg_op .'</label>' : '';
     ?>
+<form id="contact-form">
     <div class="contact-form h-100">
-    <div class="row">
-        <div class="col-12 col-md-4">
-            <div class="input-container">
-                <?php echo $lab1; ?>
-                <select required name="select-method" class="required custom-select custom-select-md mb-0 academic-level-input" data-to="level">
-                    <option disabled="" ><?php echo $glang->cont_method; ?></option>
-                    <option value="phone" data-v="<?php echo $glang->phone_lbl; ?> "><?php echo $glang->phone; ?></option>
-                    <option value="email" data-v="<?php echo $glang->email_lbl; ?>"><?php echo $glang->emls; ?></option>
-                    <option value="whatsapp" data-v="<?php echo $glang->whts_lbl; ?> "><?php echo $glang->whts; ?></option>
-                    <option value="messanger" data-v="<?php echo $glang->mssngr_lbl; ?>"><?php echo $glang->mssnger; ?></option>
-                    <option value="instagram" data-v="<?php echo $glang->instagram_lbl; ?>"><?php echo $glang->instagram; ?></option>
-                </select>
+        <div class="row">
+            <div class="col-12 col-md-4">
+                <div class="input-container">
+                    <?php echo $lab1; ?>
+                    <select required name="select-method" class="required custom-select custom-select-md mb-0 academic-level-input" data-to="level">
+                        <option disabled="" ><?php echo $glang->cont_method; ?></option>
+                        <option value="phone" data-v="<?php echo $glang->phone_lbl; ?> "><?php echo $glang->phone; ?></option>
+                        <option value="email" data-v="<?php echo $glang->email_lbl; ?>"><?php echo $glang->emls; ?></option>
+                        <option value="whatsapp" data-v="<?php echo $glang->whts_lbl; ?> "><?php echo $glang->whts; ?></option>
+                        <option value="messanger" data-v="<?php echo $glang->mssngr_lbl; ?>"><?php echo $glang->mssnger; ?></option>
+                        <option value="instagram" data-v="<?php echo $glang->instagram_lbl; ?>"><?php echo $glang->instagram; ?></option>
+                    </select>
+                </div>
             </div>
-        </div>
-        <div class="col-12 col-md-8">
-            <div class="input-container mb-4">
-                <?php echo $lab2; ?>
-                <label><p class="mb-0" style="visibility: hidden;">ddd</p></label>
-                <input placeholder="<?php echo $glang->phone_lbl; ?>" type="text" name="contact" class="required" required />
+            <div class="col-12 col-md-8">
+                <div class="input-container mb-4">
+                    <?php echo $lab2; ?>
+                    <label><p class="mb-0" style="visibility: hidden;">ddd</p></label>
+                    <input placeholder="<?php echo $glang->phone_lbl; ?>" type="text" name="contact" class="required" required />
+                </div>
             </div>
-        </div>
-        <div class="col-12 mb-4">
-            <div class="input-container">
-                <?php echo $lab3; ?>
-                <input type="text" name="name" class="required" required="" placeholder="<?php echo $glang->your_name; ?>">
+            <div class="col-12 mb-4">
+                <div class="input-container">
+                    <?php echo $lab3; ?>
+                    <input type="text" name="name" class="required" required="" placeholder="<?php echo $glang->your_name; ?>">
+                </div>
             </div>
-        </div>
-        
-        <div class="col-12 mb-4">
-            <div class="input-container">
-                <?php echo $lab4; ?>
-                <textarea placeholder="<?php echo $glang->mssg_op; ?>" required="" class="form-control" name="open"></textarea>
+            
+            <div class="col-12 mb-4">
+                <div class="input-container">
+                    <?php echo $lab4; ?>
+                    <textarea placeholder="<?php echo $glang->mssg_op; ?>" required="" class="form-control" name="open"></textarea>
+                </div>
             </div>
-        </div>
-        <div class="col-12 d-flex">
-            <button type="submit" class="btn btn-white btn-bg btn-block"><?php echo $glang->send_mssg; ?></button>
-            <?php getSoicals('contact'); ?>
+            <div class="col-12 d-flex">
+                <button type="submit" class="btn btn-white btn-bg btn-block"><?php echo $glang->send_mssg; ?></button>
+                <?php getSoicals('contact'); ?>
+            </div>
         </div>
     </div>
-</div>
+</form>
     <?php
 }

@@ -55,8 +55,7 @@
     $gdesc = $project['description_' . get_website_lang()];
     $imgsFolder = 'uploads/' . $project['port_slug'] . '/';
     $explodedPhotos = explode(',' , $project['photos']);
-    $gimg = $imgsFolder . $explodedPhotos[0];
-    get_header();
+    get_header('project', '' , $gurl, $gtitle , $gdesc , $explodedPhotos[0]);
 ?>
 <div class="project-page">
 
@@ -77,9 +76,12 @@
                             </p>
                             
                             <div class="mt-4 d-flex wow fadeInUp wow-once" data-wow-duration=".7s" data-wow-delay="0.5s" data-wow-offset="100">
-                                <button class="btn btn-round ms-2" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                <button class="btn btn-round ms-2 love <?php echo $liked;?>" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" data-slug="<?php echo $project['port_slug']; ?>">
                                     <i class="fa-solid fa-heart ms-2"></i>
+                                    <span class="love-title-counter">
                                     <?php echo $project['likes']; ?> <?php echo $plang->likes; ?>
+                                    </span>
+                                    
                                 </button>
                                 <button class="btn btn-round share share_link">
                                     <i class="fa-solid fa-share-nodes ms-2"></i>
@@ -178,7 +180,7 @@
             ?>
         </div>
 
-        <div class="row">
+        <div class="row mb-5">
             <?php
                 $count = 1;
                 foreach($panoramas as $panorama){
@@ -194,9 +196,8 @@
                 }
             ?>
            
-          
            
-            <p class="section-title fw-bold mb-4 mt-5 pt-5 wow fadeInUp wow-once" data-wow-duration=".4s" data-wow-delay="0.4s" data-wow-offset="100">
+            <p class="section-title fw-bold mb-4 pt-5 wow fadeInUp wow-once" data-wow-duration=".4s" data-wow-delay="0.4s" data-wow-offset="100">
             <?php echo $plang->descr; ?>
                 
             </p>    
@@ -229,43 +230,29 @@
             </a>
         </div>
         
-       <div class="other-projects-slider swiper wow fadeInUp wow-once" data-wow-duration="0.8s" data-wow-delay="0.8s" data-wow-offset="150">
+    <?php
+        $similarPorjects = new CategoriesModel();
+        $similarPorjects = $similarPorjects->getSimilarProjects($project);
+        if(count($similarPorjects) > 0){
+            ?>
+<div class="other-projects-slider swiper wow fadeInUp wow-once" data-wow-duration="0.8s" data-wow-delay="0.8s" data-wow-offset="150">
         <div class="swiper-wrapper">
-            <div class="swiper-slide">
-                <a href="" class="product-card-template wow fadeInUp wow-once" data-wow-duration=".4s" data-wow-delay="0.4s" data-wow-offset="100">
-                    <div class="product-imgs-cont">
-                        <div class="imgs-cont-slider swiper h-100 w-100">
-                            <div class="swiper-wrapper w-100 h-100">
-                                <div class="swiper-slide w-100 h-100">
-                                    <img src="layout/temp/t1.webp" class="fit-img" />
-                                </div>
-                                <div class="swiper-slide w-100 h-100">
-                                    <img src="layout/temp/t2.webp" class="fit-img" />
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <p class="title mb-0">
-                        تصميم لفراغ استقبال علي طراز النيو كلاسيك 
-                    </p>
-                    <div class="d-flex align-items-center justify-content-between">
-                        <p class="mb-0 date">
-                            Oct 25, 2022
-                        </p>
-                        <div class="d-flex align-items-center">
-                            <div class="d-flex justify-content-center align-items-center loves-show ms-3">
-                                <p class="mb-0">12</p>
-                                <i class="fa-solid fa-heart me-2"></i>
-                            </div>
-                            <div class="arrow-go d-flex justify-content-center align-items-center">
-                                <i class="fa-solid fa-arrow-left"></i>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-            </div>
+            <?php
+            foreach($similarPorjects as $similar){
+?>
+ <div class="swiper-slide">
+    <?php portfolio_template($similar); ?>
+</div>
+<?php
+            }
+            ?>
+           
         </div>
     </div>
+            <?php
+        }
+    ?>
+       
        </div>
 
     </div>
@@ -274,30 +261,29 @@
 
 </div>
 
-  <!-- Modal -->
-  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel"></h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    <!-- Modal -->
+<div class="modal fade make-cursor-on-top" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel"><?php echo $plang->submitt; ?></h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+
+        <div class="col-12">
+            <div class="input-container mb-0">
+                <textarea required rows="3" class="form-control" name="feedback" placeholder="<?php echo $plang->urfeed; ?>"></textarea>
+            </div>
         </div>
-        <div class="modal-body">
-  
-          <div class="col-12">
-              <div class="input-container mb-0">
-                  <p class="label"></p>
-                  <textarea required rows="3" class="form-control" name="feedback"></textarea>
-              </div>
-          </div>
-  
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-primary btn-bg" id="send_feedback" data-slug="" >إرسال</button>
-        </div>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary btn-bg" id="send_feedback" data-slug="<?php echo $project['port_slug']; ?>" ><?php echo $plang->sendfeed; ?></button>
       </div>
     </div>
   </div>
+</div>
 
 <?php
     get_footer('project');

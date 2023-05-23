@@ -124,11 +124,11 @@
 				</div>
 				<div class="row mb-6">
 					<!--begin::Label-->
-					<label class="col-lg-4 col-form-label required fw-bold fs-6">Telegram link</label>
+					<label class="col-lg-4 col-form-label required fw-bold fs-6">behance link</label>
 					<!--end::Label-->
 					<!--begin::Col-->
 					<div class="col-lg-8 fv-row fv-plugins-icon-container">
-						<input type="text" name="telegram" class="form-control form-control-lg form-control-solid" placeholder="Telegram" value="<?php echo WEBSITE_SETTINGS['telegram']; ?>">
+						<input type="text" name="behance" class="form-control form-control-lg form-control-solid" placeholder="behance" value="<?php echo WEBSITE_SETTINGS['behance']; ?>">
 					<div class="fv-plugins-message-container invalid-feedback"></div></div>
 					<!--end::Col-->
 				</div>

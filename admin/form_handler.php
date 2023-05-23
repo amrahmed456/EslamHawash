@@ -25,18 +25,17 @@
             $user->login_user();
         }
 
-        if( $form_action == 'load_more_projects' && isset($_POST['page'])  && isset($_POST['cat_slug']) ){
+        if( $form_action == 'load_more_projects' && isset($_POST['page'])  && isset($_POST['options']) ){
             $cats = new CategoriesModel;
-            $cat_slug   = filter_var( $_POST['cat_slug'], FILTER_SANITIZE_STRING );
+            $options   = json_decode( $_POST['options']);
             $page       = filter_var( $_POST['page'], FILTER_SANITIZE_STRING );
             $limit      = filter_var( $_POST['limit'], FILTER_SANITIZE_STRING );
-            
-            $ports = $cats->get_category_product($cat_slug,'',false,'all-ports',$limit,'' , $page);
+            $ports = $cats->getProductsAllWithSubChilds($options, $page, $limit);
             if( count($ports) > 0 ){
                 require_once '../includes/template_parts.php';
                 foreach($ports as $project){
                     ?>
-                        <div class="col-12 col-md-6 mb-4 wow fadeInUp" data-wow-duration=".4s" data-wow-delay="0.3s" data-wow-offset="100">
+                        <div class="col-12 col-md-6 col-lg-4 mb-4 wow fadeInUp wow-once" data-wow-duration=".8s" data-wow-delay="0.4s" data-wow-offset="100">
                             <?php portfolio_template($project); ?>
                         </div>
                     <?php
@@ -164,7 +163,7 @@
                 'facebook'  => $_POST['facebook'],
                 'twitter'   => $_POST['twitter'],
                 'whatsapp'  => $_POST['whatsapp'],
-                'telegram'  => $_POST['telegram'],
+                'behance'  => $_POST['behance'],
                 'instagram' => $_POST['instagram'],
                 'email'     => $_POST['email'],
                 'phone'     => $_POST['phone'],

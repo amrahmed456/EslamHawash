@@ -1,5 +1,8 @@
 .homepage{
   overflow-y: hidden !important;
+  .swiper-pagination{
+    display: none !important;
+  }
     .header{
         overflow: hidden;
         position: relative;

@@ -21,46 +21,61 @@
         </div>
         <div class="contacts-cont-contact ps-4 pe-4">
             <div class="row">
-                <div class="col-12 col-md-4 mb-4 wow fadeInUp wow-once" data-wow-duration="0.4s" data-wow-delay="0.4s" data-wow-offset="150">
-                    <a href="" class="contact-cont-href text-center d-block">
-                        <div class="icon-cont d-flex justify-content-center align-items-center mb-3">
-                            <i class="fa-solid fa-envelope"></i>
-                        </div>
-                        <p class="title fw-bold fs-5">
-                        <?php echo $plang->email; ?>
-                            
-                        </p>
-                        <p class="lead fs-6 mb-4">
-                        <?php echo $plang->emaild; ?>
-                            
-                        </p>
+                <?php
+                    if( WEBSITE_SETTINGS['email'] != '' ){
+?>
+ <div class="col-12 col-md-4 mb-4 wow fadeInUp wow-once" data-wow-duration="0.4s" data-wow-delay="0.4s" data-wow-offset="150">
+    <a href="mailto:<?php echo WEBSITE_SETTINGS['email']; ?>" class="contact-cont-href text-center d-block">
+        <div class="icon-cont d-flex justify-content-center align-items-center mb-3">
+            <i class="fa-solid fa-envelope"></i>
+        </div>
+        <p class="title fw-bold fs-5">
+        <?php echo $plang->email; ?>
+            
+        </p>
+        <p class="lead fs-6 mb-4">
+        <?php echo $plang->emaild; ?>
+            
+        </p>
 
-                        <div class="d-flex justify-content-center align-items-center linker">
-                            <p class="mb-1 fw-bold">mr_amr456@yahoo.com</p>
-                            <i class="fa-solid fa-arrow-left me-2 arrow rotate-en"></i>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-12 col-md-4 mb-4 wow fadeInUp wow-once" data-wow-duration="0.6s" data-wow-delay="0.6s" data-wow-offset="150">
-                    <a href="" class="contact-cont-href text-center d-block">
-                        <div class="icon-cont d-flex justify-content-center align-items-center mb-3">
-                            <i class="fa-solid fa-phone"></i>
-                        </div>
-                        <p class="title fw-bold fs-5">
-                        <?php echo $plang->talkus; ?>
-                            
-                        </p>
-                        <p class="lead fs-6 mb-4">
-                        <?php echo $plang->talkusd; ?>
-                            
-                        </p>
+        <div class="d-flex justify-content-center align-items-center linker">
+            <p class="mb-1 fw-bold"><?php echo WEBSITE_SETTINGS['email']; ?></p>
+            <i class="fa-solid fa-arrow-left me-2 arrow rotate-en"></i>
+        </div>
+    </a>
+</div>
+<?php
+                    }
+                ?>
+               
+               <?php
+                    if( WEBSITE_SETTINGS['phone'] != '' ){
+?>
 
-                        <div class="d-flex justify-content-center align-items-center linker">
-                            <p class="mb-1 fw-bold">(+20)10-33-677-906</p>
-                            <i class="fa-solid fa-arrow-left me-2 arrow rotate-en"></i>
-                        </div>
-                    </a>
-                </div>
+<div class="col-12 col-md-4 mb-4 wow fadeInUp wow-once" data-wow-duration="0.6s" data-wow-delay="0.6s" data-wow-offset="150">
+    <a href="tel:<?php echo WEBSITE_SETTINGS['phone']; ?>" class="contact-cont-href text-center d-block">
+        <div class="icon-cont d-flex justify-content-center align-items-center mb-3">
+            <i class="fa-solid fa-phone"></i>
+        </div>
+        <p class="title fw-bold fs-5">
+        <?php echo $plang->talkus; ?>
+            
+        </p>
+        <p class="lead fs-6 mb-4">
+        <?php echo $plang->talkusd; ?>
+            
+        </p>
+
+        <div class="d-flex justify-content-center align-items-center linker">
+            <p class="mb-1 fw-bold"><?php echo WEBSITE_SETTINGS['phone']; ?></p>
+            <i class="fa-solid fa-arrow-left me-2 arrow rotate-en"></i>
+        </div>
+    </a>
+</div>
+<?php
+                    }
+?>
+                
                 <div class="col-12 col-md-4 mb-4 wow fadeInUp wow-once" data-wow-duration="0.8s" data-wow-delay="0.8s" data-wow-offset="150">
                     <a href="" class="contact-cont-href text-center d-block">
                         <div class="icon-cont d-flex justify-content-center align-items-center mb-3">

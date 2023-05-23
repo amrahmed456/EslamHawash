@@ -7,7 +7,7 @@ define('DB_SETTINGS', [
     'db_password'   => '',
     'db_prefix'     => 'eslam_',
     'uploads'       => 'uploads/',
-    'url'           => '',
+    'url'           => 'https://www.aidesignteams.com/',
     'mailer'        => ['mail' => '','pass' => '']
 ]);
 
@@ -67,10 +67,10 @@ function get_proper_link_query(){
 function displayOpenGraphPt($url = '', $title = '', $description = '', $img = '' , $keywords = ''){
     global $glang;
     $url = ($url == '') ? DB_SETTINGS['url'] : DB_SETTINGS['url'] . $url;
-    $title = ($title == '') ? $glang->web_title : $title . ' - ' . $glang->web_title;
-    $description = ($description == '') ? $glang->web_desc : $description;
+    $title = ($title == '') ? $glang->webtitle : $title . ' - ' . $glang->webtitle;
+    $description = ($description == '') ? $glang->description : $description;
     $img = ($img == '') ? DB_SETTINGS['url'] . 'layout/imgs/logo-b.webp' : DB_SETTINGS['url'] . DB_SETTINGS['uploads'] . $img;
-    $keywords = ( $keywords == '' ) ? 'تصميم, عمارة, تصميم داخلى, تشطيب, تشطيبات, مكتب, ديكور, جواز, interior, design, furniture, home, marriage, decor, exterior design, exterior, shazly, شاذلى' : $keywords;
+    $keywords = ( $keywords == '' ) ? 'تصميم, عمارة, تصميم داخلى, تشطيب, تشطيبات, مكتب, ديكور, جواز, interior, design, furniture, home, marriage, decor, exterior design, exterior' : $keywords;
 
 
     echo '<meta property="og:url"           content="'.$url.'"  />
@@ -88,15 +88,15 @@ function displayOpenGraphPt($url = '', $title = '', $description = '', $img = ''
 {
     "@context": "http://schema.org",
     "@type": "Organization",
-    "name": "Muhamad Alshazly Designs",
+    "name": "Ai Design Teams",
     "url": "<?php echo DB_SETTINGS['url']; ?>",
     "logo": "<?php echo DB_SETTINGS['url'] . 'layout/imgs/favicon.webp'; ?>",
     "sameAs": [
-            "https://web.facebook.com/Muhammedalshazlydesigns/"
+            "https://web.facebook.com/aidesignteams/"
             ],
     "contactPoint": [{
             "@type": "ContactPoint",
-            "telephone": "+201022828245",
+            "telephone": "",
             "contactType": "customer support"
         }
     ]
@@ -114,11 +114,11 @@ function displayOpenGraphPt($url = '', $title = '', $description = '', $img = ''
 {
     "@context": "https://schema.org",
     "@type": "WebPage",
-    "name": "محمد الشاذلى | للتصميمات المعمارية والتشطيبات",
-    "description": "نقدم مجموعة واسعة من الخدمات من البناء إلى التصميم الداخلي والخارجى لتلبية احتياجاتك ، مع تصميمات إبداعية وخامات متنوعة بجانب ضمان لمدة عام كامل وتنفيذ سريع",
+    "name": "",
+    "description": "",
     "publisher": {
         "@type": "Organization",
-        "name": "محمد الشاذلى"
+        "name": ""
     }
 }
 </script>

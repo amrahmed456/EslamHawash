@@ -5,57 +5,36 @@ $(document).ready(function(){
       rtl = false;
     } 
 
-    // load more projects
-      
-// load portfolio projects
-if( $("#initial_page_number").length > 0 ){
-  var current_page    = $("#initial_page_number").attr("data-page").trim();
-  current_page        = parseFloat(current_page)+1
-  var cat_slug        = $("#page_category").attr("data-slug").trim();
-  var limit           = $("#page_limit").attr("data-limit").trim();
-
-  /* load more projects */
-var load_top,current_top,loading = 0;
-$(window).scroll(function(){
-  if(loading == 0){
-          
-    load_top 	= $("#load-more").offset().top + 100;
-    current_top = $(this).scrollTop() + $(this).height();
-    
-    if(current_top > load_top && loading == 0){
-      loading = 1;
-      $("#load-more").fadeIn();
-      alert("loading");
-      $.ajax({
-        
-        url:	"admin/form_handler.php",
-        method:	"POST",
-        dataType:	"text",
-        data:	{"form_action":'load_more_projects','cat_slug':cat_slug,'page':current_page,'limit':limit,'ajax_request':'ajax'},
-        success:	function(text){
-          
-          if(text.length <= 10){
-                          
-            loading = 1;
-            $("#load-more").remove();
-            
-          }else{
-            current_page++;
-            loading = 0;
-            // there are more apartments
-            $("#projects_container_template").append(text);
-            run_portfolio_inner_slider();
-          }
+    if($(".website-intro").length > 0){
+      let inter = setInterval(function(){
+        if($("#preloader").hasClass("hide")){
+          runIntro();
+          clearInterval(inter);
         }
-        
-      });
-      
+      },300);  
     }
-  }
-  
-});
 
-}
+    function timerFramer(obj,delay){
+      setTimeout(function(){
+        obj.removeClass("hidden");
+        obj.addClass("run");
+      },delay);
+    }
+
+    function runIntro(){
+      $(".framer:nth-child(1)").removeClass("hidden").addClass("run");
+      var waitFor = 4500;
+      $(".framer.hidden").each(function(){
+          timerFramer($(this),waitFor);
+          waitFor += waitFor;
+      });
+
+      setTimeout(function(){
+        $(".website-intro").removeClass("d-flex").fadeOut();
+      },waitFor+waitFor/2);
+    }
+
+    
 
     const $bigBall = document.querySelector('.cursor__ball--big');
     const $smallBall = document.querySelector('.cursor__ball--small');
@@ -446,6 +425,149 @@ function onMouseHoverOut() {
         lastScrollTop = st;
 	});
 
+  // send feedback
   
+$("#send_feedback").on("click" , function(){
+
+  let feedback = $("textarea[name='feedback']").val().trim();
+  let slug = $(this).attr("data-slug");
+
+  if( feedback.length > 1 ){
+      $.ajax({
+          url: "admin/form_handler.php",
+          method:"POST",
+          dataType: "text",
+          data:{'form_action':'send_feedback','feedback':feedback,'port_slug':slug,'ajax_request':'ajax'},
+          success:function(txt){
+
+              if( txt == 'success' ){
+                  show_success_message('feedback_form','success');
+              }else if( txt == 'duplicate' ){
+                  show_success_message('feedback_form_duplicate' , 'question');
+              }
+              $(".btn-close").click();
+          }
+      })
+  }
+
+});
+
+function show_success_message(template,status){
+
+  let tem = {
+      
+      'contact_form': {
+          'en': {
+              'title':'Message Sent!',
+              'mssg': 'Your message is sent successfully, Thank you'
+          },
+          'ar': {
+              'title':'تم الإرسال',
+              'mssg': 'لقد تلقينا رسالتك بنجاح, شكراً لتواصلك معنا سنقوم بالرد فى أقرب وقت ممكن'
+          }
+          
+      },
+      'feedback_form' : {
+          'en' : {
+              'title': 'Thank you!',
+              'mssg': 'Your feedback has been sent successfully, we appreciate your time'
+          },
+          'ar': {
+              'title': 'شكراً لك',
+              'mssg': 'لقد تلقينا تعليقك بنجاح، نشكرك على وقتك'
+          }
+      },
+      'feedback_form_duplicate' : {
+          'en' : {
+              'title': 'Duplication ?',
+              'mssg': 'you already submitted this feedback before'
+          },
+          'ar': {
+              'title': 'تم الإرسال بالفعل',
+              'mssg': 'لقد تلقينا هذه الرسالة من قبل شكراً لك'
+          }
+      }
+  }
+  let lang = ( rtl ) ? 'ar' : 'en';
+  Swal.fire(
+      tem[template][lang].title,
+      tem[template][lang].mssg,
+      status
+  )
+  
+}
+
+
+// for project page
+$(".love").on("click" , function(){
+
+  let status = '';
+  let count = parseFloat($(".love-title-counter").text().trim());
+  if( $(this).hasClass("loved") ){
+      status = 'dislike';
+  }else{
+      status = 'like';
+  }
+  if( status == 'dislike' ){
+      $(this).removeClass("loved");
+  }else{
+      $(this).addClass("loved");
+  }
+  
+  let new_count = ( status == 'like' ) ? count+1 : count-1;
+  $(".love-title-counter").text(new_count);
+  let slug = $(this).attr("data-slug");
+
+  $.ajax({
+      url: "admin/form_handler.php",
+      method:"POST",
+      dataType: "text",
+      data:{'form_action':'love_btn','status':status,'like':new_count,'port_slug':slug,'ajax_request':'ajax'},
+      success:function(txt){
+
+          if( txt == 'success' ){
+              show_success_message('feedback_form','success');
+          }else if( txt == 'duplicate' ){
+              show_success_message('feedback_form_duplicate' , 'question');
+          }
+          $(".btn-close").click();
+      }
+  })
+
+});
+
+
+$("form#contact-form").on("submit" , function(e){
+  e.preventDefault();
+  $("form#contact-form button[type='submit']").attr("disabled" , true).text('Sending...');
+  let name = $("#contact-form input[name='name']").val().trim();
+  let method = $("#contact-form select[name='select-method'] option:selected").val().trim();
+  let contact = $("#contact-form input[name='contact']").val().trim();
+  let mssg = $("#contact-form textarea[name='open']").val().trim();
+
+  $.ajax({
+      url: "admin/form_handler.php",
+      method:"POST",
+      dataType: "text",
+      data:{'form_action':'insert_mssg_form','name':name,'method':method,'contact':contact,'mssg':mssg,'ajax_request':'ajax'},
+      success:function(txt){
+          
+          if( txt == 'success' ){
+              show_success_message('contact_form','success');
+          }
+          $("form#contact-form button[type='submit']").text('Thank you');
+          $("form#contact-form input,form#contact-form select").val("");
+      }
+  });
+
+});
+
+  $("body").on("mouseover",".make-cursor-on-top,.swal2-container", function(){
+    $(".cursor").addClass("make-top");
+  });
+
+  $("body").on("mouseout",".make-cursor-on-top,.swal2-container", function(){
+    $(".cursor").removeClass("make-top");
+  });
 
 });
