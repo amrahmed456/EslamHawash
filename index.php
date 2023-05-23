@@ -364,7 +364,7 @@
                                     <?php echo $glang->startyourproje; ?>
                                         
                                     </h2>
-                                    <p class="lead mb-4">
+                                    <p class="lead mb-4 d-none d-md-block">
                                         <?php echo $glang->contactavail; ?>
                                         
                                     </p>
