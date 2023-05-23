@@ -197,19 +197,31 @@
             ?>
            
            
-            <p class="section-title fw-bold mb-4 pt-5 wow fadeInUp wow-once" data-wow-duration=".4s" data-wow-delay="0.4s" data-wow-offset="100">
+           <?php
+            if(strlen($project['description_' . get_website_lang()]) > 5){
+                ?>
+ <p class="section-title fw-bold mb-4 pt-5 wow fadeInUp wow-once" data-wow-duration=".4s" data-wow-delay="0.4s" data-wow-offset="100">
             <?php echo $plang->descr; ?>
                 
             </p>    
             <div class="main-content-container wow fadeInUp wow-once" data-wow-duration=".5s" data-wow-delay="0.5s" data-wow-offset="100">
                 <?php echo $project['description_' . get_website_lang()]; ?>
             </div>
+                <?php
+            }
+           ?>
+           
 
        
     </div>
     <?php getAttractSection(); ?>
 
-    <div class="other-projects padd">
+    <?php
+        $similarPorjects = new CategoriesModel();
+        $similarPorjects = $similarPorjects->getSimilarProjects($project);
+        if(count($similarPorjects) > 0){
+            ?>
+ <div class="other-projects padd">
         <div class="container">
 
         
@@ -229,12 +241,7 @@
                  <i class="fa-solid fa-chevron-left me-2 rotate-en"></i>
             </a>
         </div>
-        
-    <?php
-        $similarPorjects = new CategoriesModel();
-        $similarPorjects = $similarPorjects->getSimilarProjects($project);
-        if(count($similarPorjects) > 0){
-            ?>
+
 <div class="other-projects-slider swiper wow fadeInUp wow-once" data-wow-duration="0.8s" data-wow-delay="0.8s" data-wow-offset="150">
         <div class="swiper-wrapper">
             <?php
@@ -249,13 +256,15 @@
            
         </div>
     </div>
-            <?php
-        }
-    ?>
        
        </div>
 
     </div>
+
+            <?php
+        }
+            ?>
+   
     
     
 
