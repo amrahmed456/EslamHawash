@@ -35,42 +35,47 @@ $(document).ready(function(){
     }
 
     
+    if(! /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+      const $bigBall = document.querySelector('.cursor__ball--big');
+      const $smallBall = document.querySelector('.cursor__ball--small');
+      const $hoverables = $("a,button,[role='button'],[type='button']");
+  
+  // Listeners
+  document.body.addEventListener('mousemove', onMouseMove);
+  for (let i = 0; i < $hoverables.length; i++) {
+    $hoverables[i].addEventListener('mouseenter', onMouseHover);
+    $hoverables[i].addEventListener('mouseleave', onMouseHoverOut);
+  }
+  
+  // Move the cursor
+  function onMouseMove(e) {
+    TweenMax.to($bigBall, .4, {
+      x: e.clientX - 15,
+      y: e.clientY - 15 });
+     /*  console.log("X: "+e.pageX);
+      console.log("Y" + e.pageY); */
+    TweenMax.to($smallBall, .01, {
+      x: e.clientX - 5,
+      y: e.clientY - 7 });
+  
+  }
+  
+  // Hover an element
+  function onMouseHover() {
+    TweenMax.to($bigBall, .3, {
+      scale: 4 });
+  
+  }
+  function onMouseHoverOut() {
+    TweenMax.to($bigBall, .3, {
+      scale: 1 });
+  
+  }
+     }else{
+      $(".cursor").remove();
+     }
 
-    const $bigBall = document.querySelector('.cursor__ball--big');
-    const $smallBall = document.querySelector('.cursor__ball--small');
-    const $hoverables = $("a,button,[role='button'],[type='button']");
-
-// Listeners
-document.body.addEventListener('mousemove', onMouseMove);
-for (let i = 0; i < $hoverables.length; i++) {
-  $hoverables[i].addEventListener('mouseenter', onMouseHover);
-  $hoverables[i].addEventListener('mouseleave', onMouseHoverOut);
-}
-
-// Move the cursor
-function onMouseMove(e) {
-  TweenMax.to($bigBall, .4, {
-    x: e.clientX - 15,
-    y: e.clientY - 15 });
-   /*  console.log("X: "+e.pageX);
-    console.log("Y" + e.pageY); */
-  TweenMax.to($smallBall, .01, {
-    x: e.clientX - 5,
-    y: e.clientY - 7 });
-
-}
-
-// Hover an element
-function onMouseHover() {
-  TweenMax.to($bigBall, .3, {
-    scale: 4 });
-
-}
-function onMouseHoverOut() {
-  TweenMax.to($bigBall, .3, {
-    scale: 1 });
-
-}
+   
 
     $(".dup-hover-effect").each(function(){
         let text = $(this).text();
