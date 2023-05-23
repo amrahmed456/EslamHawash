@@ -55,7 +55,7 @@
     $gdesc = $project['description_' . get_website_lang()];
     $imgsFolder = 'uploads/' . $project['port_slug'] . '/';
     $explodedPhotos = explode(',' , $project['photos']);
-    get_header('project', '' , $gurl, $gtitle , $gdesc , $explodedPhotos[0]);
+    get_header('project', '' , $gurl, $gtitle , $gdesc , $project['port_slug'] . '/'. $explodedPhotos[0]);
 ?>
 <div class="project-page">
 
