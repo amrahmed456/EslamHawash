@@ -127,7 +127,7 @@
         <div class="container">
         <?php
             $videos = explode(',' , $project['videos']);
-            if(count($videos) > 1){
+            if(count($videos) > 0){
                 ?>
                     <p class="section-title fw-bold mb-4 wow fadeInUp wow-once" data-wow-duration=".4s" data-wow-delay="0.4s" data-wow-offset="100">
                     <?php echo $plang->videos; ?>
