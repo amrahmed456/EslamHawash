@@ -127,7 +127,7 @@
         <div class="container">
         <?php
             $videos = explode(',' , $project['videos']);
-            if(count($videos) > 0){
+            if(count($videos) > 1){
                 ?>
                     <p class="section-title fw-bold mb-4 wow fadeInUp wow-once" data-wow-duration=".4s" data-wow-delay="0.4s" data-wow-offset="100">
                     <?php echo $plang->videos; ?>
@@ -163,7 +163,7 @@
         
             <?php
                 $panoramas = explode(',' , $project['panorama']);
-                if(count($panoramas) > 0){
+                if(count($panoramas) > 1){
 ?>
         <!-- Panoramas -->
         <p class="section-title fw-bold mb-4 wow fadeInUp wow-once" data-wow-duration=".4s" data-wow-delay="0.4s" data-wow-offset="100">
