@@ -22,7 +22,7 @@ var myDropzone = new Dropzone(id, { // Make the whole body a dropzone
     acceptedFiles:'image/jpeg,image/png',
     previewTemplate: previewTemplate,
     maxFiles:max,
-    maxFilesize: 8, // Max filesize in MB
+    maxFilesize: 20, // Max filesize in MB
     autoQueue: true, // Make sure the files aren't queued until manually added
     previewsContainer: id + " .dropzone-items", // Define the container to display the previews
     clickable: id + " .dropzone-select", // Define the element that should be used as click trigger to select files.
@@ -124,7 +124,7 @@ if( $("#kt_dropzonejs_example_1").length > 0 ){
         url: "form_handler.php", // Set the url for your upload script location
         paramName: "file", // The name that will be used to transfer the file
         maxFiles: 20,
-        maxFilesize: 8, // MB
+        maxFilesize: 20, // MB
         addRemoveLinks: true,
         parallelUploads: 1,
         acceptedFiles:'image/jpeg,image/png',
@@ -149,7 +149,7 @@ if( $("#kt_dropzonejs_example_2").length > 0 ){
         url: "form_handler.php", // Set the url for your upload script location
         paramName: "file", // The name that will be used to transfer the file
         maxFiles: 20,
-        maxFilesize: 8, // MB
+        maxFilesize: 20, // MB
         addRemoveLinks: true,
         parallelUploads: 1,
         acceptedFiles:'image/jpeg,image/png',
