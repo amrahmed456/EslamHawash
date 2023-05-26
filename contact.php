@@ -16,8 +16,11 @@
             </h1>
             <p class="lead wow fadeInUp wow-once" data-wow-duration="0.8s" data-wow-delay="0.8s" data-wow-offset="150">
             <?php echo $plang->cotdesc; ?>
-                
             </p>
+            <div class="d-flex justify-content-center mt-4 wow fadeInUp wow-once" data-wow-duration="1s" data-wow-delay="1s" data-wow-offset="150">
+                <?php getSoicals('contact'); ?>
+            </div>
+           
         </div>
         <div class="contacts-cont-contact ps-4 pe-4">
             <div class="row">
@@ -77,7 +80,7 @@
 ?>
                 
                 <div class="col-12 col-md-4 mb-4 wow fadeInUp wow-once" data-wow-duration="0.8s" data-wow-delay="0.8s" data-wow-offset="150">
-                    <a href="" class="contact-cont-href text-center d-block">
+                    <a href="https://goo.gl/maps/M8QXVocWUPtc48J17?coh=178573&entry=tt" target=""_blank class="contact-cont-href text-center d-block">
                         <div class="icon-cont d-flex justify-content-center align-items-center mb-3">
                             <i class="fa-solid fa-location-dot"></i>
                         </div>

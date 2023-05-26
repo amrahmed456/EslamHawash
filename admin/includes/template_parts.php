@@ -170,6 +170,7 @@ function get_project_form_template($data = []){
     if( !isset($data['action']) ){
         $data['action'] = 'edit_project';
     };
+    $countPhotos = 0;
     ?>
 <div class="content d-flex flex-column flex-column-fluid" id="kt_content" style="background:#FFF;">
 
@@ -196,6 +197,7 @@ function get_project_form_template($data = []){
         <?php
             $photos = explode("," , $data['photos']);
             foreach($photos as $photo){
+                $countPhotos++;
                 $photo_src = '../' . DB_SETTINGS['uploads'] . $data['port_slug'] . '/' . $photo;
 ?>
 <div class="col-md-6 col-lg-4 col-xl-3">
@@ -246,7 +248,7 @@ function get_project_form_template($data = []){
 </form>
 <!--end::Form-->
 
-
+<?php echo '<p class="projectImagesCount d-none">'.$countPhotos.'</p>'; ?>
 
 <!--begin::Form-->
 <form class="form" action="form_handler.php" method="post">
@@ -415,7 +417,7 @@ function get_project_form_template($data = []){
 <!--begin::Actions-->
 <div class="text-center pt-15">
                     
-        <button type="submit" id="kt_modal_new_card_submit" class="btn btn-primary">
+        <button type="submit" id="kt_modal_new_card_submit" class="btn btn-primary" disabled>
             <span class="indicator-label">Save Changes</span>
             <span class="indicator-progress">Please wait...
             <span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>

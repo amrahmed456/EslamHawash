@@ -407,7 +407,7 @@
                                              }
                                             ?>
                                        
-                                        <a href="" target="_blank" class="contact-cont d-flex align-items-center mb-3">
+                                        <a href="https://goo.gl/maps/M8QXVocWUPtc48J17?coh=178573&entry=tt" target="_blank" class="contact-cont d-flex align-items-center mb-3">
                                             <div class="icon-cont ms-3">
                                                 <img src="layout/imgs/gmaps.webp" />
                                             </div>

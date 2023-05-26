@@ -127,7 +127,7 @@
         <div class="container">
         <?php
             $videos = explode(',' , $project['videos']);
-            if(count($videos) > 0){
+            if(count($videos) > 0 &&  strlen($videos[0]) > 5){
                 ?>
                     <p class="section-title fw-bold mb-4 wow fadeInUp wow-once" data-wow-duration=".4s" data-wow-delay="0.4s" data-wow-offset="100">
                     <?php echo $plang->videos; ?>
@@ -137,21 +137,30 @@
                         <div class="swiper-wrapper">
                             <?php
                                 foreach($videos as $video){
+                                    // get video code ?v= / shorts
+                                    $videoID = '';
+                                    $thumbnail = '';
                                     if (strpos($video, '?v=') !== false) {
                                         $videoID = explode('?v=' , $video)[1];
-                                        ?>
-                                            <div class="swiper-slide">
-                                                <a href="#" class="d-block video-thumb js-video-button" data-video-id="<?php echo $videoID; ?>" data-channel="youtube">
-                                                    <img class="fit-img" src="https://img.youtube.com/vi/<?php echo $videoID; ?>/sddefault.jpg">
-                                                    <div class="playbtn">
-                                                        <button class="btnz">
-                                                            <span class="play"></span>
-                                                        </button>
-                                                    </div>
-                                                </a>
-                                            </div>
-                                        <?php
+                                        $thumbnail = 'https://img.youtube.com/vi/'.$videoID .'/sddefault.jpg';
+                                    }else if(strpos($video, 'shorts') !== false){
+                                        $videoID = explode('shorts' , $video)[1];
+                                        $thumbnail = 'https://i.ytimg.com/vi'.$videoID .'/hq2.jpg';
                                     }
+                                    
+                                    ?>
+                                        <div class="swiper-slide">
+                                            <a href="#" class="d-block video-thumb js-video-button" data-video-id="<?php echo $videoID; ?>" data-channel="youtube">
+                                                <img class="fit-img" src="<?php echo $thumbnail; ?>">
+                                                <div class="playbtn">
+                                                    <button class="btnz">
+                                                        <span class="play"></span>
+                                                    </button>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    <?php
+                                    
                                 }
                             ?>
                             
@@ -163,7 +172,7 @@
         
             <?php
                 $panoramas = explode(',' , $project['panorama']);
-                if(count($panoramas) > 1){
+                if(count($panoramas) > 0 &&  strlen($panoramas[0]) > 5){
 ?>
         <!-- Panoramas -->
         <p class="section-title fw-bold mb-4 wow fadeInUp wow-once" data-wow-duration=".4s" data-wow-delay="0.4s" data-wow-offset="100">

@@ -32,7 +32,7 @@ class Images{
 
 	}
 
-    public function upload_image($folder_key, $image_key  , $compression = 80 , $file = 'file', $is_panorama , $logoPosition = 'bottom'){
+    public function upload_image($folder_key, $image_key  , $compression = 70 , $file = 'file', $is_panorama , $logoPosition = 'bottom'){
 		// $file is the name of the input to upload
 
 		

@@ -36,10 +36,15 @@ function portfolio_template($project){
                         <?php echo get_data_stylish($project['date']); ?>
                     </p>
                     <div class="d-flex align-items-center">
+                        <?php if ($project['likes'] > 0){
+                            ?>
                         <div class="d-flex justify-content-center align-items-center loves-show ms-3">
                             <p class="mb-0"> <?php echo $project['likes']; ?></p>
                             <i class="fa-solid fa-heart me-2"></i>
                         </div>
+                            <?php
+                        } ?>
+                       
                         <div class="arrow-go d-flex justify-content-center align-items-center">
                             <i class="fa-solid fa-arrow-left rotate-en"></i>
                         </div>
@@ -72,7 +77,7 @@ function getAttractSection(){
                 </p>
 
                 <div class="d-flex align-items-center btns mt-5">
-                    <a href="" class="btn btn-primary btn-white btn-bg ms-3">
+                    <a href="contact.php" class="btn btn-primary btn-white btn-bg ms-3">
                         <?php echo $glang->contact ?>
                     </a>
                     <?php
@@ -184,7 +189,7 @@ function getContactForm($showLables = false){
             </div>
             <div class="col-12 d-flex">
                 <button type="submit" class="btn btn-white btn-bg btn-block"><?php echo $glang->send_mssg; ?></button>
-                <?php getSoicals('contact'); ?>
+                
             </div>
         </div>
     </div>

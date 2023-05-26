@@ -99,6 +99,16 @@ function get_header( $select = 'home', $include = '' , $url = '' , $title = '' ,
     </style>
 </head>
 <body>
+        
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-ZYDK2MV3KZ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-ZYDK2MV3KZ');
+</script>
 
 
     <div class="preloader" id="preloader">

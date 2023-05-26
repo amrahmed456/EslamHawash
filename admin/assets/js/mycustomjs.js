@@ -114,8 +114,9 @@ $(".delete_message_btn").on("click" , function(){
 });
 
 
-
 if( $("#kt_dropzonejs_example_1").length > 0 ){
+    
+    var imagesCounter = parseInt($(".projectImagesCount").text() );
 
     var folder_key = $("input[name='port_slug']").val();
     var logoPosition = $("#logo-position").attr("data-position");
@@ -123,23 +124,36 @@ if( $("#kt_dropzonejs_example_1").length > 0 ){
     var multidropzone = new Dropzone("#kt_dropzonejs_example_1", {
         url: "form_handler.php", // Set the url for your upload script location
         paramName: "file", // The name that will be used to transfer the file
-        maxFiles: 20,
+        maxFiles: 30,
         maxFilesize: 20, // MB
         addRemoveLinks: true,
         parallelUploads: 1,
         acceptedFiles:'image/jpeg,image/png',
         params:{"form_action":"upload_img","key":folder_key,"img_name":"multi_upload_imgs", "logo-position": logoPosition},
         success: function(file, response){
-            console.log(response);
-            //console.log(response);
-            //Here you can get your response.
+           
             let img_name = response;
+            imagesCounter++;
             $("#kt_dropzonejs_example_1 .dz-preview:last-child").attr("data-key" , img_name).children(".dz-image").children("img").attr("src" , "../uploads/" + folder_key + "/" + img_name);
-        }
-        
+        },
     });
 
+    setInterval(function(){
+        let isFormHasAnError = false;
+        $(".dz-complete").each(function(){
+            if(!$(this).hasClass("dz-processing")){
+                isFormHasAnError = true;
+            }
+        });
+        if(imagesCounter == 0 || isFormHasAnError){
+            $("#kt_modal_new_card_submit").prop("disabled" , true);
+        }else{
+            $("#kt_modal_new_card_submit").prop("disabled" , false);
+        }
+    },500);
 }
+
+
 
 if( $("#kt_dropzonejs_example_2").length > 0 ){
 
@@ -148,7 +162,7 @@ if( $("#kt_dropzonejs_example_2").length > 0 ){
     var multidropzone = new Dropzone("#kt_dropzonejs_example_2", {
         url: "form_handler.php", // Set the url for your upload script location
         paramName: "file", // The name that will be used to transfer the file
-        maxFiles: 20,
+        maxFiles: 30,
         maxFilesize: 20, // MB
         addRemoveLinks: true,
         parallelUploads: 1,
@@ -180,7 +194,11 @@ function remove_from_folder(obj,db = false){
         success:function(txt){
             //console.log(txt);
         }
-    })
+    });
+    
+    if(imagesCounter > 0 && obj.parent(".dz-preview").hasClass("dz-processing")){
+        imagesCounter--;
+    }
 }
 
 

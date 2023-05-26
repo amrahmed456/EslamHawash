@@ -326,7 +326,7 @@ class CategoriesModel extends Database{
         $offset =  'OFFSET ' . ($page-1)*$limit;
         $query = "
             SELECT id,title_en,title_ar,port_slug,photos,date,likes
-            FROM $this->port WHERE status = 1 $slugs ORDER BY id desc LIMIT $limit $offset
+            FROM $this->port WHERE status = 1 $slugs ORDER BY RAND() desc LIMIT $limit $offset
         ";
         
         $stmt = $this->db->prepare($query);
