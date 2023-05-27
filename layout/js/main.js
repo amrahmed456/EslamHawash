@@ -255,7 +255,7 @@ $(document).ready(function(){
       var swiper = new Swiper(".MainCategoiresSlider", {
         slidesPerView: "auto",
         freeMode: true,
-        //centeredSlides:true,
+        centeredSlides:true,
         navigation: {
           nextEl: ".swiper-button-next",
           prevEl: ".swiper-button-prev",

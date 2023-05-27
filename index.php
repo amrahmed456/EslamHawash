@@ -19,17 +19,15 @@
                             <div></div>
                             <div class="container">
                                 <div class="text-center main-content">
-                                    <div class="verticalflip ms-5 pe-5 wow fadeInUp"data-wow-duration=".4s" data-wow-delay="0.2s" data-wow-offset="100">
+                                    <div class="verticalflip wow fadeInUp"data-wow-duration=".4s" data-wow-delay="0.2s" data-wow-offset="100">
                                             <?php echo $plang->htoptitle; ?>
                                             
                                             <span>
                                                 <?php echo $plang->h1s; ?>
                                                 
                                             </span>
-                                            <span>
-                                            <?php echo $plang->h2s; ?></span>
-                                            <span>
-                                            <?php echo $plang->h3s; ?></span>
+                                            <span><?php echo $plang->h2s; ?></span>
+                                            <span><?php echo $plang->h3s; ?></span>
                                         </div>
                                     <div class="aurora-content wow fadeInUp"data-wow-duration=".4s" data-wow-delay="0.4s" data-wow-offset="100">
                                         <h1 class="fw-bold">
@@ -43,7 +41,7 @@
                                         
                                     </p>
                                     <div class="d-flex align-items-center justify-content-center wow fadeInUp"data-wow-duration=".4s" data-wow-delay="0.8s" data-wow-offset="100">
-                                        <a href="contact.php" class="btn btn-primary d-flex align-items-center hoverable ms-4 btn-bg">
+                                        <a href="contact.php" class="btn btn-white d-flex align-items-center hoverable ms-3 btn-bg">
                                             <p class="mb-0 ms-2">
                                             <?php echo $plang->strpro; ?></p>
                                             <i class="fa-solid fa-arrow-left rotate-en"></i>
@@ -162,7 +160,7 @@
                                         <div class="col-6 col-md-4 mb-4 p-1 feat-col">
                                             <div class="feature">
                                                 <p class="title fw-bold">
-                                                    99<span class="special">%</span>
+                                                    100<span class="special">%</span>
                                                 </p>
                                                 <p class="sub fw-bold">
                                                 <?php echo $plang->ssc1t; ?>
@@ -177,7 +175,7 @@
                                         <div class="col-6 col-md-4 mb-4 p-1 feat-col">
                                             <div class="feature">
                                                 <p class="title fw-bold">
-                                                    250<span class="special"> + </span>
+                                                    70<span class="special"> + </span>
                                                 </p>
                                                 <p class="sub fw-bold">
                                                 <?php echo $plang->ssc2t; ?>
@@ -192,7 +190,7 @@
                                         <div class="col-6 col-md-4 mb-4 p-1 feat-col">
                                             <div class="feature">
                                                 <p class="title fw-bold">
-                                                    3<span class="special">+</span>
+                                                    5<span class="special"> + </span>
                                                 </p>
                                                 <p class="sub fw-bold">
                                                 <?php echo $plang->ssc3t; ?>
@@ -211,38 +209,38 @@
                                         <div class="col-6 p-2">
                                             <div class="slider-to-right eng-ar-infinit-slider">
                                                 <div class="slide">
-                                                    <img src="layout/imgs/a1.jpg" alt="" />
+                                                    <img src="layout/imgs/a1.webp" alt="" />
                                                 </div>
                                                 <div class="slide">
-                                                    <img src="layout/imgs/a2.jpg" alt="" />
+                                                    <img src="layout/imgs/a2.webp" alt="" />
                                                 </div>
                                                 <div class="slide">
-                                                    <img src="layout/imgs/a3.jpg" alt="" />
+                                                    <img src="layout/imgs/a3.webp" alt="" />
                                                 </div>
                                                 <div class="slide">
-                                                    <img src="layout/imgs/a4.jpg" alt="" />
+                                                    <img src="layout/imgs/a4.webp" alt="" />
                                                 </div>
                                                 <div class="slide">
-                                                    <img src="layout/imgs/a5.jpg" alt="" />
+                                                    <img src="layout/imgs/a5.webp" alt="" />
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="col-6 p-2">
                                             <div class="slider-bottom eng-ar-infinit-slider">
                                                 <div class="slide">
-                                                    <img src="layout/imgs/a6.jpg" alt="" />
+                                                    <img src="layout/imgs/a6.webp" alt="" />
                                                 </div>
                                                 <div class="slide">
-                                                    <img src="layout/imgs/a7.jpg" alt="" />
+                                                    <img src="layout/imgs/a7.webp" alt="" />
                                                 </div>
                                                 <div class="slide">
-                                                    <img src="layout/imgs/a1.jpg" alt="" />
+                                                    <img src="layout/imgs/a8.webp" alt="" />
                                                 </div>
                                                 <div class="slide">
-                                                    <img src="layout/imgs/a3.jpg" alt="" />
+                                                    <img src="layout/imgs/a9.webp" alt="" />
                                                 </div>
                                                 <div class="slide">
-                                                    <img src="layout/imgs/a2.jpg" alt="" />
+                                                    <img src="layout/imgs/a10.webp" alt="" />
                                                 </div>
                                             </div>
                                         </div>
@@ -284,10 +282,15 @@
                                                 <a href="portfolio.php?category=<?php echo $project['cat_slug']; ?>" class="category mb-2 rounded ms-3">
                                                     <?php echo $project['name_' . get_website_lang()] ?>
                                                 </a>
+                                                <?php if( $project['likes'] > 0){
+                                                    ?>
                                                 <div class="love-count rounded mb-2 d-flex align-items-center">
                                                     <i class="fa-regular fa-heart ms-2"></i>
                                                     <?php echo $project['likes'] ?>
                                                 </div>
+                                                    <?php
+                                                } ?>
+                                                
                                             </div>
                                             
                                             <div class="view-project mt-5">
@@ -366,8 +369,10 @@
                                     </h2>
                                     <p class="lead mb-4 d-none d-md-block">
                                         <?php echo $glang->contactavail; ?>
-                                        
                                     </p>
+                                    <div class="mb-3">
+                                        <?php getSoicals(); ?>
+                                    </div>
                                     <div class="d-none d-md-block">
                                         <?php
                                              if(WEBSITE_SETTINGS['email'] != ''){

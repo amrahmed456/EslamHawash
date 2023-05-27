@@ -28,7 +28,7 @@ function get_header( $select = 'home', $include = '' , $url = '' , $title = '' ,
       displayOpenGraphPt($url,$title,$description,$img);
     ?>
     <?php
-        echo ( get_website_lang() == 'ar' ) ? '<link rel="stylesheet" href="layout/css/main.css?v=1">' : '<link rel="stylesheet" href="layout/css/main-en.css?v=1">';
+        echo ( get_website_lang() == 'ar' ) ? '<link rel="stylesheet" href="layout/css/main.css?v=1">' : '<link rel="stylesheet" href="layout/css/main-en.css?v=2">';
     ?>
     <style>
         .preloader .layer{
@@ -263,7 +263,9 @@ function get_header( $select = 'home', $include = '' , $url = '' , $title = '' ,
             <div>
                 
                 <div class="d-flex justify-content-center mb-5">
-                    <a href="?lang=en"><i class="fa-solid fa-globe ms-1"></i> EN</a>
+                    <a href="<?php
+                        echo $_SERVER['PHP_SELF'] . get_proper_link_query() . 'lang=' . $r;
+                    ?>"><i class="fa-solid fa-globe ms-1"></i> <?php echo ( get_website_lang() == 'ar' ) ? 'EN' : 'AR';  ?></a>
                 </div>
                 
                 <?php getSoicals('nav'); ?>

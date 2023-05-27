@@ -356,7 +356,7 @@
 		<script src="assets/js/custom/modals/new-card.js"></script>
 		<script src="assets/js/custom/modals/new-address.js"></script>
 		
-		<script src="assets/js/mycustomjs.js"></script>
+		<script src="assets/js/mycustomjs.js?v=1"></script>
 		<!--end::Page Custom Javascript-->
 		<!--end::Javascript-->
 	</body>

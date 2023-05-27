@@ -9,6 +9,7 @@
         height: 100vh;
         .overlay{
           padding-top: 90px;
+          background: rgba(0,0,0,0.45);
         }
         .main-content{
             .small{
@@ -90,7 +91,7 @@
       }
       
       .verticalflip {
-
+        transform: translateX(120px);
         font-size: 24px;
         font-weight: bold !important;
         margin-bottom: 20px;
@@ -102,8 +103,6 @@
       
       .verticalflip span {
         animation: vertical 7.5s linear infinite 0s;
-        -ms-animation: vertical 7.5s linear infinite 0s;
-        -webkit-animation: vertical 7.5s linear infinite 0s;
         color: $mainColor;
         position: absolute;
         opacity: 0;
@@ -111,18 +110,27 @@
         border-radius: 10px;
         font-weight: bold !important;
         padding-right: 7px;
+        width: max-content;
       }
       
       .verticalflip span:nth-child(2) {
-        -ms-animation-delay: 2.5s;
-        -webkit-animation-delay: 2.5s;
         animation-delay: 2.5s;
       }
       
       .verticalflip span:nth-child(3) {
-        -ms-animation-delay: 5s;
-        -webkit-animation-delay: 5s;
         animation-delay: 5s;
+      }
+      .verticalflip span:nth-child(4) {
+        animation-delay: 7.5s;
+      }
+      .verticalflip span:nth-child(5) {
+        animation-delay: 10s;
+      }
+      .verticalflip span:nth-child(6) {
+        animation-delay: 12.5s;
+      }
+      .verticalflip span:nth-child(7) {
+        animation-delay: 15s;
       }
 
       .bottom-header{
@@ -400,6 +408,7 @@
             background-position: 50%;
             background-size: cover;
             background-repeat: no-repeat !important;
+            background-color: rgba(0,0,0,0.45);
             
           }
           &.is-selected{
@@ -407,10 +416,10 @@
               animation: zoomInOut 15s ease-in-out infinite;
               @keyframes zoomInOut {
                   0%,100%{
-                    background-size: 100% !important;
+                    background-size: 100%;
                   }
                   50%{
-                    background-size: 120% !important;
+                    background-size: 120%;
                   }
               
               }
@@ -465,8 +474,8 @@
       }
       .flickt-nav-cont{
         position: absolute;
-        bottom: 0;
-        padding-bottom: 35px;
+        bottom: 42px;
+        padding-bottom: 0;
         padding-right: 35px;
         width: 100%;
         z-index: 9;

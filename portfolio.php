@@ -38,11 +38,41 @@
         <video preload="metadata" playsinline="" loop="" muted="" class="hero_video fit-img" style="height:100%" autoplay="">
             <source src="layout/videos/portfolio-video.mp4" type="video/webm">
         </video>
-        <div class="overlay calcHeightForParent">
-            <div class="swiper MainCategoiresSlider mt-4">
+        <?php
+            $padder = count($options['parents']);
+            if($padder > 6){
+                $padder = 'add-padding';
+            }
+        ?>
+        <div class="overlay calcHeightForParent ">
+            <div class="swiper MainCategoiresSlider add-padding mt-4">
                 <div class="swiper-wrapper">
                 <?php
                     if(count($options['parents']) > 0){
+                        foreach($options['parents'] as $parent){
+                            $selected = '';
+                            if(isset($options['currentCat']['slug'])){
+                                if($parent['slug'] == $options['currentCat']['slug']){
+                                    $selected = 'active';
+                                }
+                            }
+                           
+                            echo ' <div class="swiper-slide">
+                            <a class="'.$selected.'" href="portfolio.php?category='. $parent['slug'] .'">'. $parent['name_' . get_website_lang()] .'</a>
+                          </div>';
+                        }
+                        foreach($options['parents'] as $parent){
+                            $selected = '';
+                            if(isset($options['currentCat']['slug'])){
+                                if($parent['slug'] == $options['currentCat']['slug']){
+                                    $selected = 'active';
+                                }
+                            }
+                           
+                            echo ' <div class="swiper-slide">
+                            <a class="'.$selected.'" href="portfolio.php?category='. $parent['slug'] .'">'. $parent['name_' . get_website_lang()] .'</a>
+                          </div>';
+                        }
                         foreach($options['parents'] as $parent){
                             $selected = '';
                             if(isset($options['currentCat']['slug'])){
@@ -123,7 +153,7 @@
         </div>
     </div>
 </div>
-
+<p class="d-none PortsLoadedSlugs"></p>
 <?php
     get_footer();
 ?>
@@ -131,6 +161,8 @@
 <script>
     $(document).ready(function(){
     var options = $("#data_options").text();
+    var loadedPorts = $(".PortsLoadedSlugs").text();
+    
     if( $("#initial_page_number").length > 0 ){
     var current_page    = $("#initial_page_number").attr("data-page").trim();
     current_page        = parseInt(current_page);
@@ -161,6 +193,7 @@
                 loading = 1;
                 $("#load-more").remove();
                 $(".no-more-data").removeClass("d-none");
+                setLoadedSlugs();
             }else{
                 current_page++;
                 loading = 0;
@@ -179,6 +212,9 @@
 
     }
 
+    function setLoadedSlugs(){
+
+    }
 
     function run_portfolio_inner_slider(){
         var swiper = new Swiper(".imgs-cont-slider", {

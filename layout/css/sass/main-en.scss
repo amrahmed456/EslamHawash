@@ -46,13 +46,13 @@
 }
 
 .pe-5{
-    padding-right: 3rem !important;
-    padding-left: auto !important;
+    padding-left: 3rem !important;
+    padding-right: auto !important;
 }
 
 .ps-5{
-    padding-right: auto !important;
-    padding-left: 3rem !important;
+    padding-left: auto !important;
+    padding-right: 3rem !important;
 }
 
 .rotate-en{
@@ -101,4 +101,8 @@
     to {
         background-position: 850px 0;
     }
+}
+
+.homepage .header .verticalflip{
+    transform: translateX(-120px);
 }

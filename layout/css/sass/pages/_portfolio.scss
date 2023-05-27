@@ -7,6 +7,15 @@
             padding-top: 120px;
             padding-bottom: 120px;
             .MainCategoiresSlider{
+                &.add-padding{
+                  padding-right: 120px;
+                }
+                @media(max-width:560px){
+                  &.add-padding{
+                    padding-right: 0px;
+                  }
+                  padding-right: 120px;
+                }
                 .swiper-wrapper{
                     padding: 25px 0;
                     display: flex;
