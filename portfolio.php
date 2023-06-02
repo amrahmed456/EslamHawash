@@ -213,7 +213,9 @@
     }
 
     function setLoadedSlugs(){
-
+        $(".product-card-template").each(function(){
+            let slug = $(this).attr("");
+        });
     }
 
     function run_portfolio_inner_slider(){
