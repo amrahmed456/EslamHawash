@@ -301,7 +301,7 @@ class CategoriesModel extends Database{
         ];
     }
 
-    public function getProductsAllWithSubChilds($options, $page , $limit){
+    public function getProductsAllWithSubChilds($options, $page , $limit, $loaded_slugs = '0'){
         $list_of_categories = [];
         foreach($options->directChilds as $direct){
             $list_of_categories[] = $direct->slug;
@@ -326,7 +326,7 @@ class CategoriesModel extends Database{
         $offset =  'OFFSET ' . ($page-1)*$limit;
         $query = "
             SELECT id,title_en,title_ar,port_slug,photos,date,likes
-            FROM $this->port WHERE status = 1 $slugs ORDER BY RAND() desc LIMIT $limit $offset
+            FROM $this->port WHERE status = 1 $slugs AND port_slug NOT IN ( $loaded_slugs ) ORDER BY RAND() desc LIMIT $limit 
         ";
         
         $stmt = $this->db->prepare($query);

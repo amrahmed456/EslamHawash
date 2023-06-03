@@ -28,7 +28,7 @@ function get_header( $select = 'home', $include = '' , $url = '' , $title = '' ,
       displayOpenGraphPt($url,$title,$description,$img);
     ?>
     <?php
-        echo ( get_website_lang() == 'ar' ) ? '<link rel="stylesheet" href="layout/css/main.css?v=1">' : '<link rel="stylesheet" href="layout/css/main-en.css?v=2">';
+        echo ( get_website_lang() == 'ar' ) ? '<link rel="stylesheet" href="layout/css/main.css?v=2">' : '<link rel="stylesheet" href="layout/css/main-en.css?v=2">';
     ?>
     <style>
         .preloader .layer{
@@ -307,7 +307,7 @@ function get_footer($include = ''){
     
     <script src="layout/js/TweenMax.min.js"></script>
     <script src="layout/js/wow.min.js"></script>
-    <script src="layout/js/main.js"></script>
+    <script src="layout/js/main.js?v=2"></script>
 </body>
 </html>
     <?php

@@ -24,8 +24,9 @@
         header("Location: index.php");
         exit();
     } */
-
+    
     get_header();
+    
 ?>
 
 <span id="initial_page_number" data-page="<?php echo $page; ?>" class="d-none"></span>
@@ -160,6 +161,7 @@
 
 <script>
     $(document).ready(function(){
+    var loaded_slugs = [0];
     var options = $("#data_options").text();
     var loadedPorts = $(".PortsLoadedSlugs").text();
     
@@ -172,7 +174,7 @@
     var load_top,current_top,loading = 0;
     $(window).scroll(function(){
     if(loading == 0){
-            
+        prev_slugs = loaded_slugs.join(",");
         load_top 	= $("#load-more").offset().top + 100;
         current_top = $(this).scrollTop() + $(this).height();
         
@@ -185,7 +187,7 @@
             url:	"admin/form_handler.php",
             method:	"POST",
             dataType:	"text",
-            data:	{"form_action":'load_more_projects','options':options,'page':current_page,'limit':limit,'ajax_request':'ajax'},
+            data:	{"form_action":'load_more_projects','options':options,'page':current_page,'limit':limit,'ajax_request':'ajax','loaded_slugs': prev_slugs},
             success:	function(text){
             
             if(text.length <= 10){
@@ -193,13 +195,14 @@
                 loading = 1;
                 $("#load-more").remove();
                 $(".no-more-data").removeClass("d-none");
-                setLoadedSlugs();
+                
             }else{
                 current_page++;
                 loading = 0;
                 // there are more apartments
                 $("#projects_container_template").append(text);
                 run_portfolio_inner_slider();
+                setLoadedSlugs();
             }
             }
             
@@ -212,10 +215,13 @@
 
     }
 
+    
     function setLoadedSlugs(){
+        loaded_slugs = [0];
         $(".product-card-template").each(function(){
-            let slug = $(this).attr("");
+            loaded_slugs.push($(this).attr("data-slug"));
         });
+
     }
 
     function run_portfolio_inner_slider(){

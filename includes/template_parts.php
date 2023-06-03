@@ -10,7 +10,7 @@ function portfolio_template($project){
         $photos = explode("," , $project['photos']);
     ?>
         
-        <a href="<?php echo 'project.php?portfolio=' . $project['port_slug']; ?>" class="product-card-template wow fadeInUp wow-once" data-wow-duration=".4s" data-wow-delay="0.4s" data-wow-offset="100">
+        <a href="<?php echo 'project.php?portfolio=' . $project['port_slug']; ?>" class="product-card-template wow fadeInUp wow-once" data-wow-duration=".4s" data-wow-delay="0.4s" data-wow-offset="100" data-slug="<?php echo $project['port_slug']; ?>">
                 <div class="product-imgs-cont">
                     <div class="imgs-cont-slider swiper h-100 w-100">
                         <div class="swiper-wrapper w-100 h-100">
@@ -135,7 +135,21 @@ function getSoicals($page = ''){
             </a>';
             }
         ?>
-        
+        <?php
+            if(WEBSITE_SETTINGS['email'] != ''){
+                echo '<a href="mailto:'.WEBSITE_SETTINGS['email'].'" target="_blank" class="social-icon">
+                <i class="fa-regular fa-envelope"></i>
+            </a>';
+            }
+        ?>
+
+        <?php
+            if(WEBSITE_SETTINGS['phone'] != ''){
+                echo '<a href="tel:'.WEBSITE_SETTINGS['phone'].'" class="social-icon">
+                <i class="fa-solid fa-phone"></i>
+            </a>';
+            }
+        ?>
         
         
        

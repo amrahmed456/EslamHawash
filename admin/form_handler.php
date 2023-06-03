@@ -30,7 +30,8 @@
             $options   = json_decode( $_POST['options']);
             $page       = filter_var( $_POST['page'], FILTER_SANITIZE_STRING );
             $limit      = filter_var( $_POST['limit'], FILTER_SANITIZE_STRING );
-            $ports = $cats->getProductsAllWithSubChilds($options, $page, $limit);
+            $loaded_slugs = ( isset($_POST['loaded_slugs']) ) ? filter_var($_POST['loaded_slugs'], FILTER_SANITIZE_STRING) : '0';
+            $ports = $cats->getProductsAllWithSubChilds($options, $page, $limit,$loaded_slugs);
             if( count($ports) > 0 ){
                 require_once '../includes/template_parts.php';
                 foreach($ports as $project){

@@ -26,67 +26,67 @@
             <div class="run-sliders-services mt-5">
                 <div class="slider-to-right eng-ar-infinit-slider mb-2">
                     <div class="slide">
-                        <img src="layout/imgs/a1.jpg" alt="" />
+                        <img src="layout/imgs/s1.webp" alt="" />
                         <div class="overlay d-flex align-items-end">
                             <?php echo $plang->sl1; ?>
                         </div>
                     </div>
                     <div class="slide">
-                        <img src="layout/imgs/a2.jpg" alt="" />
+                        <img src="layout/imgs/s2.webp" alt="" />
                         <div class="overlay d-flex align-items-end">
                         <?php echo $plang->sl2; ?>
                             
                         </div>
                     </div>
                     <div class="slide">
-                        <img src="layout/imgs/a3.jpg" alt="" />
+                        <img src="layout/imgs/s3.webp" alt="" />
                         <div class="overlay d-flex align-items-end">
                         <?php echo $plang->sl3; ?>
                         </div>
                     </div>
                     <div class="slide">
-                        <img src="layout/imgs/a4.jpg" alt="" />
+                        <img src="layout/imgs/s4.webp" alt="" />
                         <div class="overlay d-flex align-items-end">
-                        <?php echo $plang->sl2; ?>
+                        <?php echo $plang->sl4; ?>
                         </div>
                     </div>
                     <div class="slide">
-                        <img src="layout/imgs/a5.jpg" alt="" />
+                        <img src="layout/imgs/s5.webp" alt="" />
                         <div class="overlay d-flex align-items-end">
-                        <?php echo $plang->sl2; ?>
+                        <?php echo $plang->sl5; ?>
                         </div>
                     </div>
                 </div>
                 <div class="wow fadeInUp wow-once" data-wow-duration="0.6s" data-wow-delay="0.6s" data-wow-offset="100">
             <div class="slider-to-left eng-ar-infinit-slider">
                 <div class="slide ">
-                    <img src="layout/imgs/a6.jpg" alt="" />
+                    <img src="layout/imgs/s6.webp" alt="" />
                     <div class="overlay d-flex align-items-end">
-                    <?php echo $plang->sl2; ?>
+                    <?php echo $plang->sl6; ?>
                     </div>
                 </div>
                 <div class="slide">
-                    <img src="layout/imgs/a7.jpg" alt="" />
+                    <img src="layout/imgs/s7.webp" alt="" />
                     <div class="overlay d-flex align-items-end">
-                         <?php echo $plang->sl2; ?>
+                         <?php echo $plang->sl7; ?>
                     </div>
                 </div>
                 <div class="slide">
-                    <img src="layout/imgs/a1.jpg" alt="" />
+                    <img src="layout/imgs/s8.webp" alt="" />
                     <div class="overlay d-flex align-items-end">
-                         <?php echo $plang->sl2; ?>
+                         <?php echo $plang->sl8; ?>
                     </div>
                 </div>
                 <div class="slide">
-                    <img src="layout/imgs/a3.jpg" alt="" />
+                    <img src="layout/imgs/s9.webp" alt="" />
                     <div class="overlay d-flex align-items-end">
-                         <?php echo $plang->sl2; ?>
+                         <?php echo $plang->sl9; ?>
                     </div>
                 </div>
                 <div class="slide">
-                    <img src="layout/imgs/a2.jpg" alt="" />
+                    <img src="layout/imgs/s10.webp" alt="" />
                     <div class="overlay d-flex align-items-end">
-                         <?php echo $plang->sl2; ?>
+                         <?php echo $plang->sl10; ?>
                     </div>
                 </div>
             </div>
@@ -104,7 +104,7 @@
                 <div class="col-12 col-md-6 col-lg-4 mb-4 wow fadeInUp wow-once" data-wow-duration="0.4s" data-wow-delay="0.4s" data-wow-offset="100">
                     <div class="service">
                         <div class="icon mb-3 d-flex justify-content-center align-items-center" style="background:#3e9aff">
-                            <i class="fa-solid fa-wand-magic-sparkles"></i>
+                            <i class="fa-solid fa-pen-ruler"></i>
                         </div>
                         <p class="fw-bold fs-5">
                             <?php echo $plang->sr1t; ?>
@@ -119,7 +119,7 @@
                 <div class="col-12 col-md-6 col-lg-4 mb-4 wow fadeInUp wow-once" data-wow-duration="0.6s" data-wow-delay="0.6s" data-wow-offset="100">
                     <div class="service">
                         <div class="icon mb-3 d-flex justify-content-center align-items-center" style="background:#ff6773">
-                            <i class="fa-solid fa-wand-magic-sparkles"></i>
+                            <i class="fa-solid fa-hammer"></i>
                         </div>
                         <p class="fw-bold fs-5">
                             <?php echo $plang->sr2t; ?>
@@ -134,7 +134,7 @@
                 <div class="col-12 col-md-6 col-lg-4 mb-4 wow fadeInUp wow-once" data-wow-duration="0.8s" data-wow-delay="0.7s" data-wow-offset="100">
                     <div class="service">
                         <div class="icon mb-3 d-flex justify-content-center align-items-center" style="background:#a175ff">
-                            <i class="fa-solid fa-wand-magic-sparkles"></i>
+                            <i class="fa-solid fa-landmark"></i>
                         </div>
                         <p class="fw-bold fs-5">
                         <?php echo $plang->sr3t; ?>
@@ -149,7 +149,7 @@
                 <div class="col-12 col-md-6 col-lg-4 mb-4 wow fadeInUp wow-once" data-wow-duration="0.4s" data-wow-delay="0.4s" data-wow-offset="100">
                     <div class="service">
                         <div class="icon mb-3 d-flex justify-content-center align-items-center" style="background:#feb546">
-                            <i class="fa-solid fa-wand-magic-sparkles"></i>
+                            <i class="fa-solid fa-couch"></i>
                         </div>
                         <p class="fw-bold fs-5">
                         <?php echo $plang->sr4t; ?>
@@ -179,7 +179,7 @@
                 <div class="col-12 col-md-6 col-lg-4 mb-4 wow fadeInUp wow-once" data-wow-duration="0.8s" data-wow-delay="0.7s" data-wow-offset="100">
                     <div class="service">
                         <div class="icon mb-3 d-flex justify-content-center align-items-center" style="background:#05c16a">
-                            <i class="fa-solid fa-wand-magic-sparkles"></i>
+                            <i class="fa-solid fa-briefcase"></i>
                         </div>
                         <p class="fw-bold fs-5">
                         <?php echo $plang->sr6t; ?>

@@ -25,11 +25,11 @@
                         
                     </p>
                     <div class="d-flex btns wow fadeInUp wow-once" data-wow-duration="0.6s" data-wow-delay="1s" data-wow-offset="100">
-                        <a href="" class="btn btn-primary btn-bg btn-white ms-3">
+                        <a href="portfolio.php" class="btn btn-primary btn-bg btn-white ms-3">
                         <?php echo $plang->wtchport; ?>
                             
                         </a>
-                        <a href="" class="btn btn-primary btn-bg btn-white-outline">
+                        <a href="contact.php" class="btn btn-primary btn-bg btn-white-outline">
                         <?php echo $plang->cttus; ?>
                             
                         </a>
