@@ -62,30 +62,6 @@
                             <a class="'.$selected.'" href="portfolio.php?category='. $parent['slug'] .'">'. $parent['name_' . get_website_lang()] .'</a>
                           </div>';
                         }
-                        foreach($options['parents'] as $parent){
-                            $selected = '';
-                            if(isset($options['currentCat']['slug'])){
-                                if($parent['slug'] == $options['currentCat']['slug']){
-                                    $selected = 'active';
-                                }
-                            }
-                           
-                            echo ' <div class="swiper-slide">
-                            <a class="'.$selected.'" href="portfolio.php?category='. $parent['slug'] .'">'. $parent['name_' . get_website_lang()] .'</a>
-                          </div>';
-                        }
-                        foreach($options['parents'] as $parent){
-                            $selected = '';
-                            if(isset($options['currentCat']['slug'])){
-                                if($parent['slug'] == $options['currentCat']['slug']){
-                                    $selected = 'active';
-                                }
-                            }
-                           
-                            echo ' <div class="swiper-slide">
-                            <a class="'.$selected.'" href="portfolio.php?category='. $parent['slug'] .'">'. $parent['name_' . get_website_lang()] .'</a>
-                          </div>';
-                        }
                     }
                 ?>
                  
