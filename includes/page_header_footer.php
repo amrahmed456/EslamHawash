@@ -204,10 +204,13 @@ function get_header( $select = 'home', $include = '' , $url = '' , $title = '' ,
                             <li><a href="portfolio.php" class="dup-hover-effect"><?php echo $glang->portfolio; ?></a></li>
                             <li><a href="services.php" class="dup-hover-effect"><?php echo $glang->services; ?></a></li>
                             <li><a href="about.php" class="dup-hover-effect"><?php echo $glang->about; ?></a></li>
+                            
+                            <li>
                             <?php $r = ( get_website_lang() == 'ar' ) ? 'en' : 'ar'; ?>
-                            <li><a href="<?php
-                    echo $_SERVER['PHP_SELF'] . get_proper_link_query() . 'lang=' . $r;
-                ?>"><i class="fa-solid fa-globe ms-1"></i> <?php echo ( get_website_lang() == 'ar' ) ? 'EN' : 'AR';  ?></a></li>
+                                <a href="<?php
+                                echo $_SERVER['PHP_SELF'] . get_proper_link_query() . 'lang=' . $r;
+                            ?>"><i class="fa-solid fa-globe ms-1"></i> <?php echo ( get_website_lang() == 'ar' ) ? 'EN' : 'AR';  ?></a>
+                            </li>
                         </ul>
                     </div>
                     <div>
@@ -263,7 +266,8 @@ function get_header( $select = 'home', $include = '' , $url = '' , $title = '' ,
             <div>
                 
                 <div class="d-flex justify-content-center mb-5">
-                    <a href="<?php
+                    <?php $r = ( get_website_lang() == 'ar' ) ? 'en' : 'ar'; ?>
+                        <a href="<?php
                         echo $_SERVER['PHP_SELF'] . get_proper_link_query() . 'lang=' . $r;
                     ?>"><i class="fa-solid fa-globe ms-1"></i> <?php echo ( get_website_lang() == 'ar' ) ? 'EN' : 'AR';  ?></a>
                 </div>

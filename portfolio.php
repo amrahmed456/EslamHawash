@@ -40,14 +40,14 @@
             <source src="layout/videos/portfolio-video.mp4" type="video/webm">
         </video>
         <?php
-            $padder = count($options['parents']);
+            /* $padder = count($options['parents']);
             if($padder > 6){
                 $padder = 'add-padding';
-            }
+            } */
         ?>
         <div class="overlay calcHeightForParent ">
-            <div class="swiper MainCategoiresSlider add-padding mt-4">
-                <div class="swiper-wrapper">
+            <div class="swiper MainCategoiresSlider mt-4">
+                <div class="swiper-wrapper m-auto">
                 <?php
                     if(count($options['parents']) > 0){
                         foreach($options['parents'] as $parent){

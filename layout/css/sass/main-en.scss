@@ -106,3 +106,10 @@
 .homepage .header .verticalflip{
     transform: translateX(-120px);
 }
+
+.portfolio-page .header .overlay .MainCategoiresSlider .swiper-wrapper{
+    @media(max-width:670px){
+        margin-right: auto !important;
+        margin-left: 100px !important;
+    }
+}

@@ -48,7 +48,7 @@
                     <div class="feature">
                         <div class="d-flex align-items-center justify-content-between mb-4">
                             <p class="super fw-bold">
-                                99%
+                                100%
                             </p>
                             <div class="icon-cont d-flex justify-content-center align-items-center">
                                 <i class="fa-regular fa-thumbs-up"></i>
@@ -68,10 +68,10 @@
                     <div class="feature">
                         <div class="d-flex align-items-center justify-content-between mb-4">
                             <p class="super fw-bold">
-                                99%
+                                10
                             </p>
                             <div class="icon-cont d-flex justify-content-center align-items-center">
-                                <i class="fa-regular fa-thumbs-up"></i>
+                            <i class="fa-solid fa-user-tie"></i>
                             </div>
                         </div>
                         <p class="sub fw-bold">
@@ -86,10 +86,10 @@
                     <div class="feature">
                         <div class="d-flex align-items-center justify-content-between mb-4">
                             <p class="super fw-bold">
-                                99%
+                                5
                             </p>
                             <div class="icon-cont d-flex justify-content-center align-items-center">
-                                <i class="fa-regular fa-thumbs-up"></i>
+                            <i class="fa-solid fa-earth-americas"></i>
                             </div>
                         </div>
                         <p class="sub fw-bold">
@@ -114,8 +114,8 @@
             <div class="services-slider swiper mb-5 pb-5 wow fadeInUp wow-once" data-wow-duration="0.6s" data-wow-delay="0.6s" data-wow-offset="100">
                 <div class="swiper-wrapper">
                     <div class="swiper-slide">
-                        <div class="service">
-                            <img src="layout/temp/t1.webp" class="fit-img" />
+                        <a href="portfolio.php?category=1684399645" class="service d-block">
+                            <img src="layout/imgs/s1.webp" class="fit-img" />
                             <div class="overlay d-flex align-items-end">
                                 <div class="content p-5">
                                     <p class="title mb-3 fw-bold fs-4">
@@ -129,10 +129,10 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </a>
                     <div class="swiper-slide">
-                        <div class="service">
-                            <img src="layout/temp/t2.webp" class="fit-img" />
+                        <a href="portfolio.php?category=1684400958" class="service d-block">
+                            <img src="layout/imgs/s3.webp" class="fit-img" />
                             <div class="overlay d-flex align-items-end">
                                 <div class="content p-5">
                                     <p class="title mb-3 fw-bold fs-4">
@@ -146,10 +146,10 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+</a>
                     <div class="swiper-slide">
-                        <div class="service">
-                            <img src="layout/temp/t3.webp" class="fit-img" />
+                        <a href="portfolio.php?category=1684346535" class="service d-block">
+                            <img src="layout/imgs/s4.webp" class="fit-img" />
                             <div class="overlay d-flex align-items-end">
                                 <div class="content p-5">
                                     <p class="title mb-3 fw-bold fs-4">
@@ -163,10 +163,10 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+</a>
                     <div class="swiper-slide">
-                        <div class="service">
-                            <img src="layout/temp/t1.webp" class="fit-img" />
+                        <a href="portfolio.php?category=1684399752" class="service d-block">
+                            <img src="layout/imgs/s5.webp" class="fit-img" />
                             <div class="overlay d-flex align-items-end">
                                 <div class="content p-5">
                                     <p class="title mb-3 fw-bold fs-4">
@@ -180,10 +180,10 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+</a>
                     <div class="swiper-slide">
-                        <div class="service">
-                            <img src="layout/temp/t1.webp" class="fit-img" />
+                        <a href="portfolio.php?category=1684400127" class="service d-block">
+                            <img src="layout/imgs/s6.webp" class="fit-img" />
                             <div class="overlay d-flex align-items-end">
                                 <div class="content p-5">
                                     <p class="title mb-3 fw-bold fs-4">
@@ -196,7 +196,7 @@
                                     </p>
                                 </div>
                             </div>
-                        </div>
+</a>
                     </div>
                     
                 </div>
