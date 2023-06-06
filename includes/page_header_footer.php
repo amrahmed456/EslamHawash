@@ -28,7 +28,7 @@ function get_header( $select = 'home', $include = '' , $url = '' , $title = '' ,
       displayOpenGraphPt($url,$title,$description,$img);
     ?>
     <?php
-        echo ( get_website_lang() == 'ar' ) ? '<link rel="stylesheet" href="layout/css/main.css?v=2">' : '<link rel="stylesheet" href="layout/css/main-en.css?v=2">';
+        echo ( get_website_lang() == 'ar' ) ? '<link rel="stylesheet" href="layout/css/main.css?v=2">' : '<link rel="stylesheet" href="layout/css/main-en.css?v=3">';
     ?>
     <style>
         .preloader .layer{
